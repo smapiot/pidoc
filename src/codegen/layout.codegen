@@ -1,0 +1,5 @@
+const { layout } = require('../tools/meta');
+
+module.exports = function () {
+  return `module.exports = require(${JSON.stringify(layout)})`;
+};
