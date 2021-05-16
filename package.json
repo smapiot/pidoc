@@ -1,6 +1,6 @@
 {
   "name": "piral-docs-tools",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Tools for generating a dynamic documentation experience like for docs.piral.io.",
   "main": "bin/cli.js",
   "typings": "src/scripts/types.ts",
@@ -11,6 +11,9 @@
   },
   "bin": {
     "piral-docs": "./bin/cli.js"
+  },
+  "engines": {
+    "node": ">=10.0"
   },
   "keywords": [
     "piral",

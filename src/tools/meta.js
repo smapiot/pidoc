@@ -5,9 +5,10 @@ const repo = 'smapiot/piral';
 const docsFolder = 'docs';
 const baseDir = process.cwd();
 const config = require(resolve(baseDir, 'docs.config.json'));
-const rootPath = resolve(baseDir, config.rootDir); // resolve(__dirname, '../../../../../package.json')
+const rootPath = resolve(baseDir, config.rootDir);
 const outputPath = resolve(baseDir, config.outputDir);
 const layout = resolve(baseDir, config.layoutFile);
+const notFoundPage = resolve(baseDir, config.notFoundPageFile);
 const generatedName = '__generated__';
 const generated = resolve(__dirname, generatedName);
 
@@ -23,5 +24,7 @@ module.exports = {
   generatedName,
   generated,
   layout,
-  docsPath: resolve(rootPath, docsFolder), // resolve(__dirname, '../../../../../docs')
+  redirects: config.redirects || {},
+  notFoundPage,
+  docsPath: resolve(rootPath, docsFolder),
 };

@@ -1,0 +1,15 @@
+const { notFoundPage, redirects } = require('../tools/meta');
+
+module.exports = function () {
+  const routes = [
+    ...Object.keys(redirects).map(
+      (from) => `React.createElement(Redirect, { exact: true, from: "${from}", to: "${redirects[from]}" })`,
+    ),
+    `React.createElement(Route, { component: React.lazy(() => import(${JSON.stringify(notFoundPage)})) })`,
+  ].join(', ');
+
+  return `const React = require('react');
+const { Route, Redirect } = require('react-router-dom');
+
+module.exports = React.createElement(React.Fragment, undefined, ${routes})`;
+};
