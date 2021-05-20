@@ -1,5 +1,7 @@
+const { relative } = require('path');
 const { layout } = require('../tools/meta');
 
 module.exports = function () {
-  return `module.exports = require(${JSON.stringify(layout)})`;
+  const path = relative(__dirname, layout);
+  return `export * from ${JSON.stringify(path)}`;
 };

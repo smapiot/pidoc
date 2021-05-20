@@ -1,11 +1,13 @@
+const { relative } = require('path');
 const { notFoundPage, redirects } = require('../tools/meta');
 
 module.exports = function () {
+  const path = relative(__dirname, notFoundPage);
   const routes = [
     ...Object.keys(redirects).map(
       (from) => `React.createElement(Redirect, { exact: true, from: "${from}", to: "${redirects[from]}" })`,
     ),
-    `React.createElement(Route, { component: React.lazy(() => import(${JSON.stringify(notFoundPage)})) })`,
+    `React.createElement(Route, { component: React.lazy(() => import(${JSON.stringify(path)})) })`,
   ].join(', ');
 
   return `const React = require('react');

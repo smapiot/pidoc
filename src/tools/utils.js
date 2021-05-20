@@ -1,17 +1,17 @@
 const { writeFileSync, mkdirSync, existsSync } = require('fs');
-const { basename, extname, relative, resolve } = require('path');
-const { generated, docsUrl } = require('./meta');
+const { basename, extname, relative, resolve, dirname } = require('path');
+const { generated, docsUrl, docsPath } = require('./meta');
 
 function makeRelativePath(baseDir, target) {
   return relative(baseDir, target).split('\\').join('/');
 }
 
-function getAbsolutePath(path, basePath = docs) {
+function getAbsolutePath(path, basePath = docsPath) {
   return resolve(dirname(basePath), path);
 }
 
-function getRelativePath(path, basePath = docs) {
-  return makeRelativePath(docs, getAbsolutePath(path, basePath));
+function getRelativePath(path, basePath = docsPath) {
+  return makeRelativePath(basePath, getAbsolutePath(path, basePath));
 }
 
 function imgRef(path, basePath) {

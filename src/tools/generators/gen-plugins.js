@@ -1,9 +1,9 @@
-const { resolve } = require('path');
+const { resolve, relative } = require('path');
 const { readFileSync } = require('fs');
 const { getPluginTypes, getName, getPluginImage, getPackageRoot, getPluginCategory } = require('./paths');
 const { render } = require('../markdown');
 const { docRef } = require('../utils');
-const { generated } = require('../meta');
+const { generated, assetsPath } = require('../meta');
 const { generatePage } = require('../pages');
 
 function getRoute(name) {
@@ -64,7 +64,7 @@ module.exports = function () {
       const body = `
         <PageContent>
           <div className="plugin-info">
-            <img src={require('../../assets/${image}')} />
+            <img src={require('${relative(__dirname, assetsPath)}/${image}')} />
             <h1>${name}</h1>
           </div>
           <Tabs titles={["Overview", "Types", "Info"]}>

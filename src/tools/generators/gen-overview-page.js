@@ -1,7 +1,8 @@
 const { readFileSync } = require('fs');
-const { basename, resolve } = require('path');
-const { getPluginTypes, getPluginImage, getPluginCategory } = require('./paths');
+const { basename, resolve, relative } = require('path');
+const { getPluginTypes, getPluginImage, getPluginCategory, packagesRoot } = require('./paths');
 const { generatePage } = require('../pages');
+const { assetsPath } = require('../meta');
 
 module.exports = function () {
   const categories = [];
@@ -14,10 +15,10 @@ module.exports = function () {
     let pluginCategory = '';
 
     try {
-      dest = resolve(__dirname, '..', '..', '..', '..', 'plugins', name, 'package.json');
+      dest = resolve(packagesRoot, 'plugins', name, 'package.json');
       data = JSON.parse(readFileSync(dest, 'utf8'));
     } catch (e) {
-      dest = resolve(__dirname, '..', '..', '..', '..', 'converters', name, 'package.json');
+      dest = resolve(packagesRoot, 'converters', name, 'package.json');
       data = JSON.parse(readFileSync(dest, 'utf8'));
     }
 
@@ -28,7 +29,7 @@ module.exports = function () {
       content: `
         <ImageCard
           link="/plugins/${name}"
-          image={require('../../assets/${image}')}
+          image={require('${relative(__dirname, assetsPath)}/${image}')}
           description="${data.description}"
           title="${data.name}"
         />`,

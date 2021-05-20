@@ -52,7 +52,7 @@ module.exports = {
     sections: [
       {
         title: 'Technical',
-        links: [${technical},
+        links: [${technical}],
       },
       {
         title: 'General',

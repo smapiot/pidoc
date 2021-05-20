@@ -11,7 +11,7 @@ ${head}
 export default () => (
   ${body}
 );`,
-    'jsx',
+    'tsx',
   );
 
   return `
@@ -21,7 +21,7 @@ export default () => (
     title: '${title}',
     link: '${link || route}',
     section: '${section}',
-    page: lazy(() => import('./${generatedName}/${targetFile}.jsx')),
+    page: lazy(() => import('../tools/${generatedName}/${targetFile}.tsx')),
   }`;
 }
 

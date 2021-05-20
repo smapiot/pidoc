@@ -3,12 +3,12 @@ const { resolve } = require('path');
 const branch = 'documentation';
 const repo = 'smapiot/piral';
 const docsFolder = 'docs';
-const baseDir = process.cwd();
+const baseDir = process.env.PIRAL_DOCS_BASE_DIR || process.cwd();
 const config = require(resolve(baseDir, 'docs.config.json'));
 const rootPath = resolve(baseDir, config.rootDir);
+const assetsPath = resolve(baseDir, config.assetsDir);
 const outputPath = resolve(baseDir, config.outputDir);
 const layout = resolve(baseDir, config.layoutFile);
-const notFoundPage = resolve(baseDir, config.notFoundPageFile);
 const generatedName = '__generated__';
 const generated = resolve(__dirname, generatedName);
 
@@ -21,10 +21,9 @@ module.exports = {
   docsUrl: `https://github.com/${repo}/tree/${branch}/${docsFolder}`,
   rootPath,
   outputPath,
+  assetsPath,
   generatedName,
   generated,
   layout,
-  redirects: config.redirects || {},
-  notFoundPage,
   docsPath: resolve(rootPath, docsFolder),
 };

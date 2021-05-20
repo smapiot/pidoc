@@ -4,7 +4,7 @@ const { resolve, basename, extname } = require('path');
 const readme = 'README.md';
 const categoryPrefix = 'plugin-';
 const docs = resolve(__dirname, '../../../../../docs');
-const packagesRoot = resolve(__dirname, '../../../..');
+const packagesRoot = resolve(__dirname, '../../../../../src');
 const tutorials = resolve(docs, 'tutorials');
 const samples = resolve(docs, 'examples');
 const questions = resolve(docs, 'questions');
@@ -174,6 +174,4 @@ module.exports = {
   getCoreTypes,
   getDocs,
   getName,
-  getRelativePath,
-  getAbsolutePath,
 };
