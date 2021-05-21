@@ -4,6 +4,8 @@ import { routes } from './sitemap';
 import { Layout } from './Layout';
 import { AppProps } from './types';
 
+const extraRoutes = require('../codegen/routes.codegen');
+
 function getBasename() {
   const [, version] = location.pathname.split('/');
 
@@ -14,12 +16,11 @@ function getBasename() {
   return undefined;
 }
 
-export const App: React.FC<AppProps> = ({ layout, children }) => (
+export const App: React.FC<AppProps> = ({ layout }) => (
   <BrowserRouter basename={getBasename()}>
     <Layout {...layout}>
       <Switch>
-        {routes}
-        {children}
+        {[...routes, ...extraRoutes]}
       </Switch>
     </Layout>
   </BrowserRouter>

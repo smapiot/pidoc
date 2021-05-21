@@ -29,6 +29,12 @@ function capitalize(str) {
       return 'API';
     case 'cli':
       return 'CLI';
+    case 'json':
+      return 'JSON';
+    case 'xml':
+      return 'XML';
+    case 'html':
+      return 'HTML';
     default:
       return str[0].toUpperCase() + str.substr(1);
   }

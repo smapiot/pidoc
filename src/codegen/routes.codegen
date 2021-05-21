@@ -13,5 +13,5 @@ module.exports = function () {
   return `const React = require('react');
 const { Route, Redirect } = require('react-router-dom');
 
-module.exports = React.createElement(React.Fragment, undefined, ${routes})`;
+module.exports = [${routes}]`;
 };
