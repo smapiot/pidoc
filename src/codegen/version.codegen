@@ -1,5 +1,7 @@
-const { version } = require('../tools/meta');
+const { changelogPath } = require('../tools/meta');
+const { getChangelogVersion } = require('../tools/version');
 
 module.exports = function () {
+  const version = getChangelogVersion(changelogPath);
   return `module.exports = ${JSON.stringify(version)}`;
 };

@@ -1,6 +1,19 @@
-const { writeFileSync, mkdirSync, existsSync } = require('fs');
+const { writeFileSync, mkdirSync, existsSync, readdirSync } = require('fs');
 const { basename, extname, relative, resolve, dirname } = require('path');
 const { generated, docsUrl, docsPath } = require('./meta');
+
+const readme = 'README.md';
+
+function getDocsFrom(dir, tester = /\.md$/) {
+  return readdirSync(dir)
+    .sort()
+    .filter((name) => tester.test(name) && name !== readme)
+    .map((name) => resolve(dir, name));
+}
+
+function getName(file) {
+  return (file && basename(file).replace(extname(file), '')) || '';
+}
 
 function makeRelativePath(baseDir, target) {
   return relative(baseDir, target).split('\\').join('/');
@@ -59,6 +72,7 @@ function generateFile(name, content, type = 'codegen') {
 }
 
 module.exports = {
+  readme,
   imgRef,
   docRef,
   capitalize,
@@ -68,4 +82,6 @@ module.exports = {
   getAbsolutePath,
   generateFile,
   getTitle,
+  getDocsFrom,
+  getName,
 };
