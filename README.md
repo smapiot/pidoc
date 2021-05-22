@@ -8,6 +8,87 @@
 
 The tools for making the documentation page of the Piral project. You can find it at [docs.piral.io](https://docs.piral.io).
 
+## Configuration
+
+Place a file called *docs.config.json* in the project folder where `piral-docs` is being run. It should be adjacent to the *package.json*.
+
+```json
+{
+  "title": "Doc Title",
+  "description": "The description for the documentation.",
+  "author": "your-orga",
+  "branch": "main",
+  "repositoryUrl": "https://github.com/your-orga/your-repo",
+  "rootDir": ".",
+  "outputDir": "./dist/docs",
+  "changelogFile": "./CHANGELOG.md",
+  "layoutFile": "./src/layout.tsx",
+  "notFoundPageFile": "./src/NotFound.tsx",
+  "redirects": {
+    "/": "/chapterName"
+  },
+  "sitemap": {
+    "chapterName": {
+      "title": "Chapter 1",
+      "sections": []
+    }
+  }
+}
+```
+
+## Commands
+
+### Building
+
+A documentation page can be built using
+
+```sh
+piral-docs build
+```
+
+### Watching
+
+A documentation page can be watched using
+
+```sh
+piral-docs watch
+```
+
+## Sitemap Structure
+
+The structure of a sitemap is as follows:
+
+```ts
+interface SingleSection {
+  title: string;
+  links: SitemapItem | Array<SitemapItem>;
+}
+
+type GenerateContent = CustomGenerator | StandardGenerator;
+
+interface StandardGenerator {
+  generator: 'markdown' | 'types';
+  segment: string;
+  dir: string;
+  exclude?: string;
+  include?: string;
+}
+
+interface CustomGenerator {
+  generator: 'custom';
+  path: string;
+}
+
+type SitemapItem = GenerateContent | SingleSection;
+
+interface Sitemap {
+  [chapterName: string]: {
+    title: string;
+    sections: Array<SitemapItem>;
+  };
+}
+```
+
 ## License
 
 Thest tools are released using the MIT license. For more information see the [license file](./LICENSE).

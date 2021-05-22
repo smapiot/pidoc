@@ -1,24 +1,6 @@
 const { resolve } = require('path');
 const { sitemap, docsPath, baseDir } = require('../tools/meta');
 
-// interface SingleSection {
-//   title: string;
-//   links: Array<GenerateContent>;
-// }
-
-// interface GenerateContent {
-//   generator: string;
-//   segment: string;
-//   dir: string;
-// }
-
-// interface Sitemap {
-//   [chapterName: string]: {
-//     title: string;
-//     sections: Array<SingleSection | GenerateContent>;
-//   };
-// }
-
 function getGeneratorPath(genPath, options) {
   if (genPath === 'custom') {
     return resolve(baseDir, options.path);

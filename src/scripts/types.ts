@@ -8,4 +8,5 @@ export interface LayoutProps {
 
 export interface AppProps {
   layout: LayoutProps;
+  Router: FC;
 }

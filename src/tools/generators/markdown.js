@@ -39,7 +39,7 @@ module.exports = function (basePath, docsFolder, options) {
     `;
 
     this.addDependency(file, { includedInParent: true });
-    return generatePage(name, pageMeta, `${prefix}-${name}`, head, body, route, meta.title, meta.section);
+    return generatePage(name, pageMeta, `${prefix}-${name}`, head, body, route, pageMeta.title, pageMeta.section);
   });
 
   return imports;

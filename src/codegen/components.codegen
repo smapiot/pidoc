@@ -1,0 +1,19 @@
+const { relative } = require('path');
+const { footer, logo, name, router } = require('../tools/meta');
+
+module.exports = function () {
+  const footerPath = relative(__dirname, footer);
+  const logoPath = relative(__dirname, logo);
+  const routerPath = relative(__dirname, router);
+  const brandName = name;
+  return `
+import Footer from ${JSON.stringify(footerPath)};
+import Logo from ${JSON.stringify(logoPath)};
+import Router from ${JSON.stringify(routerPath)};
+
+const brandName = ${JSON.stringify(brandName)};
+const layout = { Footer, Logo, brandName };
+
+export { layout, Router };
+`;
+};

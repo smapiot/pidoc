@@ -2,6 +2,6 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import { App } from './App';
 
-const layout = require('../codegen/layout.codegen');
+const { Router, layout } = require('../codegen/components.codegen');
 
-render(<App layout={layout} />, document.querySelector('#app'));
+render(<App layout={layout} Router={Router} />, document.querySelector('#app'));

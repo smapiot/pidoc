@@ -1,5 +1,11 @@
 # `piral-docs-tools` Changelog
 
+## 0.4.0 (May 25, 2021)
+
+- Fixed invalid markdown content
+- Added `watch` command
+- Extracted `Footer` and `Logo`
+
 ## 0.3.1 (May 25, 2021)
 
 - Fixed issues in types and sitemap
