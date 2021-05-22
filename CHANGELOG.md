@@ -1,5 +1,9 @@
 # `piral-docs-tools` Changelog
 
+## 0.3.1 (May 25, 2021)
+
+- Fixed issues in types and sitemap
+
 ## 0.3.0 (May 24, 2021)
 
 - Defined initial generators

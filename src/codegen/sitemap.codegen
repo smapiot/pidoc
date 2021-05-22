@@ -29,6 +29,11 @@ function getGeneratorPath(genPath, options) {
 
 function makeLinks(items, basePath) {
   const links = [];
+  const flat = !Array.isArray(items);
+
+  if (flat) {
+    items = [items];
+  }
 
   for (const item of items) {
     if (typeof item.generator === 'string') {
@@ -36,11 +41,16 @@ function makeLinks(items, basePath) {
       const genPath = getGeneratorPath(generator, options);
       const gen = require(genPath);
       const content = gen.call(this, basePath, docsPath, options).join(', ');
-      links.push(`...populate([${content}])`);
+
+      if (flat) {
+        links.push(content);
+      } else {
+        links.push(`...populate([${content}])`);
+      }
     } else {
       links.push(`{
         "title": ${JSON.stringify(item.title)},
-        "links": [${makeLinks(item.links, basePath)}],
+        "links": [${makeLinks.call(this, item.links, basePath)}],
       }`);
     }
   }
@@ -52,7 +62,7 @@ function makeContent(sitemap) {
   const content = Object.keys(sitemap).map(
     key => `${JSON.stringify(key)}: {
       "title": ${JSON.stringify(sitemap[key].title)},
-      "sections": [${makeLinks(sitemap[key].sections, '/' + key)}],
+      "sections": [${makeLinks.call(this, sitemap[key].sections, '/' + key)}],
     }`
   ).join(',');
 
@@ -62,7 +72,7 @@ function makeContent(sitemap) {
 }
 
 module.exports = function () {
-  const content = makeContent(sitemap);
+  const content = makeContent.call(this, sitemap);
 
   return `
 const { lazy } = require('react');

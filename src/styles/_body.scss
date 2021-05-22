@@ -154,6 +154,10 @@ section {
   }
 }
 
+a:focus {
+  outline: none;
+}
+
 #app {
   display: flex;
   flex-direction: column;

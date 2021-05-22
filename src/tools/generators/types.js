@@ -10,7 +10,7 @@ function getRoute(basePath, name) {
 module.exports = function (basePath, docsFolder, options) {
   const { segment, dir, exclude, include } = options;
   const folder = resolve(docsFolder, dir);
-  const files = getDocsFrom(folder, /\.json$/).filter(file => isCoreType(file));
+  const files = getDocsFrom(folder, /\.json$/);
   const path = segment ? `${basePath}/${segment}` : basePath;
   const prefix = segment || dir;
 
