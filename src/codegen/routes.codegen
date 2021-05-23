@@ -1,8 +1,8 @@
 const { relative } = require('path');
-const { notFoundPage, redirects } = require('../tools/meta');
+const { components, redirects } = require('../tools/meta');
 
 module.exports = function () {
-  const path = relative(__dirname, notFoundPage);
+  const path = relative(__dirname, components.notFoundPage);
   const routes = [
     ...Object.keys(redirects).map(
       (from) =>

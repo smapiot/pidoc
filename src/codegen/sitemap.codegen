@@ -1,5 +1,5 @@
 const { resolve, relative } = require('path');
-const { sitemap, docsPath, baseDir, filterPath } = require('../tools/meta');
+const { sitemap, docsPath, baseDir, helpers } = require('../tools/meta');
 
 function getGeneratorPath(genPath, options) {
   if (genPath === 'custom') {
@@ -55,7 +55,7 @@ function makeContent(sitemap) {
 
 module.exports = function () {
   const content = makeContent.call(this, sitemap);
-  const path = relative(__dirname, filterPath);
+  const path = relative(__dirname, helpers.filter);
 
   return `
 import { lazy } from 'react';

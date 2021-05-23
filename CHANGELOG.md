@@ -1,5 +1,9 @@
 # `piral-docs-tools` Changelog
 
+## 0.5.0 (May 28, 2021)
+
+- ...
+
 ## 0.4.1 (May 27, 2021)
 
 - Fixed issue with version codegen

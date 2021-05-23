@@ -8,6 +8,20 @@
 
 The tools for making the documentation page of the Piral project. You can find it at [docs.piral.io](https://docs.piral.io).
 
+## Installation
+
+You can add the tool by installing it via NPM:
+
+```sh
+npm i piral-docs-tool --save-dev
+```
+
+A couple of peer dependencies also need to be resolved. If can install all peer dependencies using:
+
+```sh
+npm i piral-core piral-cli piral-cli-parcel react react-dom react-router-dom --save-dev
+```
+
 ## Configuration
 
 Place a file called *docs.config.json* in the project folder where `piral-docs` is being run. It should be adjacent to the *package.json*.
@@ -22,8 +36,14 @@ Place a file called *docs.config.json* in the project folder where `piral-docs` 
   "rootDir": ".",
   "outputDir": "./dist/docs",
   "changelogFile": "./CHANGELOG.md",
-  "layoutFile": "./src/layout.tsx",
-  "notFoundPageFile": "./src/NotFound.tsx",
+  "components": {
+    "logo": "./src/Logo.tsx",
+    "footer": "./src/Footer.tsx",
+    "notFoundPage": "./src/NotFoundPage.tsx"
+  },
+  "helpers": {
+    "filter": "./src/filter.ts",
+  },
   "redirects": {
     "/": "/chapterName"
   },
