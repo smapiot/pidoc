@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ExtensionSlot } from 'piral-core';
 import { NavLink } from 'react-router-dom';
 import { Sidebar } from './Sidebar';
 
@@ -35,6 +36,7 @@ export const SectionMenu: React.FC<SectionMenuProps> = ({ sections }) => {
           </ul>
         </React.Fragment>
       ))}
+      <ExtensionSlot name="section-nav" />
     </Sidebar>
   );
 };

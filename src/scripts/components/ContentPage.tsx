@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useLocation } from 'react-router-dom';
+import { ExtensionSlot } from 'piral-core';
 import { Page } from './PageContext';
 import { TocMenu } from './TocMenu';
 import { SectionMenu } from './SectionMenu';
@@ -14,6 +15,7 @@ export const ContentPage: React.FC = ({ children }) => {
       <SectionMenu sections={sections} />
       <TocMenu />
       <div className="content-display">{children}</div>
+      <ExtensionSlot name="content-page" params={{ pathname }} />
     </Page>
   );
 };

@@ -3,5 +3,9 @@ const { getChangelogVersion } = require('../tools/version');
 
 module.exports = function () {
   const version = getChangelogVersion(changelogPath);
-  return `module.exports = ${JSON.stringify(version)}`;
+  const updated = process.env.BUILD_TIME;
+  return `module.exports = {
+  version: ${JSON.stringify(version)},
+  updated: ${JSON.stringify(updated)},
+}`;
 };

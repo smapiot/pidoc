@@ -1,5 +1,5 @@
 const { generatedName } = require('./meta');
-const { docRef, generateFile } = require('./utils');
+const { docRef, generateFile, getEditPlatform } = require('./utils');
 
 function generatePage(name, pageMeta, targetFile, head, body, route, title, section = '', link = '', meta = {}) {
   generateFile(
@@ -42,6 +42,7 @@ function generateCustomPage(name, pageMeta, targetFile, imports, declarations, c
 }
 
 function generateStandardPage(name, pageMeta, targetFile, sourceFile, mdValue, route, title, section = '', link = '', meta = {}) {
+  const editLabel = `Edit on ${getEditPlatform()}`;
   const imports = `
     import { Markdown } from '../../scripts/components';
   `;
@@ -50,7 +51,7 @@ function generateStandardPage(name, pageMeta, targetFile, sourceFile, mdValue, r
     const html = ${mdValue};
   `;
   const content = `
-    <Markdown content={html} link={link} />
+    <Markdown content={html} link={link} editLabel={${JSON.stringify(editLabel)}} />
   `;
   return generateCustomPage(name, pageMeta, targetFile, imports, declarations, content, route, title, section, link, meta);
 }

@@ -1,0 +1,17 @@
+const { relative } = require('path');
+const { components, helpers } = require('../tools/meta');
+
+module.exports = function () {
+  const routerPath = relative(__dirname, components.router);
+  const notFoundPagePath = relative(__dirname, components.notFoundPage);
+  const requestPiletsPath = relative(__dirname, helpers.requestPilets);
+  return `
+import * as React from "react";
+import Router from ${JSON.stringify(routerPath)};
+import requestPilets from ${JSON.stringify(requestPiletsPath)};
+
+const NotFoundPage = React.lazy(() => import(${JSON.stringify(notFoundPagePath)}));
+
+export { Router, NotFoundPage, requestPilets };
+`;
+};

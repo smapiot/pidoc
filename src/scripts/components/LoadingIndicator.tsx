@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-export interface LoaderProps {}
+export interface LoadingIndicatorProps {}
 
-export const Loader: React.FC<LoaderProps> = () => (
+export const LoadingIndicator: React.FC<LoadingIndicatorProps> = () => (
   <div className="app-center">
     <div className="spinner circles">Loading ...</div>
   </div>

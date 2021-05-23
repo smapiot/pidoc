@@ -2,7 +2,7 @@ const { resolve } = require('path');
 const { generated } = require('../meta');
 const { render } = require('../markdown');
 const { generatePage } = require('../pages');
-const { getDocsFrom, getName, docRef, getTitle } = require('../utils');
+const { getDocsFrom, getName, docRef, getTitle, getEditPlatform } = require('../utils');
 
 function getRoute(basePath, name) {
   return (name && `${basePath}/${name}`) || '';
@@ -26,6 +26,7 @@ module.exports = function (basePath, docsFolder, options) {
       link: route,
       source: file,
     };
+    const editLabel = `Edit on ${getEditPlatform()}`;
     const head = `
       import { PageContent, Markdown } from '../../scripts/components';
 
@@ -34,7 +35,7 @@ module.exports = function (basePath, docsFolder, options) {
     `;
     const body = `
       <PageContent meta={${JSON.stringify(meta)}}>
-        <Markdown content={html} link={link} />
+        <Markdown content={html} link={link} editLabel={${JSON.stringify(editLabel)}} />
       </PageContent>
     `;
 

@@ -11,5 +11,5 @@ export * from './Tabs';
 export * from './TocMenu';
 export * from './TopNav';
 export * from './TypeInfo';
-export * from './Loader';
+export * from './LoadingIndicator';
 export * from './ScrollToTop';

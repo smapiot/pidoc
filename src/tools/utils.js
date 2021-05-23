@@ -1,8 +1,25 @@
 const { writeFileSync, mkdirSync, existsSync, readdirSync } = require('fs');
 const { basename, extname, relative, resolve, dirname } = require('path');
-const { generated, docsUrl, docsPath } = require('./meta');
+const { generated, repository, branch, docsPath, docsFolder } = require('./meta');
 
 const readme = 'README.md';
+
+function getEditPlatform() {
+  const link = repository || '';
+
+  if (link.includes("github.com")) {
+    return "GitHub";
+  } else if (link.includes("visualstudio.com") || link.includes("dev.azure.com")) {
+    return "Azure DevOps";
+  } else if (link.includes("bitbucket.org")) {
+    return "Bitbucket";
+  } else if (link.includes("gitlab.com")) {
+    return "GitLab";
+  } else {
+    const m = /^https?\:\/\/(.*?)\//.exec(link);
+    return m ? m[1] : link;
+  }
+}
 
 function getDocsFrom(dir, tester = /\.md$/) {
   return readdirSync(dir)
@@ -32,8 +49,20 @@ function imgRef(path, basePath) {
 }
 
 function docRef(path, basePath) {
+  const link = repository || '';
   const relPath = getRelativePath(path, basePath);
-  return `${docsUrl}/${relPath}`;
+
+  if (link.includes("github.com")) {
+    return `${repository}/tree/${branch}/${docsFolder}/${relPath}`;
+  } else if (link.includes("visualstudio.com") || link.includes("dev.azure.com")) {
+    return `${repository}?path=${encodeURIComponent(`/${docsFolder}/${relPath}`)}&version=GB${branch}`;
+  } else if (link.includes("bitbucket.org")) {
+    return `${repository}/src/${branch}/${docsFolder}/${relPath}`;
+  } else if (link.includes("gitlab.com")) {
+    return `${repository}/-/tree/${branch}/${docsFolder}/${relPath}`;
+  } else {
+    return `${repository}?path=${encodeURIComponent(`/${docsFolder}/${relPath}`)}&branch=${branch}`;
+  }
 }
 
 function capitalize(str) {
@@ -84,4 +113,5 @@ module.exports = {
   getTitle,
   getDocsFrom,
   getName,
+  getEditPlatform,
 };

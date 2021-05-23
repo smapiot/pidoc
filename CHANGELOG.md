@@ -2,7 +2,9 @@
 
 ## 0.5.0 (May 28, 2021)
 
-- ...
+- Restructured configuration
+- Declared more peer dependencies
+- Use Piral for dynamic documentation
 
 ## 0.4.1 (May 27, 2021)
 

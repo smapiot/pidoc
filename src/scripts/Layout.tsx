@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { Link, Route } from 'react-router-dom';
-import { Search, ContentPage, QuickNav, TopNav, Loader, ScrollToTop } from './components';
-import { LayoutProps } from './types';
+import { Search, ContentPage, QuickNav, TopNav, LoadingIndicator, ScrollToTop } from './components';
 
-const updated = process.env.BUILD_TIME;
-const version = require('../codegen/version.codegen');
+const { brandName, Footer, Logo } = require('../codegen/layout.codegen');
+const { version, updated } = require('../codegen/version.codegen');
 
-export const Layout: React.FC<LayoutProps> = ({ brandName, Footer, Logo, children }) => {
+export const Layout: React.FC = ({ children }) => {
   const [active, setActive] = React.useState(false);
   const toggleActive = React.useCallback(() => setActive((active) => !active), []);
 
@@ -48,7 +47,7 @@ export const Layout: React.FC<LayoutProps> = ({ brandName, Footer, Logo, childre
       </header>
       <div className="layout-container content">
         <ContentPage>
-          <React.Suspense fallback={<Loader />}>{children}</React.Suspense>
+          <React.Suspense fallback={<LoadingIndicator />}>{children}</React.Suspense>
         </ContentPage>
       </div>
       <QuickNav />

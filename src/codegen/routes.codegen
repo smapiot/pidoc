@@ -1,8 +1,7 @@
 const { relative } = require('path');
-const { components, redirects } = require('../tools/meta');
+const { redirects, pages } = require('../tools/meta');
 
 module.exports = function () {
-  const path = relative(__dirname, components.notFoundPage);
   const routes = [
     ...Object.keys(redirects).map(
       (from) =>
@@ -10,13 +9,16 @@ module.exports = function () {
           from,
         )}, to: ${JSON.stringify(redirects[from])} })`,
     ),
-    `React.createElement(Route, { key: ${JSON.stringify(path)}, component: React.lazy(() => import(${JSON.stringify(
-      path,
-    )})) })`,
+    ...Object.keys(pages).map(
+      (path) =>
+        `React.createElement(Route, { exact: true, key: ${JSON.stringify(path)}, path: ${JSON.stringify(
+          path,
+        )}, component: React.lazy(() => import(${JSON.stringify(relative(__dirname, pages[path]))})) })`,
+    ),
   ].join(', ');
 
   return `const React = require('react');
-const { Route, Redirect } = require('react-router-dom');
+const { Redirect, Route } = require('react-router-dom');
 
 module.exports = [${routes}]`;
 };

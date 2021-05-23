@@ -41,8 +41,11 @@ Place a file called *docs.config.json* in the project folder where `piral-docs` 
     "footer": "./src/Footer.tsx",
     "notFoundPage": "./src/NotFoundPage.tsx"
   },
+  "pages": {
+    "/imprint": "./src/ImprintPage.tsx"
+  },
   "helpers": {
-    "filter": "./src/filter.ts",
+    "filter": "./src/filter.ts"
   },
   "redirects": {
     "/": "/chapterName"
