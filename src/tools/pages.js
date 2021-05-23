@@ -1,10 +1,10 @@
 const { generatedName } = require('./meta');
 const { docRef, generateFile } = require('./utils');
 
-function generatePage(name, meta, targetFile, head, body, route, title, section = '', link = '') {
+function generatePage(name, pageMeta, targetFile, head, body, route, title, section = '', link = '', meta = {}) {
   generateFile(
     targetFile,
-    `// ${JSON.stringify(meta)}
+    `// ${JSON.stringify(pageMeta)}
 import * as React from 'react';
 ${head}
 
@@ -16,16 +16,17 @@ export default () => (
 
   return `
   {
-    id: '${name}',
-    route: '${route}',
-    title: '${title}',
-    link: '${link || route}',
-    section: '${section}',
+    id: ${JSON.stringify(name)},
+    route: ${JSON.stringify(route)},
+    title: ${JSON.stringify(title)},
+    link: ${JSON.stringify(link || route)},
+    section: ${JSON.stringify(section)},
+    meta: ${JSON.stringify(meta)},
     page: lazy(() => import('../tools/${generatedName}/${targetFile}.tsx')),
   }`;
 }
 
-function generateCustomPage(name, meta, targetFile, imports, declarations, content, route, title, section = '', link = '') {
+function generateCustomPage(name, pageMeta, targetFile, imports, declarations, content, route, title, section = '', link = '', meta = {}) {
   const head = `
     import { PageContent } from '../../scripts/components';
     ${imports}
@@ -37,21 +38,21 @@ function generateCustomPage(name, meta, targetFile, imports, declarations, conte
       ${content}
     </PageContent>
   `;
-  return generatePage(name, meta, targetFile, head, body, route, title, section, link);
+  return generatePage(name, pageMeta, targetFile, head, body, route, title, section, link, meta);
 }
 
-function generateStandardPage(name, meta, targetFile, sourceFile, mdValue, route, title, section = '', link = '') {
+function generateStandardPage(name, pageMeta, targetFile, sourceFile, mdValue, route, title, section = '', link = '', meta = {}) {
   const imports = `
     import { Markdown } from '../../scripts/components';
   `;
   const declarations = `
-    const link = "${docRef(sourceFile)}";
+    const link = ${JSON.stringify(docRef(sourceFile))};
     const html = ${mdValue};
   `;
   const content = `
     <Markdown content={html} link={link} />
   `;
-  return generateCustomPage(name, meta, targetFile, imports, declarations, content, route, title, section, link);
+  return generateCustomPage(name, pageMeta, targetFile, imports, declarations, content, route, title, section, link, meta);
 }
 
 module.exports = {

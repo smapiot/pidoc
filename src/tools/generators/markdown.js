@@ -29,7 +29,7 @@ module.exports = function (basePath, docsFolder, options) {
     const head = `
       import { PageContent, Markdown } from '../../scripts/components';
 
-      const link = "${docRef(file)}";
+      const link = ${JSON.stringify(docRef(file))};
       const html = ${mdValue};
     `;
     const body = `
@@ -39,7 +39,7 @@ module.exports = function (basePath, docsFolder, options) {
     `;
 
     this.addDependency(file, { includedInParent: true });
-    return generatePage(name, pageMeta, `${prefix}-${name}`, head, body, route, pageMeta.title, pageMeta.section);
+    return generatePage(name, pageMeta, `${prefix}-${name}`, head, body, route, pageMeta.title, pageMeta.section, undefined, meta);
   });
 
   return imports;

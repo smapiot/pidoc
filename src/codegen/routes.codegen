@@ -5,9 +5,14 @@ module.exports = function () {
   const path = relative(__dirname, notFoundPage);
   const routes = [
     ...Object.keys(redirects).map(
-      (from) => `React.createElement(Redirect, { exact: true, key: ${JSON.stringify(from)}, from: ${JSON.stringify(from)}, to: ${JSON.stringify(redirects[from])} })`,
+      (from) =>
+        `React.createElement(Redirect, { exact: true, key: ${JSON.stringify(from)}, from: ${JSON.stringify(
+          from,
+        )}, to: ${JSON.stringify(redirects[from])} })`,
     ),
-    `React.createElement(Route, { key: ${JSON.stringify(path)}, component: React.lazy(() => import(${JSON.stringify(path)})) })`,
+    `React.createElement(Route, { key: ${JSON.stringify(path)}, component: React.lazy(() => import(${JSON.stringify(
+      path,
+    )})) })`,
   ].join(', ');
 
   return `const React = require('react');
