@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Route, Redirect, matchPath } from 'react-router-dom';
+import { Redirect, matchPath } from 'react-router-dom';
 
 const sitemap = require('../codegen/sitemap.codegen');
 
@@ -39,7 +39,7 @@ function nextLink(sectionInfo: SectionInfo) {
 }
 
 function getRoutes(): [
-  Array<React.ReactElement>,
+  Record<string, React.ComponentType>,
   Record<string, Array<SectionInfo>>,
   Record<string, [SectionLink | undefined, SectionLink | undefined]>,
   Array<NavLink>,
@@ -48,7 +48,7 @@ function getRoutes(): [
   const topNav: Array<NavLink> = [];
   const resolvers: Record<string, Array<SectionInfo>> = {};
   const navLinks: Record<string, [SectionLink | undefined, SectionLink | undefined]> = {};
-  const routes: Array<React.ReactElement> = [];
+  const routes: Record<string, React.ComponentType> = {};
 
   for (const category of categories) {
     const { sections, title } = sitemap[category];
@@ -60,7 +60,7 @@ function getRoutes(): [
     });
 
     if (defaultRoute) {
-      routes.push(<Redirect key={category} exact from={`/${category}`} to={defaultRoute} />);
+      routes[`/${category}`] = () => <Redirect key={category} to={defaultRoute} />;
     }
 
     for (let j = 0; j < sections.length; j++) {
@@ -70,7 +70,7 @@ function getRoutes(): [
         const prev = section.links[i - 1] || lastLink(sections[j - 1]);
         const curr = section.links[i];
         const next = section.links[i + 1] || nextLink(sections[j + 1]);
-        routes.push(<Route key={curr.id} exact path={curr.route} component={curr.page} />);
+        routes[curr.route] = curr.page;
         resolvers[curr.route] = sections;
         navLinks[curr.route] = [prev, next];
       }

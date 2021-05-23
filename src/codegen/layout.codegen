@@ -1,7 +1,10 @@
 const { relative } = require('path');
-const { components, name, helpers } = require('../tools/meta');
+const { changelogPath, components, name, helpers } = require('../tools/meta');
+const { getChangelogVersion } = require('../tools/version');
 
 module.exports = function () {
+  const version = getChangelogVersion(changelogPath);
+  const updated = process.env.BUILD_TIME;
   const footerPath = relative(__dirname, components.footer);
   const logoPath = relative(__dirname, components.logo);
   const brandName = name;
@@ -10,7 +13,9 @@ import Footer from ${JSON.stringify(footerPath)};
 import Logo from ${JSON.stringify(logoPath)};
 
 const brandName = ${JSON.stringify(brandName)};
+const version = ${JSON.stringify(version)};
+const updated = ${JSON.stringify(updated)};
 
-export { Footer, Logo, brandName };
+export { Footer, Logo, brandName, version, updated };
 `;
 };

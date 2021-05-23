@@ -1,5 +1,10 @@
 # `piral-docs-tools` Changelog
 
+## 0.5.1 (May 28, 2021)
+
+- Refactored route system
+- Use `sass:math` module for calculations
+
 ## 0.5.0 (May 28, 2021)
 
 - Restructured configuration

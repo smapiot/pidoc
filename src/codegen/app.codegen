@@ -1,17 +1,32 @@
 const { relative } = require('path');
-const { components, helpers } = require('../tools/meta');
+const { redirects, pages, components, helpers } = require('../tools/meta');
 
 module.exports = function () {
   const routerPath = relative(__dirname, components.router);
   const notFoundPagePath = relative(__dirname, components.notFoundPage);
   const requestPiletsPath = relative(__dirname, helpers.requestPilets);
+  const routes = [
+    ...Object.keys(redirects).map(
+      (from) =>
+        `${JSON.stringify(from)}: () => React.createElement(Redirect, { to: ${JSON.stringify(redirects[from])} })`,
+    ),
+    ...Object.keys(pages).map(
+      (path) =>
+        `${JSON.stringify(path)}: React.lazy(() => import(${JSON.stringify(relative(__dirname, pages[path]))}))`,
+    ),
+  ].join(', ');
+
   return `
 import * as React from "react";
+import { Redirect } from "react-router-dom";
 import Router from ${JSON.stringify(routerPath)};
 import requestPilets from ${JSON.stringify(requestPiletsPath)};
 
 const NotFoundPage = React.lazy(() => import(${JSON.stringify(notFoundPagePath)}));
+const pages = {
+  ${routes}
+};
 
-export { Router, NotFoundPage, requestPilets };
+export { Router, NotFoundPage, requestPilets, pages };
 `;
 };
