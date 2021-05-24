@@ -3,6 +3,7 @@ const YAML = require('yaml');
 const MarkdownIt = require('markdown-it');
 const markdownItAbbr = require('markdown-it-abbr');
 const markdownItAnchor = require('markdown-it-anchor');
+const markdownItAttrs = require('markdown-it-attrs');
 const markdownItEmoji = require('markdown-it-emoji');
 const markdownItFootnote = require('markdown-it-footnote');
 const markdownItFrontMatter = require('markdown-it-front-matter');
@@ -85,6 +86,7 @@ function render(file, baseDir = __dirname) {
     images: {},
   };
   const md = new MarkdownIt({
+    html: true,
     replaceLink(link) {
       if (link.startsWith('http://') || link.startsWith('https://')) {
         return link;
@@ -109,6 +111,7 @@ function render(file, baseDir = __dirname) {
 
   md.use(markdownItAbbr)
     .use(markdownItAnchor, { level: [1, 2, 3, 4, 5, 6] })
+    .use(markdownItAttrs)
     .use(markdownItEmoji)
     .use(markdownItFootnote)
     .use(markdownItFrontMatter, fm => (result.meta = YAML.parse(fm)))

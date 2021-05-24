@@ -9,9 +9,9 @@ function getRoute(basePath, name) {
 }
 
 module.exports = function (basePath, docsFolder, options) {
-  const { segment, dir } = options;
+  const { segment, dir, sorting = "asc" } = options;
   const folder = resolve(docsFolder, dir);
-  const files = getDocsFrom(folder);
+  const files = getDocsFrom(folder, /\.md$/, sorting);
   const prefix = segment || dir;
   const path = segment ? `${basePath}/${segment}` : basePath;
 
@@ -43,5 +43,5 @@ module.exports = function (basePath, docsFolder, options) {
     return generatePage(name, pageMeta, `${prefix}-${name}`, head, body, route, pageMeta.title, pageMeta.section, undefined, meta);
   });
 
-  return imports;
+  return imports.filter(Boolean);
 };

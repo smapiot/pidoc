@@ -7,23 +7,33 @@ const readme = 'README.md';
 function getEditPlatform() {
   const link = repository || '';
 
-  if (link.includes("github.com")) {
-    return "GitHub";
-  } else if (link.includes("visualstudio.com") || link.includes("dev.azure.com")) {
-    return "Azure DevOps";
-  } else if (link.includes("bitbucket.org")) {
-    return "Bitbucket";
-  } else if (link.includes("gitlab.com")) {
-    return "GitLab";
+  if (link.includes('github.com')) {
+    return 'GitHub';
+  } else if (link.includes('visualstudio.com') || link.includes('dev.azure.com')) {
+    return 'Azure DevOps';
+  } else if (link.includes('bitbucket.org')) {
+    return 'Bitbucket';
+  } else if (link.includes('gitlab.com')) {
+    return 'GitLab';
   } else {
     const m = /^https?\:\/\/(.*?)\//.exec(link);
     return m ? m[1] : link;
   }
 }
 
-function getDocsFrom(dir, tester = /\.md$/) {
+function sorter(sorting) {
+  switch (sorting) {
+    case 'desc':
+      return (a, b) => -a.localeCompare(b);
+    case 'asc':
+    default:
+      return (a, b) => a.localeCompare(b);
+  }  
+}
+
+function getDocsFrom(dir, tester = /\.md$/, sorting = 'asc') {
   return readdirSync(dir)
-    .sort()
+    .sort(sorter(sorting))
     .filter((name) => tester.test(name) && name !== readme)
     .map((name) => resolve(dir, name));
 }
@@ -52,13 +62,13 @@ function docRef(path, basePath) {
   const link = repository || '';
   const relPath = getRelativePath(path, basePath);
 
-  if (link.includes("github.com")) {
+  if (link.includes('github.com')) {
     return `${repository}/tree/${branch}/${docsFolder}/${relPath}`;
-  } else if (link.includes("visualstudio.com") || link.includes("dev.azure.com")) {
+  } else if (link.includes('visualstudio.com') || link.includes('dev.azure.com')) {
     return `${repository}?path=${encodeURIComponent(`/${docsFolder}/${relPath}`)}&version=GB${branch}`;
-  } else if (link.includes("bitbucket.org")) {
+  } else if (link.includes('bitbucket.org')) {
     return `${repository}/src/${branch}/${docsFolder}/${relPath}`;
-  } else if (link.includes("gitlab.com")) {
+  } else if (link.includes('gitlab.com')) {
     return `${repository}/-/tree/${branch}/${docsFolder}/${relPath}`;
   } else {
     return `${repository}?path=${encodeURIComponent(`/${docsFolder}/${relPath}`)}&branch=${branch}`;
@@ -84,7 +94,7 @@ function capitalize(str) {
 
 function getTitle(file) {
   const parts = niceName(file).split('-');
-  return parts.map(m => capitalize(m)).join(' ');
+  return parts.map((m) => capitalize(m)).join(' ');
 }
 
 function niceName(path) {

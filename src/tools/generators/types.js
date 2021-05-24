@@ -8,9 +8,9 @@ function getRoute(basePath, name) {
 }
 
 module.exports = function (basePath, docsFolder, options) {
-  const { segment, dir, exclude, include } = options;
+  const { segment, dir, exclude, include, sorting = "asc" } = options;
   const folder = resolve(docsFolder, dir);
-  const files = getDocsFrom(folder, /\.json$/);
+  const files = getDocsFrom(folder, /\.json$/, sorting);
   const path = segment ? `${basePath}/${segment}` : basePath;
   const prefix = segment || dir;
 
