@@ -39,9 +39,10 @@ const components = {
   ...normalize(config.components),
 };
 const helpers = {
+  setup: resolve(defaultsDir, 'setup.ts'),
   filter: resolve(defaultsDir, 'filter.ts'),
-  requestPilets: resolve(defaultsDir, 'requestPilets.ts'),
   plugins: resolve(defaultsDir, 'plugins.ts'),
+  requestPilets: resolve(defaultsDir, 'requestPilets.ts'),
   ...normalize(config.helpers),
 };
 

@@ -45,6 +45,7 @@ Place a file called *docs.config.json* in the project folder where `piral-docs` 
     "/imprint": "./src/ImprintPage.tsx"
   },
   "helpers": {
+    "setup": "./src/setup.ts",
     "filter": "./src/filter.ts",
     "plugins": "./src/piralPlugins.ts",
     "requestPilets": "./src/requestPilets.ts"
@@ -77,6 +78,14 @@ A documentation page can be watched using
 
 ```sh
 piral-docs watch
+```
+
+### Emulator
+
+An emulator package can be built using
+
+```sh
+piral-docs sdk
 ```
 
 ## Sitemap Structure

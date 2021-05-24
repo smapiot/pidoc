@@ -4,6 +4,7 @@ const { redirects, pages, components, helpers } = require('../tools/meta');
 module.exports = function () {
   const routerPath = relative(__dirname, components.router);
   const notFoundPagePath = relative(__dirname, components.notFoundPage);
+  const setupPath = relative(__dirname, helpers.setup);
   const requestPiletsPath = relative(__dirname, helpers.requestPilets);
   const routes = [
     ...Object.keys(redirects).map(
@@ -21,12 +22,13 @@ import * as React from "react";
 import { Redirect } from "react-router-dom";
 import Router from ${JSON.stringify(routerPath)};
 import requestPilets from ${JSON.stringify(requestPiletsPath)};
+import setup from ${JSON.stringify(setupPath)};
 
 const NotFoundPage = React.lazy(() => import(${JSON.stringify(notFoundPagePath)}));
 const pages = {
   ${routes}
 };
 
-export { Router, NotFoundPage, requestPilets, pages };
+export { Router, NotFoundPage, requestPilets, pages, setup };
 `;
 };

@@ -27,6 +27,18 @@ switch (process.argv.pop()) {
         () => process.exit(0),
         () => process.exit(1),
       );
+  case 'sdk':
+    return apps
+      .buildPiral(baseDir, {
+        entry,
+        target,
+        bundlerName,
+        type: 'emulator',
+      })
+      .then(
+        () => process.exit(0),
+        () => process.exit(1),
+      );
   case 'build':
   default:
     return apps

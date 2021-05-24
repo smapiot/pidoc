@@ -1,5 +1,10 @@
 # `piral-docs-tools` Changelog
 
+## 0.5.2 (May 31, 2021)
+
+- Included `setup` helper
+- Added `sdk` build
+
 ## 0.5.1 (May 28, 2021)
 
 - Refactored route system
