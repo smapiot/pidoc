@@ -12,7 +12,7 @@ ${head}
 export default () => (
   <ContentPage>
     ${body}
-  <ContentPage>
+  </ContentPage>
 );`,
     'tsx',
   );

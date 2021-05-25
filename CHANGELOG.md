@@ -1,5 +1,10 @@
 # `piral-docs-tools` Changelog
 
+## 0.6.1 (June 2, 2021)
+
+- Added doclet API
+- Restructured sitemap
+
 ## 0.6.0 (June 1, 2021)
 
 - Added `styles` option

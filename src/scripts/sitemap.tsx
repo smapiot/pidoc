@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Redirect, matchPath } from 'react-router-dom';
+import { Redirect, matchPath, RouteComponentProps } from 'react-router-dom';
 
 const sitemap = require('../codegen/sitemap.codegen');
 
@@ -38,46 +38,31 @@ function nextLink(sectionInfo: SectionInfo) {
   return undefined;
 }
 
-function getRoutes(): [
-  Record<string, React.ComponentType>,
-  Record<string, Array<SectionInfo>>,
-  Record<string, [SectionLink | undefined, SectionLink | undefined]>,
-  Array<NavLink>,
-] {
+export const topNavItems: Array<NavLink> = [];
+export const resolvers: Record<string, Array<SectionInfo>> = {};
+export const navLinks: Record<string, [SectionLink | undefined, SectionLink | undefined]> = {};
+export const routes: Record<string, React.ComponentType> = {};
+
+function findRoutes() {
   const categories = Object.keys(sitemap);
-  const topNav: Array<NavLink> = [];
-  const resolvers: Record<string, Array<SectionInfo>> = {};
-  const navLinks: Record<string, [SectionLink | undefined, SectionLink | undefined]> = {};
-  const routes: Record<string, React.ComponentType> = {};
 
   for (const category of categories) {
+    const link = `/${category}`;
     const { sections, title } = sitemap[category];
     const defaultRoute = sections[0]?.links[0]?.route;
 
-    topNav.push({
+    topNavItems.push({
       title,
-      link: `/${category}`,
+      link,
     });
 
     if (defaultRoute) {
-      routes[`/${category}`] = () => <Redirect key={category} to={defaultRoute} />;
+      routes[link] = () => <Redirect key={category} to={defaultRoute} />;
+      resolvers[link] = sections;
     }
 
-    for (let j = 0; j < sections.length; j++) {
-      const section = sections[j];
-
-      for (let i = 0; i < section.links.length; i++) {
-        const prev = section.links[i - 1] || lastLink(sections[j - 1]);
-        const curr = section.links[i];
-        const next = section.links[i + 1] || nextLink(sections[j + 1]);
-        routes[curr.route] = curr.page;
-        resolvers[curr.route] = sections;
-        navLinks[curr.route] = [prev, next];
-      }
-    }
+    addSections(sections);
   }
-
-  return [routes, resolvers, navLinks, topNav];
 }
 
 export function resolveSections(pathname: string) {
@@ -108,4 +93,52 @@ export function resolveNavigation(pathname: string) {
   );
 }
 
-export const [routes, resolvers, navLinks, topNavItems] = getRoutes();
+export function addSections(sections: Array<SectionInfo>) {
+  const localRoutes: Record<string, React.ComponentType<RouteComponentProps>> = {};
+
+  for (let j = 0; j < sections.length; j++) {
+    const section = sections[j];
+
+    for (let i = 0; i < section.links.length; i++) {
+      const prev = section.links[i - 1] || lastLink(sections[j - 1]);
+      const curr = section.links[i];
+      const next = section.links[i + 1] || nextLink(sections[j + 1]);
+      localRoutes[curr.route] = curr.page;
+      routes[curr.route] = curr.page;
+      resolvers[curr.route] = sections;
+      navLinks[curr.route] = [prev, next];
+    }
+  }
+
+  return localRoutes;
+}
+
+export function appendSection(section: SectionInfo, category: string) {
+  const parent = resolveSections(`/${category}`);
+  const localRoutes: Record<string, React.ComponentType<RouteComponentProps>> = {};
+
+  if (parent) {
+    const j = parent.length;
+  
+    if (section.links.length > 0) {
+      const prevRoute = lastLink(parent[j - 1]).route;
+      navLinks[prevRoute] = [navLinks[prevRoute][0], section.links[0]];
+    }
+  
+    for (let i = 0; i < section.links.length; i++) {
+      const prev = section.links[i - 1] || lastLink(parent[j - 1]);
+      const curr = section.links[i];
+      const next = section.links[i + 1];
+      localRoutes[curr.route] = curr.page;
+      routes[curr.route] = curr.page;
+      resolvers[curr.route] = parent;
+      navLinks[curr.route] = [prev, next];
+    }
+  
+    parent.push(section);
+  }
+
+  return localRoutes;
+}
+
+findRoutes();
