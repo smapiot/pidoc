@@ -5,6 +5,7 @@ module.exports = function () {
   const routerPath = relative(__dirname, components.router);
   const notFoundPagePath = relative(__dirname, components.notFoundPage);
   const setupPath = relative(__dirname, helpers.setup);
+  const pluginsPath = relative(__dirname, helpers.plugins);
   const requestPiletsPath = relative(__dirname, helpers.requestPilets);
   const sheets = styles.map(style => `import ${JSON.stringify(relative(__dirname, style))};`).join('\n');
   const routes = [
@@ -23,6 +24,7 @@ import * as React from "react";
 import { Redirect } from "react-router-dom";
 import Router from ${JSON.stringify(routerPath)};
 import requestPilets from ${JSON.stringify(requestPiletsPath)};
+import plugins from ${JSON.stringify(pluginsPath)};
 import setup from ${JSON.stringify(setupPath)};
 ${sheets}
 
@@ -31,6 +33,6 @@ const pages = {
   ${routes}
 };
 
-export { Router, NotFoundPage, requestPilets, pages, setup };
+export { Router, NotFoundPage, requestPilets, pages, plugins, setup };
 `;
 };

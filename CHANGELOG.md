@@ -1,5 +1,10 @@
 # `piral-docs-tools` Changelog
 
+## 0.6.2 (June 2, 2021)
+
+- Fixed missing plugins
+- Re-export type of `PiletApi`
+
 ## 0.6.1 (June 2, 2021)
 
 - Added doclet API

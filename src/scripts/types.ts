@@ -1,4 +1,7 @@
 import { FC } from 'react';
+import { PiletApi } from 'piral-core';
+
+export { PiletApi };
 
 export interface SitemapLink {
   id: string;
