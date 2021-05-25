@@ -1,9 +1,15 @@
 # `piral-docs-tools` Changelog
 
+## 0.6.0 (June 1, 2021)
+
+- Added `styles` option
+- Extended markdown with div syntax
+- Improved content page
+
 ## 0.5.3 (May 31, 2021)
 
 - Allow HTML in markdown
-- Extended with attribute helper
+- Extended markdown with attribute helper
 - Added `sorting` option to standard generators
 
 ## 0.5.2 (May 31, 2021)

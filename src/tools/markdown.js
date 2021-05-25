@@ -4,6 +4,7 @@ const MarkdownIt = require('markdown-it');
 const markdownItAbbr = require('markdown-it-abbr');
 const markdownItAnchor = require('markdown-it-anchor');
 const markdownItAttrs = require('markdown-it-attrs');
+const markdownItDiv = require('markdown-it-div');
 const markdownItEmoji = require('markdown-it-emoji');
 const markdownItFootnote = require('markdown-it-footnote');
 const markdownItFrontMatter = require('markdown-it-front-matter');
@@ -122,6 +123,7 @@ function render(file, baseDir = __dirname) {
     .use(markdownItContainer, 'question', wrapContainer('question', md.utils))
     .use(markdownItContainer, 'success', wrapContainer('success', md.utils))
     .use(markdownItContainer, 'summary', wrapCollapsed('summary', md.utils))
+    .use(markdownItDiv)
     .use(markdownItMark)
     .use(markdownItReplaceLink)
     .use(markdownItSmartArrows)

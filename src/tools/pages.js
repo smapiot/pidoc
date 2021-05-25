@@ -6,10 +6,13 @@ function generatePage(name, pageMeta, targetFile, head, body, route, title, sect
     targetFile,
     `// ${JSON.stringify(pageMeta)}
 import * as React from 'react';
+import { ContentPage } from '../../scripts/components';
 ${head}
 
 export default () => (
-  ${body}
+  <ContentPage>
+    ${body}
+  <ContentPage>
 );`,
     'tsx',
   );

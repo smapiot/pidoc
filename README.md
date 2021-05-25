@@ -36,6 +36,9 @@ Place a file called *docs.config.json* in the project folder where `piral-docs` 
   "rootDir": ".",
   "outputDir": "./dist/docs",
   "changelogFile": "./CHANGELOG.md",
+  "styles": [
+    "./src/styles.css"
+  ],
   "components": {
     "logo": "./src/Logo.tsx",
     "footer": "./src/Footer.tsx",

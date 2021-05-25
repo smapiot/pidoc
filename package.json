@@ -1,6 +1,6 @@
 {
   "name": "piral-docs-tools",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "description": "Tools for generating a dynamic documentation experience like for docs.piral.io.",
   "main": "src/tools/index.js",
   "typings": "src/scripts/types.ts",
@@ -35,6 +35,7 @@
     "markdown-it-anchor": "^7.1.0",
     "markdown-it-attrs": "^4.0.0",
     "markdown-it-container": "^3.0.0",
+    "markdown-it-div": "^1.1.0",
     "markdown-it-emoji": "^2.0.0",
     "markdown-it-footnote": "^3.0.2",
     "markdown-it-front-matter": "^0.2.3",

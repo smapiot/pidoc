@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link, Route } from 'react-router-dom';
-import { Search, ContentPage, QuickNav, TopNav, LoadingIndicator, ScrollToTop } from './components';
+import { Search, QuickNav, TopNav, LoadingIndicator, ScrollToTop } from './components';
 
 const { brandName, Footer, Logo, version, updated } = require('../codegen/layout.codegen');
 
@@ -45,9 +45,7 @@ export const Layout: React.FC = ({ children }) => {
         </nav>
       </header>
       <div className="layout-container content">
-        <ContentPage>
-          <React.Suspense fallback={<LoadingIndicator />}>{children}</React.Suspense>
-        </ContentPage>
+        <React.Suspense fallback={<LoadingIndicator />}>{children}</React.Suspense>
       </div>
       <QuickNav />
       <Footer />

@@ -1,6 +1,6 @@
 const { resolve } = require('path');
 
-function normalize(obj) {
+function normalizeObj(obj) {
   const result = {};
 
   if (obj) {
@@ -9,6 +9,20 @@ function normalize(obj) {
   
       if (path && typeof path === 'string') {
         result[key] = resolve(baseDir, path);
+      }
+    });
+  }
+
+  return result;
+}
+
+function normalizeArr(obj) {
+  const result = [];
+
+  if (Array.isArray(obj)) {
+    obj.forEach(path => {
+      if (path && typeof path === 'string') {
+        result.push(resolve(baseDir, path));
       }
     });
   }
@@ -28,22 +42,25 @@ const redirects = config.redirects || {};
 const rootPath = resolve(baseDir, config.rootDir);
 const changelogPath = resolve(baseDir, config.changelogFile);
 const outputPath = resolve(baseDir, config.outputDir);
+const styles = [
+  ...normalizeArr(config.styles),
+];
 const pages = {
-  ...normalize(config.pages),
+  ...normalizeObj(config.pages),
 };
 const components = {
   footer: resolve(defaultsDir, 'Footer.tsx'),
   logo: resolve(defaultsDir, 'Logo.tsx'),
   router: resolve(defaultsDir, 'Router.tsx'),
   notFoundPage: resolve(defaultsDir, 'NotFoundPage.tsx'),
-  ...normalize(config.components),
+  ...normalizeObj(config.components),
 };
 const helpers = {
   setup: resolve(defaultsDir, 'setup.ts'),
   filter: resolve(defaultsDir, 'filter.ts'),
   plugins: resolve(defaultsDir, 'plugins.ts'),
   requestPilets: resolve(defaultsDir, 'requestPilets.ts'),
-  ...normalize(config.helpers),
+  ...normalizeObj(config.helpers),
 };
 
 module.exports = {
@@ -59,6 +76,7 @@ module.exports = {
   generatedName,
   generated: resolve(__dirname, generatedName),
   components,
+  styles,
   pages,
   helpers,
   sitemap,
