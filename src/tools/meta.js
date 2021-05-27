@@ -11,6 +11,7 @@ const docsFolder = config.docsDirName || 'docs';
 const redirects = config.redirects || {};
 const rootPath = resolve(baseDir, config.rootDir);
 const changelogPath = resolve(baseDir, config.changelogFile);
+const filterPath = resolve(baseDir, config.filterFile || resolve(defaultsDir, 'filter.ts'));
 const outputPath = resolve(baseDir, config.outputDir);
 const footer = resolve(baseDir, config.footerFile || resolve(defaultsDir, 'Footer.tsx'));
 const logo = resolve(baseDir, config.logoFile || resolve(defaultsDir, 'Logo.tsx'));
@@ -29,6 +30,7 @@ module.exports = {
   changelogPath,
   generatedName,
   generated: resolve(__dirname, generatedName),
+  filterPath,
   logo,
   footer,
   router,

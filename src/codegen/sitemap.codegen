@@ -1,5 +1,5 @@
-const { resolve } = require('path');
-const { sitemap, docsPath, baseDir } = require('../tools/meta');
+const { resolve, relative } = require('path');
+const { sitemap, docsPath, baseDir, filterPath } = require('../tools/meta');
 
 function getGeneratorPath(genPath, options) {
   if (genPath === 'custom') {
@@ -55,9 +55,11 @@ function makeContent(sitemap) {
 
 module.exports = function () {
   const content = makeContent.call(this, sitemap);
+  const path = relative(__dirname, filterPath);
 
   return `
-const { lazy } = require('react');
+import { lazy } from 'react';
+import filterSitemap from ${JSON.stringify(path)};
 
 function populate(source) {
   const results = [];
@@ -79,6 +81,6 @@ function populate(source) {
   return results;
 }
 
-module.exports = ${content};
+module.exports = filterSitemap(${content});
 `;
 };

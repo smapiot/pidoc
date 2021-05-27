@@ -1,5 +1,12 @@
 # `piral-docs-tools` Changelog
 
+## 0.4.1 (May 27, 2021)
+
+- Fixed issue with version codegen
+- Added optional `filterFile` for filtering the sitemap
+- Improved types
+- Improved meta generation
+
 ## 0.4.0 (May 25, 2021)
 
 - Fixed invalid markdown content
