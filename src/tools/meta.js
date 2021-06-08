@@ -32,6 +32,8 @@ function normalizeArr(obj) {
 
 const baseDir = process.env.PIRAL_DOCS_BASE_DIR || process.cwd();
 const config = require(resolve(baseDir, 'docs.config.json'));
+const packageRoot = config.packageRoot || baseDir;
+const package = require(resolve(baseDir, packageRoot, 'package.json'));
 const defaultsDir = resolve(__dirname, '../defaults');
 const generatedName = '__generated__';
 const author = config.author || 'smapiot';
@@ -64,6 +66,7 @@ const helpers = {
 };
 
 module.exports = {
+  package,
   title: config.title || config.name,
   author,
   branch,

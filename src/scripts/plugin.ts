@@ -1,9 +1,6 @@
 import { PiralPlugin } from 'piral-core';
-import { appendSection, SectionInfo } from './sitemap';
-
-export interface PiletDocletApi {
-  registerDocumentation(section: SectionInfo, category: string): void;
-}
+import { appendSection } from './sitemap';
+import { PiletDocletApi } from './types';
 
 export function createDocletPlugin(): PiralPlugin<PiletDocletApi> {
   return (context) => ({

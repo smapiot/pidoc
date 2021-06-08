@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
 const { apps } = require('piral-cli');
+const { packageEmulator, updateExistingJson, readText, updateExistingFile } = require('piral-cli/lib/common');
 const { loadPlugins } = require('piral-cli/lib/plugin');
 const { relative } = require('path');
-const { outputPath } = require('../src/tools/meta');
+const { outputPath, package } = require('../src/tools/meta');
 
 const baseDir = process.cwd();
 
@@ -12,6 +13,8 @@ process.env.PIRAL_DOCS_BASE_DIR = baseDir;
 loadPlugins();
 
 const entry = `${relative(baseDir, __dirname)}/../src/index.pug`;
+const emulator = `${outputPath}/emulator`;
+const emulatorApp = `${emulator}/app`;
 const target = `${outputPath}/index.html`;
 const bundlerName = 'parcel';
 
@@ -33,8 +36,26 @@ switch (process.argv.pop()) {
         entry,
         target,
         bundlerName,
-        type: 'emulator',
+        type: 'emulator-sources',
       })
+      .then(() =>
+        updateExistingJson(emulator, 'package.json', {
+          name: package.name,
+          version: package.version,
+          license: package.license,
+          author: package.author,
+          description: package.description,
+          repository: package.repository,
+          bugs: package.bugs,
+          homepage: package.homepage,
+          keywords: package.keywords,
+        }),
+      )
+      .then(() => readText(emulatorApp, 'index.d.ts'))
+      .then((content) =>
+        updateExistingFile(emulatorApp, 'index.d.ts', content.replace('piral-docs-tools', package.name)),
+      )
+      .then(() => packageEmulator(emulator))
       .then(
         () => process.exit(0),
         () => process.exit(1),

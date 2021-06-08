@@ -1,0 +1,22 @@
+
+module.exports = function () {
+  return `
+module.exports = function (api) {
+  api.registerDocumentation(
+    {
+      title: "Foo",
+      links: [
+        {
+          id: "foo",
+          page: () => <div />,
+          route: "/docs/foo",
+          link: "/docs/foo",
+          title: "Foo Page",
+        },
+      ],
+    },
+    "docs"
+  );
+};
+`;
+};

@@ -1,25 +1,8 @@
 import * as React from 'react';
 import { Redirect, matchPath, RouteComponentProps } from 'react-router-dom';
+import { NavLink, SectionInfo, SectionLink } from './types';
 
 const sitemap = require('../codegen/sitemap.codegen');
-
-export interface SectionLink {
-  id: string;
-  route: string;
-  link?: string;
-  title?: string;
-  page: React.FC;
-}
-
-export interface SectionInfo {
-  title: string;
-  links: Array<SectionLink>;
-}
-
-export interface NavLink {
-  title: string;
-  link: string;
-}
 
 function lastLink(sectionInfo: SectionInfo) {
   if (sectionInfo) {

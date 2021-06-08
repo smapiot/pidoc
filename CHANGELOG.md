@@ -1,5 +1,11 @@
 # `piral-docs-tools` Changelog
 
+## 0.7.0 (June 8, 2021)
+
+- Fixed missing `app` field
+- Improved SDK creation
+- Added draft for pilet codegen
+
 ## 0.6.2 (June 2, 2021)
 
 - Fixed missing plugins
