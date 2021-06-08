@@ -50,7 +50,7 @@ switch (process.argv.pop()) {
           bugs: package.bugs,
           homepage: package.homepage,
           keywords: package.keywords,
-          devDependencies: {
+          dependencies: {
             [name]: version,
           },
         }),

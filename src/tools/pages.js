@@ -1,4 +1,4 @@
-const { generatedName } = require('./meta');
+const { generatedName } = require('./constants');
 const { docRef, generateFile, getEditPlatform } = require('./utils');
 
 function generatePage(name, pageMeta, targetFile, head, body, route, title, section = '', link = '', meta = {}) {
@@ -6,7 +6,7 @@ function generatePage(name, pageMeta, targetFile, head, body, route, title, sect
     targetFile,
     `// ${JSON.stringify(pageMeta)}
 import * as React from 'react';
-import { ContentPage } from '../../scripts/components';
+import { ContentPage } from 'piral-docs-tools/components';
 ${head}
 
 export default () => (
@@ -31,7 +31,7 @@ export default () => (
 
 function generateCustomPage(name, pageMeta, targetFile, imports, declarations, content, route, title, section = '', link = '', meta = {}) {
   const head = `
-    import { PageContent } from '../../scripts/components';
+    import { PageContent } from 'piral-docs-tools/components';
     ${imports}
 
     ${declarations}
@@ -47,7 +47,7 @@ function generateCustomPage(name, pageMeta, targetFile, imports, declarations, c
 function generateStandardPage(name, pageMeta, targetFile, sourceFile, mdValue, route, title, section = '', link = '', meta = {}) {
   const editLabel = `Edit on ${getEditPlatform()}`;
   const imports = `
-    import { Markdown } from '../../scripts/components';
+    import { Markdown } from 'piral-docs-tools/components';
   `;
   const declarations = `
     const link = ${JSON.stringify(docRef(sourceFile))};

@@ -1,5 +1,10 @@
 # `piral-docs-tools` Changelog
 
+## 0.8.0 (June 9, 2021)
+
+- Fixed scaffolding issues
+- Enhanced pilet generator
+
 ## 0.7.1 (June 9, 2021)
 
 - Added `layouts` option

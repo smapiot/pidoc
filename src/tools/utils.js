@@ -1,6 +1,7 @@
 const { writeFileSync, mkdirSync, existsSync, readdirSync } = require('fs');
 const { basename, extname, relative, resolve, dirname } = require('path');
-const { generated, repository, branch, docsPath, docsFolder } = require('./meta');
+const { generated } = require('./constants');
+const { repository, branch, docsPath, docsFolder } = require('./meta');
 
 const readme = 'README.md';
 
@@ -28,7 +29,7 @@ function sorter(sorting) {
     case 'asc':
     default:
       return (a, b) => a.localeCompare(b);
-  }  
+  }
 }
 
 function getDocsFrom(dir, tester = /\.md$/, sorting = 'asc') {

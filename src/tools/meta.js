@@ -35,7 +35,6 @@ const config = require(resolve(baseDir, 'docs.config.json'));
 const packageRoot = config.packageRoot || baseDir;
 const package = require(resolve(baseDir, packageRoot, 'package.json'));
 const defaultsDir = resolve(__dirname, '../defaults');
-const generatedName = '__generated__';
 const author = config.author || 'smapiot';
 const branch = config.branch || 'master';
 const docsFolder = config.docsDirName || 'docs';
@@ -80,8 +79,6 @@ module.exports = {
   rootPath,
   outputPath,
   changelogPath,
-  generatedName,
-  generated: resolve(__dirname, generatedName),
   components,
   styles,
   pages,

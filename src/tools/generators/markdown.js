@@ -1,5 +1,5 @@
-const { resolve, relative } = require('path');
-const { generated, layouts } = require('../meta');
+const { resolve } = require('path');
+const { generated } = require('../constants');
 const { render } = require('../markdown');
 const { generatePage } = require('../pages');
 const { getDocsFrom, getName, docRef, getTitle, getEditPlatform } = require('../utils');
@@ -10,8 +10,6 @@ function getRoute(basePath, name) {
 
 module.exports = function (basePath, docsFolder, options) {
   const { segment, dir, sorting = "asc", layout = "default" } = options;
-  const codegenDir = resolve(__dirname, '..', '..', 'codegen');
-  const layoutPath = relative(codegenDir, layouts[layout] || layouts.default);
   const folder = resolve(docsFolder, dir);
   const files = getDocsFrom(folder, /\.md$/, sorting);
   const prefix = segment || dir;
@@ -30,9 +28,10 @@ module.exports = function (basePath, docsFolder, options) {
     };
     const editLabel = `Edit on ${getEditPlatform()}`;
     const head = `
-      import { PageContent, Markdown } from '../../scripts/components';
-      import PageLayout from ${JSON.stringify(layoutPath)};
+      import { PageContent, Markdown, getPageLayout } from 'piral-docs-tools/components';
+      import PageLayout from;
 
+      const PageLayout = getPageLayout(${JSON.stringify(layout)});
       const link = ${JSON.stringify(docRef(file))};
       const html = ${mdValue};
       const meta = ${JSON.stringify(meta)};

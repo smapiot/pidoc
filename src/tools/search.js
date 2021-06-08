@@ -1,7 +1,7 @@
 const FlexSearch = require('flexsearch');
 const { resolve } = require('path');
 const { readFileSync, readdirSync } = require('fs');
-const { generated } = require('./meta');
+const { generated } = require('./constants');
 const { getTopKeywords } = require('./keywords');
 
 function createSearch() {

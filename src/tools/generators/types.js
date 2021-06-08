@@ -41,7 +41,7 @@ module.exports = function (basePath, docsFolder, options) {
       title: name,
     };
     const imports = `
-      import { TypeInfo } from '../../scripts/components';
+      import { TypeInfo } from 'piral-docs-tools/components';
     `;
     const content = `
       <TypeInfo key="${name}">{${body}}</TypeInfo>

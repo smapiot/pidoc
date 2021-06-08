@@ -1,0 +1,17 @@
+const { relative } = require('path');
+const { layouts } = require('../tools/meta');
+
+module.exports = function () {
+  const components = Object.keys(layouts).map(
+    (layoutName) =>
+      `${JSON.stringify(layoutName)}: React.lazy(() => import(${JSON.stringify(relative(__dirname, layouts[layoutName]))}))`,
+  ).join(', ');
+
+  return `
+import * as React from "react";
+
+export const layouts = {
+  ${components}
+};
+`;
+};
