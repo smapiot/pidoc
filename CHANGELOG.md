@@ -1,6 +1,6 @@
 # `piral-docs-tools` Changelog
 
-## 0.7.1 (June 8, 2021)
+## 0.7.1 (June 9, 2021)
 
 - Added `layouts` option
 - Added `registerSearchProvider` API
