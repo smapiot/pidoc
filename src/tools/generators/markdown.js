@@ -1,5 +1,5 @@
-const { resolve } = require('path');
-const { generated } = require('../meta');
+const { resolve, relative } = require('path');
+const { generated, layouts } = require('../meta');
 const { render } = require('../markdown');
 const { generatePage } = require('../pages');
 const { getDocsFrom, getName, docRef, getTitle, getEditPlatform } = require('../utils');
@@ -9,7 +9,9 @@ function getRoute(basePath, name) {
 }
 
 module.exports = function (basePath, docsFolder, options) {
-  const { segment, dir, sorting = "asc" } = options;
+  const { segment, dir, sorting = "asc", layout = "default" } = options;
+  const codegenDir = resolve(__dirname, '..', '..', 'codegen');
+  const layoutPath = relative(codegenDir, layouts[layout] || layouts.default);
   const folder = resolve(docsFolder, dir);
   const files = getDocsFrom(folder, /\.md$/, sorting);
   const prefix = segment || dir;
@@ -29,13 +31,17 @@ module.exports = function (basePath, docsFolder, options) {
     const editLabel = `Edit on ${getEditPlatform()}`;
     const head = `
       import { PageContent, Markdown } from '../../scripts/components';
+      import PageLayout from ${JSON.stringify(layoutPath)};
 
       const link = ${JSON.stringify(docRef(file))};
       const html = ${mdValue};
+      const meta = ${JSON.stringify(meta)};
     `;
     const body = `
-      <PageContent meta={${JSON.stringify(meta)}}>
-        <Markdown content={html} link={link} editLabel={${JSON.stringify(editLabel)}} />
+      <PageContent meta={meta}>
+        <PageLayout meta={meta}>
+          <Markdown content={html} link={link} editLabel={${JSON.stringify(editLabel)}} />
+        </PageLayout>
       </PageContent>
     `;
 

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import FlexSearch from 'flexsearch';
+import { getSearchProviders } from '../searchProviders';
 
 const index: any = FlexSearch.create({
   doc: {
@@ -12,15 +13,15 @@ const index: any = FlexSearch.create({
 function useSearch(open: boolean): [string, (value: string) => void, Array<any>] {
   const [input, setInput] = React.useState('');
   const [items, setItems] = React.useState([]);
-  const loading = React.useRef<Promise<void>>();
+  const loading = React.useRef<Promise<any>>();
 
   React.useEffect(() => {
     if (open) {
       document.querySelector<HTMLInputElement>('#searchInput').focus();
 
       if (!loading.current) {
-        loading.current = import('../../codegen/search.codegen').then((docs) =>
-          index.import(docs, { serialize: false }),
+        loading.current = Promise.all(
+          getSearchProviders().map((provider) => provider().then((docs) => index.import(docs, { serialize: false }))),
         );
       }
     }

@@ -1,17 +1,21 @@
+const { resolve } = require('path');
 
 module.exports = function () {
+  const packageJson = resolve(process.cwd(), 'package.json');
+  const { name } = require(packageJson);
   return `
+const React = require('react');
 module.exports = function (api) {
   api.registerDocumentation(
     {
-      title: "Foo",
+      title: ${JSON.stringify(name)},
       links: [
         {
           id: "foo",
-          page: () => <div />,
+          page: () => React.createElement("div", undefined, "Hello World from ${name}"),
           route: "/docs/foo",
           link: "/docs/foo",
-          title: "Foo Page",
+          title: ${JSON.stringify(name)},
         },
       ],
     },

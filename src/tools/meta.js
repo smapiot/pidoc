@@ -64,6 +64,10 @@ const helpers = {
   requestPilets: resolve(defaultsDir, 'requestPilets.ts'),
   ...normalizeObj(config.helpers),
 };
+const layouts = {
+  default: resolve(defaultsDir, 'Layout.tsx'),
+  ...normalizeObj(config.layouts),
+};
 
 module.exports = {
   package,
@@ -82,6 +86,7 @@ module.exports = {
   styles,
   pages,
   helpers,
+  layouts,
   sitemap,
   redirects,
   baseDir,

@@ -5,6 +5,7 @@ const { packageEmulator, updateExistingJson, readText, updateExistingFile } = re
 const { loadPlugins } = require('piral-cli/lib/plugin');
 const { relative } = require('path');
 const { outputPath, package } = require('../src/tools/meta');
+const { name, version } = require('../package.json');
 
 const baseDir = process.cwd();
 
@@ -49,12 +50,13 @@ switch (process.argv.pop()) {
           bugs: package.bugs,
           homepage: package.homepage,
           keywords: package.keywords,
+          devDependencies: {
+            [name]: version,
+          },
         }),
       )
       .then(() => readText(emulatorApp, 'index.d.ts'))
-      .then((content) =>
-        updateExistingFile(emulatorApp, 'index.d.ts', content.replace('piral-docs-tools', package.name)),
-      )
+      .then((content) => updateExistingFile(emulatorApp, 'index.d.ts', content.replace(name, package.name)))
       .then(() => packageEmulator(emulator))
       .then(
         () => process.exit(0),

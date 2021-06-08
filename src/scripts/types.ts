@@ -49,4 +49,5 @@ export interface Sitemap {
 
 export interface PiletDocletApi {
   registerDocumentation(section: SectionInfo, category: string): void;
+  registerSearchProvider(cb: () => Promise<any>): void;
 }

@@ -1,4 +1,5 @@
 import { PiralPlugin } from 'piral-core';
+import { includeSearchProvider } from './searchProviders';
 import { appendSection } from './sitemap';
 import { PiletDocletApi } from './types';
 
@@ -13,6 +14,9 @@ export function createDocletPlugin(): PiralPlugin<PiletDocletApi> {
           ...routes,
         },
       }));
+    },
+    registerSearchProvider(cb) {
+      includeSearchProvider(cb);
     },
   });
 }

@@ -31,10 +31,7 @@
         "from": "./src/scaffold/index.tsx",
         "to": "./src/index.tsx"
       }
-    ],      
-    "devDependencies": {
-      "piral-docs-tools": true
-    }
+    ]
   },
   "author": "smapiot",
   "homepage": "https://docs.piral.io",
