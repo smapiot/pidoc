@@ -1,26 +1,23 @@
-const { resolve } = require('path');
+const { populateCode, makeContent } = require('../tools/content');
+const { sitemap } = require('../tools/meta-core');
 
 module.exports = function () {
-  const packageJson = resolve(process.cwd(), 'package.json');
-  const { name } = require(packageJson);
-  return `
-const React = require('react');
+  const content = makeContent.call(this, sitemap);
+  return `${populateCode}
+
 module.exports = function (api) {
-  api.registerDocumentation(
-    {
-      title: ${JSON.stringify(name)},
-      links: [
-        {
-          id: "foo",
-          page: () => React.createElement("div", undefined, "Hello World from ${name}"),
-          route: "/docs/foo",
-          link: "/docs/foo",
-          title: ${JSON.stringify(name)},
-        },
-      ],
-    },
-    "docs"
-  );
+  const sitemap = ${content};
+  const categories = Object.keys(sitemap);
+
+  for (const category of categories) {
+    const { sections } = sitemap[category];
+
+    for (const section of sections) {
+      api.registerDocumentation(section, category);
+    }
+  }
+
+  api.registerSearchProvider(() => import("./search.codegen"));
 };
 `;
 };

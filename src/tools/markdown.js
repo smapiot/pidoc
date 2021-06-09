@@ -20,7 +20,7 @@ const { readFileSync } = require('fs');
 const { extname, basename } = require('path');
 const { createHash } = require('crypto');
 const { docRef, imgRef, makeRelativePath } = require('./utils');
-const { rootPath } = require('./meta');
+const { rootPath } = require('./meta-core');
 
 function computeHash(content) {
   return createHash('sha1')

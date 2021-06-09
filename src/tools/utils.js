@@ -1,7 +1,7 @@
 const { writeFileSync, mkdirSync, existsSync, readdirSync } = require('fs');
 const { basename, extname, relative, resolve, dirname } = require('path');
 const { generated } = require('./constants');
-const { repository, branch, docsPath, docsFolder } = require('./meta');
+const { repository, branch, docsPath, docsFolder } = require('./meta-core');
 
 const readme = 'README.md';
 
