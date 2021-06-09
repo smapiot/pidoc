@@ -1,6 +1,6 @@
 const { readFileSync } = require('fs');
 const { resolve } = require('path');
-const { getDocsFrom } = require('../utils');
+const { getDocsFrom, makeFileFilter } = require('../utils');
 const { generateCustomPage } = require('../pages');
 
 function getRoute(basePath, name) {
@@ -8,29 +8,18 @@ function getRoute(basePath, name) {
 }
 
 module.exports = function (basePath, docsFolder, options) {
-  const { segment, dir, exclude, include, sorting = "asc" } = options;
+  const { segment, dir, fileNames, exclude, include, sorting = "asc" } = options;
   const folder = resolve(docsFolder, dir);
   const files = getDocsFrom(folder, /\.json$/, sorting);
   const path = segment ? `${basePath}/${segment}` : basePath;
   const prefix = segment || dir;
+  const filter = makeFileFilter(fileNames, include, exclude);
 
   const imports = files.map((file) => {
     const name = file.split('\\').join('/').split('/').pop().replace('.json', '');
 
-    if (include) {
-      const rx = new RegExp(include);
-
-      if (!rx.test(name)) {
-        return undefined;
-      }
-    }
-
-    if (exclude) {
-      const rx = new RegExp(exclude);
-
-      if (rx.test(name)) {
-        return undefined;
-      }
+    if (!filter(name)) {
+      return undefined;
     }
 
     const body = readFileSync(file, 'utf8');

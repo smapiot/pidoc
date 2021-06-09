@@ -8,28 +8,28 @@ const defaultsDir = resolve(__dirname, '../defaults');
 const redirects = config.redirects || {};
 const changelogPath = resolve(baseDir, config.changelogFile);
 const styles = [
-  ...normalizeArr(config.styles),
+  ...normalizeArr(baseDir, config.styles),
 ];
 const pages = {
-  ...normalizeObj(config.pages),
+  ...normalizeObj(baseDir, config.pages),
 };
 const components = {
   footer: resolve(defaultsDir, 'Footer.tsx'),
   logo: resolve(defaultsDir, 'Logo.tsx'),
   router: resolve(defaultsDir, 'Router.tsx'),
   notFoundPage: resolve(defaultsDir, 'NotFoundPage.tsx'),
-  ...normalizeObj(config.components),
+  ...normalizeObj(baseDir, config.components),
 };
 const helpers = {
   setup: resolve(defaultsDir, 'setup.ts'),
   filter: resolve(defaultsDir, 'filter.ts'),
   plugins: resolve(defaultsDir, 'plugins.ts'),
   requestPilets: resolve(defaultsDir, 'requestPilets.ts'),
-  ...normalizeObj(config.helpers),
+  ...normalizeObj(baseDir, config.helpers),
 };
 const layouts = {
   default: resolve(defaultsDir, 'Layout.tsx'),
-  ...normalizeObj(config.layouts),
+  ...normalizeObj(baseDir, config.layouts),
 };
 
 module.exports = {

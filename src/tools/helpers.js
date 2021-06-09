@@ -1,6 +1,6 @@
 const { resolve } = require('path');
 
-function normalizeObj(obj) {
+function normalizeObj(baseDir, obj) {
   const result = {};
 
   if (obj) {
@@ -16,7 +16,7 @@ function normalizeObj(obj) {
   return result;
 }
 
-function normalizeArr(obj) {
+function normalizeArr(baseDir, obj) {
   const result = [];
 
   if (Array.isArray(obj)) {

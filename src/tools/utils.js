@@ -111,6 +111,18 @@ function generateFile(name, content, type = 'codegen') {
   writeFileSync(resolve(generated, `${name}.${type}`), content, 'utf8');
 }
 
+function makeFileFilter(fileNames, include, exclude) {
+  if (fileNames && Array.isArray(fileNames)) {
+    return name => fileNames.includes(name);
+  } else if (include || exclude) {
+    const irx = include ? new RegExp(include) : new RegExp('.*');
+    const erx = exclude ? new RegExp(exclude) : new RegExp('.*');
+    return name => !irx.test(name) || erx.test(name);
+  } else {
+    return _ => true;
+  }
+}
+
 module.exports = {
   readme,
   imgRef,
@@ -125,4 +137,5 @@ module.exports = {
   getDocsFrom,
   getName,
   getEditPlatform,
+  makeFileFilter,
 };
