@@ -1,5 +1,11 @@
 # `piral-docs-tools` Changelog
 
+## 0.8.1 (June 10, 2021)
+
+- Improved styling
+- Fixed issue in hash hook
+- Added React generator
+
 ## 0.8.0 (June 9, 2021)
 
 - Fixed scaffolding issues

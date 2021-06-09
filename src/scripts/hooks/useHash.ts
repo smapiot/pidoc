@@ -6,8 +6,12 @@ export function useHash(current: HTMLElement) {
 
   useEffect(() => {
     const tid = setTimeout(() => {
-      const element = document.getElementById(hash.substr(1));
-      element?.scrollIntoView({ behavior: 'smooth', inline: 'nearest' });
+      const id = hash.substr(1);
+
+      if (id) {
+        const element = document.getElementById(id);
+        element?.scrollIntoView({ behavior: 'smooth', inline: 'nearest' });
+      }
     }, 10);
     return () => clearTimeout(tid);
   }, [hash, current]);

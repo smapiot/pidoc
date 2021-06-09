@@ -11,6 +11,8 @@ div.content {
     padding: 1.5rem 0;
     overflow: hidden;
     height: calc(100vh - 10rem);
+    height: min(calc(100vh - 10rem), 100%);
+    box-sizing: border-box;
 
     &:empty {
       width: 0;

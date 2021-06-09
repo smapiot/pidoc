@@ -21,6 +21,8 @@ ul.toc-list {
       box-sizing: border-box;
       border-left: 1px solid rgb(229, 229, 229);
       text-decoration: none;
+      text-overflow: ellipsis;
+      overflow-x: hidden;
 
       &.level-1 {
         padding-left: 12px;
