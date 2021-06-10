@@ -42,11 +42,11 @@ module.exports = function (basePath, docsFolder, options) {
       const meta = ${JSON.stringify(meta)};
     `;
     const body = `
-      <PageContent meta={meta}>
-        <PageLayout meta={meta}>
+      <PageLayout meta={meta}>
+        <PageContent meta={meta}>
           <Markdown content={html} link={link} editLabel={${JSON.stringify(editLabel)}} />
-        </PageLayout>
-      </PageContent>
+        </PageContent>
+      </PageLayout>
     `;
 
     this.addDependency(file, { includedInParent: true });

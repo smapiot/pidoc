@@ -1,5 +1,12 @@
 # `piral-docs-tools` Changelog
 
+## 0.8.2 (June 10, 2021)
+
+- Fixed styling of TOC
+- Fixed multiple search entries
+- Improved loading TOC bar
+- Improved generator component order
+
 ## 0.8.1 (June 10, 2021)
 
 - Improved styling

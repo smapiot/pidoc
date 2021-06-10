@@ -37,11 +37,11 @@ module.exports = function (basePath, docsFolder, options) {
       const meta = {};
     `;
     const body = `
-      <PageContent meta={meta}>
-        <PageLayout meta={meta}>
+      <PageLayout meta={meta}>
+        <PageContent meta={meta}>
           <Page />
-        </PageLayout>
-      </PageContent>
+        </PageContent>
+      </PageLayout>
     `;
 
     this.addDependency(file, { includedInParent: true });

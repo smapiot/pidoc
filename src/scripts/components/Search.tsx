@@ -3,12 +3,7 @@ import { Link } from 'react-router-dom';
 import FlexSearch from 'flexsearch';
 import { getSearchProviders } from '../searchProviders';
 
-const index: any = FlexSearch.create({
-  doc: {
-    id: 'id',
-    field: ['content', 'keywords', 'title'],
-  },
-});
+const indices: Array<any> = [];
 
 function useSearch(open: boolean): [string, (value: string) => void, Array<any>] {
   const [input, setInput] = React.useState('');
@@ -21,7 +16,18 @@ function useSearch(open: boolean): [string, (value: string) => void, Array<any>]
 
       if (!loading.current) {
         loading.current = Promise.all(
-          getSearchProviders().map((provider) => provider().then((docs) => index.import(docs, { serialize: false }))),
+          getSearchProviders().map((provider) =>
+            provider().then((docs) => {
+              const index: any = FlexSearch.create({
+                doc: {
+                  id: 'id',
+                  field: ['content', 'keywords', 'title'],
+                },
+              });
+              index.import(docs, { serialize: false });
+              indices.push(index);
+            }),
+          ),
         );
       }
     }
@@ -30,7 +36,13 @@ function useSearch(open: boolean): [string, (value: string) => void, Array<any>]
   React.useEffect(() => {
     const id = setTimeout(() => {
       if (input) {
-        loading.current.then(() => setItems(index.search(input)));
+        loading.current.then(() => {
+          const results = indices.reduce((agg, index) => {
+            agg.push(...index.search(input));
+            return agg;
+          }, []);
+          setItems(results);
+        });
       } else if (!items || items.length !== 0) {
         setItems([]);
       }
