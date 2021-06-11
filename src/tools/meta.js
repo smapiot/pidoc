@@ -6,7 +6,7 @@ const baseDir = meta.baseDir;
 const config = meta.config;
 const defaultsDir = resolve(__dirname, '../defaults');
 const redirects = config.redirects || {};
-const changelogPath = resolve(baseDir, config.changelogFile);
+const changelogPath = config.changelogFile && resolve(baseDir, config.changelogFile);
 const styles = [
   ...normalizeArr(baseDir, config.styles),
 ];

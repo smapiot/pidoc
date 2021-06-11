@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { PiletApi } from 'piral-core';
+import { PiletApi, PiralPlugin } from 'piral-core';
 
-export { PiletApi };
+export { PiletApi, PiralPlugin };
 
 declare module 'piral-core/lib/types/custom' {
   interface PiletCustomApi extends PiletDocletApi {}
