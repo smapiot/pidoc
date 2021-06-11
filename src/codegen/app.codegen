@@ -1,7 +1,10 @@
 const { relative } = require('path');
-const { redirects, pages, components, helpers, styles } = require('../tools/meta');
+const { package, changelogPath, redirects, pages, components, helpers, styles } = require('../tools/meta');
+const { getChangelogVersion } = require('../tools/version');
 
 module.exports = function () {
+  const updated = process.env.BUILD_TIME;
+  const version = changelogPath ? getChangelogVersion(changelogPath) : package.version;
   const routerPath = relative(__dirname, components.router);
   const notFoundPagePath = relative(__dirname, components.notFoundPage);
   const setupPath = relative(__dirname, helpers.setup);
@@ -29,10 +32,12 @@ import setup from ${JSON.stringify(setupPath)};
 ${sheets}
 
 const NotFoundPage = React.lazy(() => import(${JSON.stringify(notFoundPagePath)}));
+const version = ${JSON.stringify(version) || "undefined"};
+const updated = ${JSON.stringify(updated)};
 const pages = {
   ${routes}
 };
 
-export { Router, NotFoundPage, requestPilets, pages, plugins, setup };
+export { Router, NotFoundPage, requestPilets, pages, plugins, setup, version, updated };
 `;
 };

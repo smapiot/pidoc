@@ -1,5 +1,13 @@
 # `piral-docs-tools` Changelog
 
+## 0.9.0 (June 11, 2021)
+
+- Added HTML generator
+- Improved HTML and React generator using frontmatter
+- Made changelog optional
+- Allow overriding the version
+- Allow overriding the last update date
+
 ## 0.8.2 (June 10, 2021)
 
 - Fixed styling of TOC

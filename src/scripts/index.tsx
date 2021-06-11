@@ -6,11 +6,24 @@ import { LoadingIndicator } from './components';
 import { routes } from './sitemap';
 import { Layout } from './Layout';
 
-const { Router, NotFoundPage, requestPilets, setup, plugins, pages } = require('../codegen/app.codegen');
+const {
+  Router,
+  NotFoundPage,
+  requestPilets,
+  setup,
+  plugins,
+  pages,
+  version,
+  updated,
+} = require('../codegen/app.codegen');
 
 const instance = createInstance({
   requestPilets,
   state: {
+    docs: {
+      version,
+      updated,
+    },
     components: {
       Router,
       Layout,

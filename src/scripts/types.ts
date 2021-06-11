@@ -5,6 +5,8 @@ export { PiletApi };
 
 declare module 'piral-core/lib/types/custom' {
   interface PiletCustomApi extends PiletDocletApi {}
+
+  interface PiralCustomState extends PiralDocletState {}
 }
 
 export interface SectionLink {
@@ -44,6 +46,13 @@ export interface Sitemap {
   [chapterName: string]: {
     title: string;
     sections: Array<SitemapSection>;
+  };
+}
+
+export interface PiralDocletState {
+  docs: {
+    version: string;
+    updated: string;
   };
 }
 

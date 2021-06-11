@@ -78,6 +78,10 @@ function wrapCollapsed(containerName, utils) {
   };
 }
 
+function parseMeta(content) {
+  return YAML.parse(content);
+}
+
 function render(file, baseDir = __dirname) {
   const content = readFileSync(file, 'utf8');
   const result = {
@@ -115,7 +119,7 @@ function render(file, baseDir = __dirname) {
     .use(markdownItAttrs)
     .use(markdownItEmoji)
     .use(markdownItFootnote)
-    .use(markdownItFrontMatter, fm => (result.meta = YAML.parse(fm)))
+    .use(markdownItFrontMatter, fm => (result.meta = parseMeta(fm)))
     .use(markdownItHljs)
     .use(markdownItContainer, 'warning', wrapContainer('warning', md.utils))
     .use(markdownItContainer, 'tip', wrapContainer('tip', md.utils))
@@ -138,4 +142,5 @@ function render(file, baseDir = __dirname) {
 
 module.exports = {
   render,
+  parseMeta,
 };
