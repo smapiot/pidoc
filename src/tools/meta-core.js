@@ -7,6 +7,7 @@ const package = require(resolve(baseDir, packageRoot, 'package.json'));
 const author = config.author || 'smapiot';
 const branch = config.branch || 'master';
 const docsFolder = config.docsDirName || 'docs';
+const skipEditLabel = config.skipEditLabel || false;
 const sitemap = config.sitemap;
 const rootPath = resolve(baseDir, config.rootDir);
 const outputPath = resolve(baseDir, config.outputDir);
@@ -18,6 +19,7 @@ module.exports = {
   branch,
   repository: config.repositoryUrl,
   rootPath,
+  skipEditLabel,
   outputPath,
   sitemap,
   baseDir,

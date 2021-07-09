@@ -2,11 +2,11 @@
   margin: 1.5625em 0;
   padding: 0 .6rem;
   overflow: hidden;
-  color: $color-text;
+  color: $docs-color-text;
   font-size: 1rem;
   page-break-inside: avoid;
-  background-color: $color-back;
-  border-left: .3rem solid $color-secondary;
+  background-color: $docs-color-back;
+  border-left: .3rem solid $docs-color-secondary;
   border-radius: .1rem;
   box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, .05), 0 0 0.05rem rgba(0, 0, 0, .1);
 
@@ -30,10 +30,10 @@
   }
 
   &.tip {
-    border-color: $color-tip;
+    border-color: $docs-color-tip;
 
     .box-title {
-      background-color: transparentize($color: $color-tip, $amount: 0.9);
+      background-color: transparentize($color: $docs-color-tip, $amount: 0.9);
 
       &::before {
         color: $color-tip;
@@ -43,65 +43,65 @@
   }
 
   &.warning {
-    border-color: $color-warning;
+    border-color: $docs-color-warning;
 
     .box-title {
-      background-color: transparentize($color: $color-warning, $amount: 0.9);
+      background-color: transparentize($color: $docs-color-warning, $amount: 0.9);
 
       &::before {
-        color: $color-warning;
+        color: $docs-color-warning;
         content: "\f071";
       }
     }
   }
 
   &.failure {
-    border-color: $color-danger;
+    border-color: $docs-color-danger;
 
     .box-title {
-      background-color: transparentize($color: $color-danger, $amount: 0.9);
+      background-color: transparentize($color: $docs-color-danger, $amount: 0.9);
 
       &::before {
-        color: $color-danger;
+        color: $docs-color-danger;
         content: "\f057";
       }
     }
   }
 
   &.success {
-    border-color: $color-success;
+    border-color: $docs-color-success;
 
     .box-title {
-      background-color: transparentize($color: $color-success, $amount: 0.9);
+      background-color: transparentize($color: $docs-color-success, $amount: 0.9);
 
       &::before {
-        color: $color-success;
+        color: $docs-color-success;
         content: "\f058";
       }
     }
   }
 
   &.question {
-    border-color: $color-purple;
+    border-color: $docs-color-purple;
 
     .box-title {
-      background-color: transparentize($color: $color-purple, $amount: 0.9);
+      background-color: transparentize($color: $docs-color-purple, $amount: 0.9);
 
       &::before {
-        color: $color-purple;
+        color: $docs-color-purple;
         content: "\f059";
       }
     }
   }
 
   &.summary {
-    border-color: $color-secondary;
+    border-color: $docs-color-secondary;
 
     .box-title {
-      background-color: transparentize($color: $color-secondary, $amount: 0.9);
+      background-color: transparentize($color: $docs-color-secondary, $amount: 0.9);
 
       &::before {
-        color: $color-secondary;
+        color: $docs-color-secondary;
         content: "\f02d";
       }
     }
@@ -134,7 +134,7 @@ details {
     padding: .4rem 1.8rem .4rem 2rem;
     border-top-right-radius: .1rem;
     cursor: pointer;
-    background-color: transparentize($color: $color-secondary, $amount: 0.9);
+    background-color: transparentize($color: $docs-color-secondary, $amount: 0.9);
 
     &::-webkit-details-marker {
       display: none;
@@ -156,7 +156,7 @@ details {
 
     &::before {
       left: 0.6rem;
-      color: $color-secondary;
+      color: $docs-color-secondary;
       content: "\f02d";
     }
 

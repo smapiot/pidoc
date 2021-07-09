@@ -1,9 +1,14 @@
 # `piral-docs-tools` Changelog
 
+## 0.9.1 (July 9, 2021)
+
+- Added `skipEditLabel` option to avoid placing the edit label
+- Added `sass` field and made SASS variables easier to overwrite
+
 ## 0.9.0 (June 11, 2021)
 
 - Added HTML generator
-- Improved HTML and React generator using frontmatter
+- Improved HTML and React generator using front matter
 - Made changelog optional
 - Allow overriding the version
 - Allow overriding the last update date

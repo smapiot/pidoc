@@ -3,11 +3,11 @@
   justify-content: flex-end;
   width: 30rem;
 
-  @media (max-width: $desktopBrk) {
+  @media (max-width: $docs-desktop-brk) {
     width: 23rem;
   }
 
-  @media (max-width: $mobileBrk) {
+  @media (max-width: $docs-mobile-brk) {
     width: 1rem;
   }
 
@@ -18,13 +18,13 @@
     left: 0;
     width: 0;
     height: 0;
-    background-color: rgba(0, 0, 0, 0.54);
+    background-color: transparentize($color: $docs-color-text, $amount: 0.46);
     cursor: pointer;
     transition: width 0ms 250ms, height 0ms 250ms, opacity 250ms;
   }
 
   &[data-active=true] {
-    @media (max-width: $mobileBrk) {
+    @media (max-width: $docs-mobile-brk) {
       width: 100%;
       position: absolute;
       padding: 1rem;
@@ -44,9 +44,9 @@
       width: 100%;
 
       .search-form {
-        color: black;
+        color: $docs-color-text;
 
-        @media (max-width: $mobileBrk) {
+        @media (max-width: $docs-mobile-brk) {
           width: 100%;
         }
       }
@@ -64,17 +64,17 @@
         .search-scroll {
           max-height: 75vh;
 
-          @media (max-width: $mobileBrk) {
+          @media (max-width: $docs-mobile-brk) {
             max-height: 90vh;
           }
         }
       }
 
       input {
-        background: white;
+        background: $docs-color-back;
         text-align: left;
 
-        @media (max-width: $mobileBrk) {
+        @media (max-width: $docs-mobile-brk) {
           padding: 0 44px;
         }
       }
@@ -95,7 +95,7 @@
   .search-form {
     border-radius: 2px;
     position: relative;
-    color: white;
+    color: $docs-color-back;
 
     input {
       width: 100%;
@@ -129,7 +129,7 @@
       left: 10px;
     }
 
-    @media (max-width: $mobileBrk) {
+    @media (max-width: $docs-mobile-brk) {
       width: 0;
 
       label {
@@ -175,22 +175,22 @@
     border-radius: 0 0 2px 2px;
 
     .search-scroll {
-      background: white;
+      background: $docs-color-back;
       max-height: 0;
       height: 100%;
     }
 
     .search-result {
       word-break: break-word;
-      color: black;
+      color: $docs-color-text;
 
       .search-result-meta {
         padding: 0 1rem;
         padding-left: 44px;
-        color: black;
+        color: $docs-color-text;
         font-size: 0.85rem;
         line-height: 44px;
-        background-color: rgba(0, 0, 0, 0.07);
+        background-color: transparentize($color: $docs-color-text, $amount: 0.93);
         scroll-snap-align: start;
       }
 

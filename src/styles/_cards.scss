@@ -6,7 +6,7 @@
 
   i {
     font-size: 1.4em;
-    color: $color-secondary;
+    color: $docs-color-secondary;
   }
 
   small {
@@ -54,7 +54,7 @@
 .image-card {
   flex: 0 0 200px;
   text-decoration: none;
-  color: black;
+  color: $docs-color-text;
 
   &.details {
     flex-basis: 500px;
@@ -87,7 +87,7 @@
   }
 
   &:hover {
-    color: $color-secondary;
+    color: $docs-color-secondary;
 
     .image > img {
       filter: none;

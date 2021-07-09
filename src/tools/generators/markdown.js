@@ -1,5 +1,6 @@
 const { resolve } = require('path');
 const { generated } = require('../constants');
+const { skipEditLabel } = require('../meta-core');
 const { render } = require('../markdown');
 const { generatePage } = require('../pages');
 const { getDocsFrom, getName, docRef, getTitle, getEditPlatform, makeFileFilter } = require('../utils');
@@ -9,7 +10,7 @@ function getRoute(basePath, name) {
 }
 
 module.exports = function (basePath, docsFolder, options) {
-  const { segment, dir, fileNames, exclude, include, sorting = "asc", layout = "default" } = options;
+  const { segment, dir, fileNames, exclude, include, sorting = 'asc', layout = 'default' } = options;
   const folder = resolve(docsFolder, dir);
   const files = getDocsFrom(folder, /\.md$/, sorting);
   const prefix = segment || dir;
@@ -32,12 +33,12 @@ module.exports = function (basePath, docsFolder, options) {
       link: route,
       source: file,
     };
-    const editLabel = `Edit on ${getEditPlatform()}`;
+    const editLabel = skipEditLabel ? '' : `Edit on ${getEditPlatform()}`;
     const head = `
       import { PageContent, Markdown, getPageLayout } from 'piral-docs-tools/components';
 
       const PageLayout = getPageLayout(${JSON.stringify(layout)});
-      const link = ${JSON.stringify(docRef(file))};
+      const link = ${JSON.stringify(skipEditLabel ? '' : docRef(file))};
       const html = ${mdValue};
       const meta = ${JSON.stringify(meta)};
     `;
@@ -50,7 +51,18 @@ module.exports = function (basePath, docsFolder, options) {
     `;
 
     this.addDependency(file, { includedInParent: true });
-    return generatePage(name, pageMeta, `${prefix}-${name}`, head, body, route, pageMeta.title, pageMeta.section, undefined, meta);
+    return generatePage(
+      name,
+      pageMeta,
+      `${prefix}-${name}`,
+      head,
+      body,
+      route,
+      pageMeta.title,
+      pageMeta.section,
+      undefined,
+      meta,
+    );
   });
 
   return imports.filter(Boolean);

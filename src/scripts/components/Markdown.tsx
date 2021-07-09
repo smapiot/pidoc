@@ -6,7 +6,7 @@ export interface MarkdownProps {
   editLabel?: string;
 }
 
-export const Markdown: React.FC<MarkdownProps> = ({ content, link, editLabel = "Edit" }) => (
+export const Markdown: React.FC<MarkdownProps> = ({ content, link, editLabel = 'Edit' }) => (
   <>
     <div className="markdown-body" dangerouslySetInnerHTML={{ __html: content }} />
     {link && (

@@ -10,7 +10,7 @@
     padding-right: 1em;
     box-sizing: border-box;
 
-    @media (max-width: $mobileBrk) {
+    @media (max-width: $docs-mobile-brk) {
       display: none;
     }
   }

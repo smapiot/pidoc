@@ -7,9 +7,11 @@ const config = meta.config;
 const defaultsDir = resolve(__dirname, '../defaults');
 const redirects = config.redirects || {};
 const changelogPath = config.changelogFile && resolve(baseDir, config.changelogFile);
-const styles = [
-  ...normalizeArr(baseDir, config.styles),
-];
+const sass = {
+  variables: resolve(defaultsDir, 'variables.scss'),
+  ...normalizeObj(baseDir, config.sass),
+};
+const styles = [...normalizeArr(baseDir, config.styles)];
 const pages = {
   ...normalizeObj(baseDir, config.pages),
 };
@@ -40,6 +42,7 @@ module.exports = {
   changelogPath,
   components,
   styles,
+  sass,
   pages,
   helpers,
   layouts,

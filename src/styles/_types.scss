@@ -1,33 +1,33 @@
 .type-info {
-  border-left: 5px solid $color-green;
+  border-left: 5px solid $docs-color-green;
   margin-bottom: 0.5em;
 
   &.type-info-green {
-    border-left-color: $color-green;
+    border-left-color: $docs-color-green;
   }
 
   &.type-info-pink {
-    border-left-color: $color-heart;
+    border-left-color: $docs-color-heart;
   }
 
   &.type-info-blue {
-    border-left-color: $color-secondary;
+    border-left-color: $docs-color-secondary;
   }
 
   &.type-info-orange {
-    border-left-color: $color-warning;
+    border-left-color: $docs-color-warning;
   }
 
   &.type-info-purple {
-    border-left-color: $color-purple;
+    border-left-color: $docs-color-purple;
   }
 
   &.type-info-red {
-    border-left-color: $color-danger;
+    border-left-color: $docs-color-danger;
   }
 
   a {
-    color: #fff;
+    color: $docs-color-back;
   }
 
   ul.interface-map {
@@ -50,8 +50,8 @@
   }
 
   code {
-    background: #222;
-    color: #fff;
+    background: lighten($color: $docs-color-text, $amount: 14%);
+    color: $docs-color-back;
     font-size: 14px;
     font-weight: bold;
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
@@ -63,11 +63,11 @@
 
 .type-title {
   cursor: pointer;
-  background: #eee;
+  background: $docs-color-shadow;
   padding: 1em;
 
   > b {
-    color: transparentize($color: black, $amount: 0.2);
+    color: transparentize($color: $docs-color-text, $amount: 0.2);
     font-size: 0.9em;
   }
 

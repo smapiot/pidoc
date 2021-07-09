@@ -1,4 +1,5 @@
 const { generatedName } = require('./constants');
+const { skipEditLabel } = require('./meta-core');
 const { docRef, generateFile, getEditPlatform } = require('./utils');
 
 function generatePage(name, pageMeta, targetFile, head, body, route, title, section = '', link = '', meta = {}) {
@@ -29,7 +30,19 @@ export default () => (
   }`;
 }
 
-function generateCustomPage(name, pageMeta, targetFile, imports, declarations, content, route, title, section = '', link = '', meta = {}) {
+function generateCustomPage(
+  name,
+  pageMeta,
+  targetFile,
+  imports,
+  declarations,
+  content,
+  route,
+  title,
+  section = '',
+  link = '',
+  meta = {},
+) {
   const head = `
     import { PageContent } from 'piral-docs-tools/components';
     ${imports}
@@ -44,19 +57,42 @@ function generateCustomPage(name, pageMeta, targetFile, imports, declarations, c
   return generatePage(name, pageMeta, targetFile, head, body, route, title, section, link, meta);
 }
 
-function generateStandardPage(name, pageMeta, targetFile, sourceFile, mdValue, route, title, section = '', link = '', meta = {}) {
-  const editLabel = `Edit on ${getEditPlatform()}`;
+function generateStandardPage(
+  name,
+  pageMeta,
+  targetFile,
+  sourceFile,
+  mdValue,
+  route,
+  title,
+  section = '',
+  link = '',
+  meta = {},
+) {
+  const editLabel = skipEditLabel ? '' : `Edit on ${getEditPlatform()}`;
   const imports = `
     import { Markdown } from 'piral-docs-tools/components';
   `;
   const declarations = `
-    const link = ${JSON.stringify(docRef(sourceFile))};
+    const link = ${JSON.stringify(skipEditLabel ? '' : docRef(sourceFile))};
     const html = ${mdValue};
   `;
   const content = `
     <Markdown content={html} link={link} editLabel={${JSON.stringify(editLabel)}} />
   `;
-  return generateCustomPage(name, pageMeta, targetFile, imports, declarations, content, route, title, section, link, meta);
+  return generateCustomPage(
+    name,
+    pageMeta,
+    targetFile,
+    imports,
+    declarations,
+    content,
+    route,
+    title,
+    section,
+    link,
+    meta,
+  );
 }
 
 module.exports = {

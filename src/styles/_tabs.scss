@@ -1,6 +1,6 @@
 .tabs {
   .tabs-header {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid $docs-color-tabs-border-normal;
     position: relative;
 
     ul {
@@ -19,12 +19,12 @@
           padding: 0 0 0.5em;
           display: inline-block;
           width: auto;
-          color: #767676;
+          color: $docs-color-tabs-text-normal;
           text-decoration: none;
 
           &.active {
-            border-bottom: 2px solid #d8d8d8;
-            color: black;
+            border-bottom: 2px solid $docs-color-tabs-border-active;
+            color: $docs-color-tabs-text-active;
           }
         }
       }

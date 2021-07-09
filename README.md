@@ -35,7 +35,11 @@ Place a file called *docs.config.json* in the project folder where `piral-docs` 
   "repositoryUrl": "https://github.com/your-orga/your-repo",
   "rootDir": ".",
   "outputDir": "./dist/docs",
+  "skipEditLabel": false,
   "changelogFile": "./CHANGELOG.md",
+  "sass": {
+    "variables": "./src/global.scss"
+  },
   "styles": [
     "./src/styles.css"
   ],

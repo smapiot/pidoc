@@ -18,7 +18,7 @@ div.content {
       width: 0;
     }
 
-    @media (max-width: $tabletBrk) {
+    @media (max-width: $docs-tablet-brk) {
       display: none;
     }
   }
@@ -36,7 +36,7 @@ div.content {
       width: 0;
     }
 
-    @media (max-width: $screenBrk) {
+    @media (max-width: $docs-screen-brk) {
       display: none;
     }
   }
@@ -45,7 +45,7 @@ div.content {
     flex: 1;
     padding: 1.5rem;
 
-    @media (max-width: $tabletBrk) {
+    @media (max-width: $docs-tablet-brk) {
       padding: 1.5rem 0.5rem;
     }
   }
@@ -97,7 +97,7 @@ div.content {
     margin: 0 0.5rem 0 1rem;
   }
 
-  @media (max-width: $mobileBrk) {
+  @media (max-width: $docs-mobile-brk) {
     display: none;
   }
 }
@@ -117,15 +117,15 @@ div.content {
   margin-left: auto;
   box-sizing: border-box;
 
-  @media (min-width: $tabletBrk) {
+  @media (min-width: $docs-tablet-brk) {
     max-width: 720px;
   }
 
-  @media (min-width: $desktopBrk) {
+  @media (min-width: $docs-desktop-brk) {
     max-width: 960px;
   }
 
-  @media (min-width: $screenBrk) {
+  @media (min-width: $docs-screen-brk) {
     max-width: 1140px;
   }
 

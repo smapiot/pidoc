@@ -1,6 +1,6 @@
 header {
   padding: 1em;
-  background: $color-secondary;
+  background: $docs-color-header-back;
 }
 
 header nav {
@@ -18,22 +18,22 @@ header nav {
       padding-right: 1em;
 
       a {
-        color: white;
+        color: $docs-color-header-text;
         text-decoration: none;
         font-weight: bold;
 
         &:hover {
-          color: $color-primary;
+          color: $docs-color-primary;
         }
 
         &.active {
-          color: $color-primary;
+          color: $docs-color-primary;
         }
       }
     }
   }
 
-  @media (max-width: $mobileBrk) {
+  @media (max-width: $docs-mobile-brk) {
     .menu {
       display: none;
       flex: 1 100%;
@@ -61,7 +61,7 @@ header .header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: white;
+    color: $docs-color-header-text;
     flex: 9999;
 
     img {
@@ -82,11 +82,11 @@ header .header {
     display: none;
 
     a {
-      color: white;
+      color: $docs-color-header-text;
     }
   }
 
-  @media (max-width: $mobileBrk) {
+  @media (max-width: $docs-mobile-brk) {
     .hamburger {
       display: block;
     }
