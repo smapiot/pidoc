@@ -53,7 +53,7 @@ div.content {
 
 .scroller {
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.32) transparent;
+  scrollbar-color: $docs-color-scrollbar transparent;
   overflow-y: auto;
   backface-visibility: hidden;
   scroll-snap-type: y mandatory;
@@ -66,7 +66,7 @@ div.content {
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.32);
+    background-color: $docs-color-scrollbar;
   }
 }
 
@@ -91,7 +91,7 @@ div.content {
   flex: 1 0 270px;
   text-align: right;
   font-size: 0.8em;
-  color: #ddd;
+  color: $docs-color-tabs-border-normal;
 
   i {
     margin: 0 0.5rem 0 1rem;

@@ -36,7 +36,7 @@
       background-color: transparentize($color: $docs-color-tip, $amount: 0.9);
 
       &::before {
-        color: $color-tip;
+        color: $docs-color-tip;
         content: "\f06d";
       }
     }

@@ -17,7 +17,7 @@
 
 h2.plugin {
   font-size: 1.4em;
-  color: #555;
+  color: $docs-color-tabs-text-normal;
   margin-top: 2em;
 }
 
@@ -30,8 +30,8 @@ ul.keywords {
 
   li {
     border-radius: 7px;
-    background: #eee;
-    color: blue;
+    background: $docs-color-shadow;
+    color: $docs-color-sidebar-active;
     padding: 0.5em;
     margin: 1em 0.3em;
   }

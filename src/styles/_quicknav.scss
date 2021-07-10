@@ -1,6 +1,6 @@
 .quick-nav {
-  color: $docs-color-back;
-  background: transparentize($color: $docs-color-secondary, $amount: 0.13);
+  color: $docs-color-quicknav-text;
+  background: $docs-color-quicknav-back;
   font-size: 1.25rem;
 
   .quick-nav-prev {

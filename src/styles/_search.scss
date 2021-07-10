@@ -102,7 +102,7 @@
       height: 36px;
       color: inherit;
       font-size: 1rem;
-      background-color: rgba(0, 0, 0, 0.26);
+      background-color: $docs-color-scrollbar;
       border-radius: 2px;
       position: relative;
       z-index: 2;
@@ -116,7 +116,7 @@
       -webkit-tap-highlight-color: transparent;
 
       &::placeholder {
-        color: #ccc;
+        color: $docs-color-inactive;
       }
     }
 
@@ -225,7 +225,7 @@
 
                 &.keywords {
                   font-size: 0.8em;
-                  color: #ccc;
+                  color: $docs-color-inactive;
                 }
               }
             }
