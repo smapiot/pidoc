@@ -1,9 +1,9 @@
 .type-info {
-  border-left: 5px solid $docs-color-green;
+  border-left: 5px solid $docs-color-success;
   margin-bottom: 0.5em;
 
   &.type-info-green {
-    border-left-color: $docs-color-green;
+    border-left-color: $docs-color-success;
   }
 
   &.type-info-pink {
