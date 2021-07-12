@@ -1,9 +1,10 @@
 # `piral-docs-tools` Changelog
 
-## 0.9.1 (July 9, 2021)
+## 0.9.1 (July 12, 2021)
 
 - Added `skipEditLabel` option to avoid placing the edit label
 - Added `sass` field and made SASS variables easier to overwrite
+- Added more possibilities of changing the default styles
 
 ## 0.9.0 (June 11, 2021)
 

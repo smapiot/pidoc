@@ -23,11 +23,11 @@ header nav {
         font-weight: bold;
 
         &:hover {
-          color: $docs-color-primary;
+          color: $docs-color-header-active;
         }
 
         &.active {
-          color: $docs-color-primary;
+          color: $docs-color-header-active;
         }
       }
     }
