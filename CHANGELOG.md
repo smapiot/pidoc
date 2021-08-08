@@ -1,5 +1,9 @@
 # `piral-docs-tools` Changelog
 
+## 0.10.0 (tbd)
+
+- Added `InfoBar` and `Breadcrumbs` (optional) components
+
 ## 0.9.1 (July 12, 2021)
 
 - Added `skipEditLabel` option to avoid placing the edit label

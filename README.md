@@ -45,6 +45,8 @@ Place a file called *docs.config.json* in the project folder where `piral-docs` 
   ],
   "components": {
     "logo": "./src/Logo.tsx",
+    "infoBar": "./src/InfoBar.tsx",
+    "breadcrumbs": "./src/Breadcrumbs.tsx",
     "footer": "./src/Footer.tsx",
     "notFoundPage": "./src/NotFoundPage.tsx"
   },

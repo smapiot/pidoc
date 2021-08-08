@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Link, Route } from 'react-router-dom';
 import { Search, QuickNav, TopNav, LoadingIndicator, ScrollToTop } from './components';
 
-const { brandName, Footer, Logo } = require('../codegen/layout.codegen');
+const { brandName, Footer, Logo, InfoBar } = require('../codegen/layout.codegen');
 
 export const Layout: React.FC = ({ children }) => {
   const [active, setActive] = React.useState(false);
@@ -47,6 +47,7 @@ export const Layout: React.FC = ({ children }) => {
           <TopNav active={active} />
         </nav>
       </header>
+      <InfoBar />
       <div className="layout-container content">
         <React.Suspense fallback={<LoadingIndicator />}>{children}</React.Suspense>
       </div>

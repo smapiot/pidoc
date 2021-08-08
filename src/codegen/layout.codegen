@@ -4,12 +4,16 @@ const { components, name } = require('../tools/meta');
 module.exports = function () {
   const footerPath = relative(__dirname, components.footer);
   const logoPath = relative(__dirname, components.logo);
+  const infoBarPath = relative(__dirname, components.infoBar);
+  const breadcrumbsPath = relative(__dirname, components.breadcrumbs);
   return `
 import Footer from ${JSON.stringify(footerPath)};
 import Logo from ${JSON.stringify(logoPath)};
+import InfoBar from ${JSON.stringify(infoBarPath)};
+import Breadcrumbs from ${JSON.stringify(breadcrumbsPath)};
 
 const brandName = ${JSON.stringify(name)};
 
-export { Footer, Logo, brandName };
+export { Footer, Logo, InfoBar, Breadcrumbs, brandName };
 `;
 };
