@@ -3,6 +3,7 @@
 ## 0.10.0 (tbd)
 
 - Added `InfoBar` and `Breadcrumbs` (optional) components
+- Improved redirect handling
 
 ## 0.9.1 (July 12, 2021)
 

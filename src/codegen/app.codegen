@@ -14,7 +14,9 @@ module.exports = function () {
   const routes = [
     ...Object.keys(redirects).map(
       (from) =>
-        `${JSON.stringify(from)}: () => React.createElement(Redirect, { to: ${JSON.stringify(redirects[from])} })`,
+        `${JSON.stringify(from)}: ({ match }) => React.createElement(Redirect, { to: replaceAllParams(${JSON.stringify(
+          redirects[from],
+        )}, match.params) })`,
     ),
     ...Object.keys(pages).map(
       (path) =>
@@ -30,6 +32,14 @@ import requestPilets from ${JSON.stringify(requestPiletsPath)};
 import plugins from ${JSON.stringify(pluginsPath)};
 import setup from ${JSON.stringify(setupPath)};
 ${sheets}
+
+function replaceAllParams(path, params) {
+  Object.keys(params).forEach(key => {
+    path = path.split(':' + key).join(params[key]);
+  });
+
+  return path;
+}
 
 const NotFoundPage = React.lazy(() => import(${JSON.stringify(notFoundPagePath)}));
 const version = ${JSON.stringify(version) || 'undefined'};
