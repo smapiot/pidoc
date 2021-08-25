@@ -1,6 +1,10 @@
 # `piral-docs-tools` Changelog
 
-## 0.10.0 (tbd)
+## 0.10.1 (August 25, 2021)
+
+- Added missing modules from `main`
+
+## 0.10.0 (August 24, 2021)
 
 - Added `InfoBar` and `Breadcrumbs` (optional) components
 - Improved redirect handling
