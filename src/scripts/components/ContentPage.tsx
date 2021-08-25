@@ -6,7 +6,7 @@ import { TocMenu } from './TocMenu';
 import { SectionMenu } from './SectionMenu';
 import { resolveSections } from '../sitemap';
 
-const { Breadcrumbs } = require('../codegen/layout.codegen');
+const { Breadcrumbs } = require('../../codegen/layout.codegen');
 
 export const ContentPage: React.FC = ({ children }) => {
   const { pathname } = useLocation();
