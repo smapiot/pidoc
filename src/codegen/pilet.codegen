@@ -2,7 +2,7 @@ const { populateCode, makeContent } = require('../tools/content');
 const { sitemap } = require('../tools/meta-core');
 
 module.exports = function () {
-  const content = makeContent.call(this, sitemap);
+  const content = makeContent(this, sitemap);
   return `${populateCode}
 
 module.exports = function (api) {

@@ -1,5 +1,12 @@
 # `piral-docs-tools` Changelog
 
+## 0.11.0 (October 15, 2021)
+
+- Fixed invalid file filter with includes and excludes
+- Improved links
+- Updated dependencies
+- Changed format of generators
+
 ## 0.10.1 (August 25, 2021)
 
 - Added missing modules from `main`

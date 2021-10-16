@@ -3,7 +3,7 @@ const { sitemap, helpers } = require('../tools/meta');
 const { populateCode, makeContent } = require('../tools/content');
 
 module.exports = function () {
-  const content = makeContent.call(this, sitemap);
+  const content = makeContent(this, sitemap);
   const path = relative(__dirname, helpers.filter);
 
   return `

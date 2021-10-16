@@ -61,7 +61,7 @@ function imgRef(path, basePath) {
 
 function docRef(path, basePath) {
   const link = repository || '';
-  const relPath = getRelativePath(path, basePath);
+  const relPath = getRelativePath(getAbsolutePath(path, basePath), docsPath);
 
   if (link.includes('github.com')) {
     return `${repository}/tree/${branch}/${docsFolder}/${relPath}`;
@@ -117,7 +117,7 @@ function makeFileFilter(fileNames, include, exclude) {
   } else if (include || exclude) {
     const irx = include ? new RegExp(include) : new RegExp('.*');
     const erx = exclude ? new RegExp(exclude) : new RegExp('.*');
-    return name => !irx.test(name) || erx.test(name);
+    return name => irx.test(name) || !erx.test(name);
   } else {
     return _ => true;
   }

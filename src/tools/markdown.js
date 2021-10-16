@@ -82,7 +82,11 @@ function parseMeta(content) {
   return YAML.parse(content);
 }
 
-function render(file, baseDir = __dirname) {
+function defaultLinkResolver(link) {
+  return link;
+}
+
+function render(file, baseDir = __dirname, resolveLink = defaultLinkResolver) {
   const content = readFileSync(file, 'utf8');
   const result = {
     meta: {},
@@ -94,9 +98,9 @@ function render(file, baseDir = __dirname) {
     html: true,
     replaceLink(link) {
       if (link.startsWith('http://') || link.startsWith('https://')) {
-        return link;
+        return resolveLink(link);
       } else if (/\.md$/.test(link)) {
-        return docRef(link, file);
+        return resolveLink(docRef(link, file));
       } else if (/\.(png|jpg|jpeg|gif|svg)$/.test(link)) {
         const ext = extname(link);
         const name = basename(link, ext);
