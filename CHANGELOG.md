@@ -1,5 +1,9 @@
 # `piral-docs-tools` Changelog
 
+## 0.11.1 (October 21, 2021)
+
+- Optimized for single pass code generation before building
+
 ## 0.11.0 (October 15, 2021)
 
 - Fixed invalid file filter with includes and excludes

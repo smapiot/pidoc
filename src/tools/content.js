@@ -1,5 +1,5 @@
 const { resolve } = require('path');
-const { docRef } = require('./utils');
+const { docRef, generateFile, readGeneratedFile } = require('./utils');
 const { docsPath, baseDir } = require('./meta-core');
 
 function getGeneratorPath(genPath, options) {
@@ -10,12 +10,11 @@ function getGeneratorPath(genPath, options) {
   }
 }
 
-function makeLinks(items, basePath, resolveLink, bundler) {
+function makeLinks(items, basePath, resolveLink) {
   const links = [];
   const flat = !Array.isArray(items);
 
   if (flat) {
-
     items = [items];
   }
 
@@ -35,7 +34,7 @@ function makeLinks(items, basePath, resolveLink, bundler) {
     } else {
       links.push(`{
         "title": ${JSON.stringify(item.title)},
-        "links": [${makeLinks(item.links, basePath, resolveLink, bundler)}],
+        "links": [${makeLinks(item.links, basePath, resolveLink)}],
       }`);
     }
   }
@@ -43,7 +42,7 @@ function makeLinks(items, basePath, resolveLink, bundler) {
   return links.join(', ');
 }
 
-function fillPageMap(items, basePath, pageMap, bundler) {
+function fillPageMap(items, basePath, pageMap) {
   const flat = !Array.isArray(items);
 
   if (flat) {
@@ -59,42 +58,64 @@ function fillPageMap(items, basePath, pageMap, bundler) {
 
       for (const entry of entries) {
         if (entry.file) {
-          pageMap[docRef(entry.file)] = entry.route;
-          bundler.addDependency(entry.file, { includedInParent: true });
+          pageMap.links[docRef(entry.file)] = entry.route;
+          pageMap.dependencies.push(entry.file);
         } else if (Array.isArray(entry.dependencies)) {
-          for (const dependency of entry.dependencies) {
-            bundler.addDependency(dependency, { includedInParent: true });
-          }
+          pageMap.dependencies.push(...entry.dependencies);
         }
       }
     } else {
-      fillPageMap(item.links, basePath, pageMap, bundler);
+      fillPageMap(item.links, basePath, pageMap);
     }
   }
 }
 
-exports.makeContent = function makeContent(bundler, sitemap) {
-  const pageMap = {};
+exports.makeContent = function makeContent(sitemap) {
+  const pageMap = {
+    links: {},
+    dependencies: [],
+  };
 
   Object.keys(sitemap).forEach((key) => {
     const { sections } = sitemap[key];
-    fillPageMap(sections, '/' + key, pageMap, bundler);
+    fillPageMap(sections, '/' + key, pageMap);
   });
 
-  const resolveLink = (link) => pageMap[link] || link;
+  const resolveLink = (link) => pageMap.links[link] || link;
   const content = Object.keys(sitemap)
     .map(
       (key) => `${JSON.stringify(key)}: {
       "title": ${JSON.stringify(sitemap[key].title)},
-      "sections": [${makeLinks(sitemap[key].sections, '/' + key, resolveLink, bundler)}],
+      "sections": [${makeLinks(sitemap[key].sections, '/' + key, resolveLink)}],
     }`,
     )
     .join(',');
 
-  return `{
-    ${content}
-  }`;
-}
+  generateFile(
+    'sitemap',
+    JSON.stringify(
+      {
+        dependencies: pageMap.dependencies,
+        content: `{
+        ${content}
+      }`,
+      },
+      undefined,
+      2,
+    ),
+    'json',
+  );
+};
+
+exports.readContent = function readContent(bundler) {
+  const sitemap = JSON.parse(readGeneratedFile('sitemap', 'json'));
+
+  for (const dependency of sitemap.dependencies) {
+    bundler.addDependency(dependency, { includedInParent: true });
+  }
+
+  return sitemap.content;
+};
 
 exports.populateCode = `
 const { lazy } = require('react');

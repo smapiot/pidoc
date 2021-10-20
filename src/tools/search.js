@@ -13,6 +13,7 @@ function createSearch() {
   });
 
   const allDocs = readdirSync(generated)
+    .filter((name) => !name.endsWith('.json'))
     .map((name) => readFileSync(resolve(generated, name), 'utf8'))
     .map((raw) => {
       const { source, link, ...meta } = JSON.parse(raw.split('\n').shift().substr(3));

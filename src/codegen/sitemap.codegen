@@ -1,9 +1,9 @@
 const { relative } = require('path');
-const { sitemap, helpers } = require('../tools/meta');
-const { populateCode, makeContent } = require('../tools/content');
+const { helpers } = require('../tools/meta');
+const { populateCode, readContent } = require('../tools/content');
 
 module.exports = function () {
-  const content = makeContent(this, sitemap);
+  const content = readContent(this);
   const path = relative(__dirname, helpers.filter);
 
   return `

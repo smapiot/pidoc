@@ -1,4 +1,4 @@
-const { writeFileSync, mkdirSync, existsSync, readdirSync } = require('fs');
+const { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } = require('fs');
 const { basename, extname, relative, resolve, dirname } = require('path');
 const { generated } = require('./constants');
 const { repository, branch, docsPath, docsFolder } = require('./meta-core');
@@ -103,6 +103,14 @@ function niceName(path) {
   return basename(path).replace(ext, '');
 }
 
+function readGeneratedFile(name, type) {
+  if (existsSync(generated)) {
+    return readFileSync(resolve(generated, `${name}.${type}`), 'utf8');
+  }
+
+  return undefined;
+}
+
 function generateFile(name, content, type = 'codegen') {
   if (!existsSync(generated)) {
     mkdirSync(generated);
@@ -133,6 +141,7 @@ module.exports = {
   getRelativePath,
   getAbsolutePath,
   generateFile,
+  readGeneratedFile,
   getTitle,
   getDocsFrom,
   getName,
