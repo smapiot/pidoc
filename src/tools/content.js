@@ -1,5 +1,5 @@
 const { resolve } = require('path');
-const { docRef, generateFile, readGeneratedFile } = require('./utils');
+const { docRef, generateFile } = require('./utils');
 const { docsPath, baseDir } = require('./meta-core');
 
 function getGeneratorPath(genPath, options) {
@@ -91,30 +91,9 @@ exports.makeContent = function makeContent(sitemap) {
     )
     .join(',');
 
-  generateFile(
-    'sitemap',
-    JSON.stringify(
-      {
-        dependencies: pageMap.dependencies,
-        content: `{
-        ${content}
-      }`,
-      },
-      undefined,
-      2,
-    ),
-    'json',
-  );
-};
+  generateFile('sitemap', `{ ${content} }`, 'js');
 
-exports.readContent = function readContent(bundler) {
-  const sitemap = JSON.parse(readGeneratedFile('sitemap', 'json'));
-
-  for (const dependency of sitemap.dependencies) {
-    bundler.addDependency(dependency, { includedInParent: true });
-  }
-
-  return sitemap.content;
+  return pageMap.dependencies;
 };
 
 exports.populateCode = `

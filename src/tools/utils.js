@@ -103,6 +103,10 @@ function niceName(path) {
   return basename(path).replace(ext, '');
 }
 
+function getGeneratedFilePath(name, type) {
+  return resolve(generated, `${name}.${type}`);
+}
+
 function readGeneratedFile(name, type) {
   if (existsSync(generated)) {
     return readFileSync(resolve(generated, `${name}.${type}`), 'utf8');
@@ -140,6 +144,7 @@ module.exports = {
   makeRelativePath,
   getRelativePath,
   getAbsolutePath,
+  getGeneratedFilePath,
   generateFile,
   readGeneratedFile,
   getTitle,

@@ -1,5 +1,9 @@
 # `piral-docs-tools` Changelog
 
+## 0.11.2 (October 22, 2021)
+
+- Improved dependencies of generated file
+
 ## 0.11.1 (October 21, 2021)
 
 - Optimized for single pass code generation before building

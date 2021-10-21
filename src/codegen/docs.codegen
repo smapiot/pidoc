@@ -1,0 +1,12 @@
+const { sitemap } = require('../tools/meta');
+const { makeContent } = require('../tools/content');
+
+module.exports = function () {
+  const dependencies = makeContent(sitemap);
+
+  for (const dependency of dependencies) {
+    this.addDependency(dependency, { includedInParent: true });
+  }
+
+  return ``;
+};

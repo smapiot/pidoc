@@ -1,10 +1,15 @@
 const { relative } = require('path');
+const { readFileSync } = require('fs');
 const { helpers } = require('../tools/meta');
-const { populateCode, readContent } = require('../tools/content');
+const { populateCode } = require('../tools/content');
+const { getGeneratedFilePath } = require('../tools/utils');
 
 module.exports = function () {
-  const content = readContent(this);
+  const sitemap = getGeneratedFilePath('sitemap', 'js');
+  const content = readFileSync(sitemap, 'utf8');
   const path = relative(__dirname, helpers.filter);
+
+  this.addDependency(sitemap, { includedInParent: true });
 
   return `
 import filterSitemap from ${JSON.stringify(path)};
