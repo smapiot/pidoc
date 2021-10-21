@@ -1,8 +1,17 @@
+const { readFileSync } = require('fs');
 const { populateCode, makeContent } = require('../tools/content');
 const { sitemap } = require('../tools/meta-core');
+const { getGeneratedFilePath } = require('../tools/utils');
 
 module.exports = function () {
-  const content = makeContent(this, sitemap);
+  const dependencies = makeContent(sitemap);
+  const docsitemap = getGeneratedFilePath('sitemap', 'js');
+  const content = readFileSync(docsitemap, 'utf8');
+
+  for (const dependency of dependencies) {
+    this.addDependency(dependency, { includedInParent: true });
+  }
+
   return `${populateCode}
 
 module.exports = function (api) {

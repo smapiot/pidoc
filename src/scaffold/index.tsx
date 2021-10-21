@@ -1,4 +1,4 @@
-import { PiletApi } from 'piral-docs-tools';
+import type { PiletApi } from '<%- sourceName %>';
 
 const createDoclet = require('piral-docs-tools/doclet');
 
