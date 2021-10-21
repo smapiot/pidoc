@@ -9,8 +9,6 @@ module.exports = function () {
   const content = readFileSync(sitemap, 'utf8');
   const path = relative(__dirname, helpers.filter);
 
-  this.addDependency(sitemap, { includedInParent: true });
-
   return `
 import filterSitemap from ${JSON.stringify(path)};
 

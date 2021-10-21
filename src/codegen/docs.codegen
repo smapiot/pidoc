@@ -8,5 +8,5 @@ module.exports = function () {
     this.addDependency(dependency, { includedInParent: true });
   }
 
-  return ``;
+  return `import '../scripts/app.tsx';`;
 };
