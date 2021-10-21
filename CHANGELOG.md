@@ -1,12 +1,18 @@
 # `piral-docs-tools` Changelog
 
-## 0.11.3 (October 22, 2021)
+## 0.11.4 (October 22, 2021)
+
+- Improved multiple-pass compiler
+- Added `publicPath` to config
+- Added `unregister...` APIs
+
+## 0.11.3 (October 21, 2021)
 
 - Fixed issue with doclet generator
 - Added template annotation
 - Improved standard scaffold template
 
-## 0.11.2 (October 22, 2021)
+## 0.11.2 (October 21, 2021)
 
 - Improved dependencies of generated file
 

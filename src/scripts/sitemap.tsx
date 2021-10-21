@@ -102,12 +102,12 @@ export function appendSection(section: SectionInfo, category: string) {
 
   if (parent) {
     const j = parent.length;
-  
+
     if (section.links.length > 0) {
       const prevRoute = lastLink(parent[j - 1]).route;
       navLinks[prevRoute] = [navLinks[prevRoute][0], section.links[0]];
     }
-  
+
     for (let i = 0; i < section.links.length; i++) {
       const prev = section.links[i - 1] || lastLink(parent[j - 1]);
       const curr = section.links[i];
@@ -117,8 +117,19 @@ export function appendSection(section: SectionInfo, category: string) {
       resolvers[curr.route] = parent;
       navLinks[curr.route] = [prev, next];
     }
-  
+
     parent.push(section);
+  }
+
+  return localRoutes;
+}
+
+export function removeSection(section: SectionInfo, category: string) {
+  const parent = resolveSections(`/${category}`);
+  const localRoutes: Record<string, React.ComponentType<RouteComponentProps>> = {};
+
+  if (parent) {
+    //TODO fine and remove sections properly
   }
 
   return localRoutes;

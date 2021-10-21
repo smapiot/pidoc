@@ -4,7 +4,8 @@ const { apps } = require('piral-cli');
 const { packageEmulator, updateExistingJson, readText, updateExistingFile } = require('piral-cli/lib/common');
 const { loadPlugins } = require('piral-cli/lib/plugin');
 const { relative } = require('path');
-const { outputPath, package } = require('../src/tools/meta');
+const { outputPath, package, sitemap, publicUrl } = require('../src/tools/meta');
+const { makeContent } = require('../src/tools/content');
 const { name, version } = require('../package.json');
 
 const baseDir = process.cwd();
@@ -19,6 +20,8 @@ const emulatorApp = `${emulator}/app`;
 const target = `${outputPath}/index.html`;
 const bundlerName = 'parcel';
 
+makeContent(sitemap);
+
 switch (process.argv.pop()) {
   case 'watch':
     return apps
@@ -26,6 +29,7 @@ switch (process.argv.pop()) {
         entry,
         target,
         bundlerName,
+        publicUrl,
       })
       .then(
         () => process.exit(0),
@@ -38,6 +42,7 @@ switch (process.argv.pop()) {
         target,
         bundlerName,
         type: 'emulator-sources',
+        publicUrl,
       })
       .then(() =>
         updateExistingJson(emulator, 'package.json', {
@@ -70,6 +75,7 @@ switch (process.argv.pop()) {
         target,
         bundlerName,
         type: 'release',
+        publicUrl,
       })
       .then(
         () => process.exit(0),

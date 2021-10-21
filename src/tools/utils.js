@@ -116,11 +116,17 @@ function readGeneratedFile(name, type) {
 }
 
 function generateFile(name, content, type = 'codegen') {
+  const path = getGeneratedFilePath(name, type);
+
   if (!existsSync(generated)) {
     mkdirSync(generated);
   }
 
-  writeFileSync(resolve(generated, `${name}.${type}`), content, 'utf8');
+  const oldContent = readFileSync(path, 'utf8');
+
+  if (oldContent !== content) {
+    writeFileSync(path, content, 'utf8');
+  }
 }
 
 function makeFileFilter(fileNames, include, exclude) {

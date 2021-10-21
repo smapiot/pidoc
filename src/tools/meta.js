@@ -6,6 +6,7 @@ const baseDir = meta.baseDir;
 const config = meta.config;
 const defaultsDir = resolve(__dirname, '../defaults');
 const redirects = config.redirects || {};
+const publicUrl = config.publicPath || '/';
 const changelogPath = config.changelogFile && resolve(baseDir, config.changelogFile);
 const sass = {
   variables: resolve(defaultsDir, 'variables.scss'),
@@ -49,4 +50,5 @@ module.exports = {
   helpers,
   layouts,
   redirects,
+  publicUrl,
 };

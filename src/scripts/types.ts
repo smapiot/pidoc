@@ -58,5 +58,7 @@ export interface PiralDocletState {
 
 export interface PiletDocletApi {
   registerDocumentation(section: SectionInfo, category: string): void;
+  unregisterDocumentation(section: SectionInfo, category: string): void;
   registerSearchProvider(cb: () => Promise<any>): void;
+  unregisterSearchProvider(cb: () => Promise<any>): void;
 }
