@@ -1,5 +1,10 @@
 # `piral-docs-tools` Changelog
 
+## 0.11.5 (October 22, 2021)
+
+- Fixed issue with empty generated folder
+- Introduced write flush optimization
+
 ## 0.11.4 (October 22, 2021)
 
 - Improved multiple-pass compiler

@@ -115,17 +115,27 @@ function readGeneratedFile(name, type) {
   return undefined;
 }
 
+const writeFileQueue = {};
+
+function flushWriteQueue() {
+  Object.keys(writeFileQueue).forEach(path => {
+    const content = writeFileQueue[path];
+    console.log('Writing out file', path);
+    writeFileSync(path, content, 'utf8');
+    delete writeFileQueue[path];
+  });
+}
+
 function generateFile(name, content, type = 'codegen') {
   const path = getGeneratedFilePath(name, type);
 
   if (!existsSync(generated)) {
     mkdirSync(generated);
-  }
-
-  const oldContent = readFileSync(path, 'utf8');
-
-  if (oldContent !== content) {
-    writeFileSync(path, content, 'utf8');
+    writeFileQueue[path] = content;
+  } else if (!existsSync(path)) {
+    writeFileQueue[path] = content;
+  } else if (readGeneratedFile(name, type) !== content) {
+    writeFileQueue[path] = content;
   }
 }
 
@@ -152,6 +162,7 @@ module.exports = {
   getAbsolutePath,
   getGeneratedFilePath,
   generateFile,
+  flushWriteQueue,
   readGeneratedFile,
   getTitle,
   getDocsFrom,

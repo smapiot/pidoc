@@ -1,5 +1,5 @@
 const { resolve } = require('path');
-const { docRef, generateFile } = require('./utils');
+const { docRef, generateFile, flushWriteQueue } = require('./utils');
 const { docsPath, baseDir } = require('./meta-core');
 
 function getGeneratorPath(genPath, options) {
@@ -92,6 +92,7 @@ exports.makeContent = function makeContent(sitemap) {
     .join(',');
 
   generateFile('sitemap', `{ ${content} }`, 'js');
+  flushWriteQueue();
 
   return pageMap.dependencies;
 };
