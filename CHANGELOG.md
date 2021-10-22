@@ -1,5 +1,10 @@
 # `piral-docs-tools` Changelog
 
+## 0.12.0 (October 23, 2021)
+
+- Removed dependency on `piral-cli-parcel` (works with any bundler)
+- Added CLI commands for building a pilet
+
 ## 0.11.5 (October 22, 2021)
 
 - Fixed issue with empty generated folder

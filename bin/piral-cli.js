@@ -3,8 +3,9 @@
 const { apps } = require('piral-cli');
 const { packageEmulator, updateExistingJson, readText, updateExistingFile } = require('piral-cli/lib/common');
 const { loadPlugins } = require('piral-cli/lib/plugin');
-const { relative } = require('path');
-const { outputPath, package, sitemap, publicUrl } = require('../src/tools/meta');
+const { readFileSync, writeFileSync } = require('fs');
+const { relative, resolve } = require('path');
+const { outputPath, package, sitemap, publicUrl, title } = require('../src/tools/meta');
 const { makeContent } = require('../src/tools/content');
 const { name, version } = require('../package.json');
 
@@ -16,11 +17,18 @@ loadPlugins();
 
 const entry = `${relative(baseDir, __dirname)}/../src/index.pug`;
 const emulator = `${outputPath}/emulator`;
+const release = `${outputPath}/release`;
 const emulatorApp = `${emulator}/app`;
 const target = `${outputPath}/index.html`;
-const bundlerName = 'parcel';
 
 makeContent(sitemap);
+
+function processHtml(outDir) {
+  const file = resolve(outDir, 'index.html');
+  const content = readFileSync(file, 'utf8');
+  const newContent = content.replace('${title}', title);
+  writeFileSync(file, newContent, 'utf8');
+}
 
 switch (process.argv.pop()) {
   case 'watch':
@@ -28,7 +36,6 @@ switch (process.argv.pop()) {
       .debugPiral(baseDir, {
         entry,
         target,
-        bundlerName,
         publicUrl,
       })
       .then(
@@ -40,10 +47,10 @@ switch (process.argv.pop()) {
       .buildPiral(baseDir, {
         entry,
         target,
-        bundlerName,
         type: 'emulator-sources',
         publicUrl,
       })
+      .then(() => processHtml(emulator))
       .then(() =>
         updateExistingJson(emulator, 'package.json', {
           name: package.name,
@@ -73,10 +80,10 @@ switch (process.argv.pop()) {
       .buildPiral(baseDir, {
         entry,
         target,
-        bundlerName,
         type: 'release',
         publicUrl,
       })
+      .then(() => processHtml(release))
       .then(
         () => process.exit(0),
         () => process.exit(1),
