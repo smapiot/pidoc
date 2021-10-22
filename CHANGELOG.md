@@ -1,9 +1,11 @@
 # `piral-docs-tools` Changelog
 
-## 0.12.0 (October 23, 2021)
+## 0.12.0 (October 24, 2021)
 
-- Removed dependency on `piral-cli-parcel` (works with any bundler)
+- Removed dependency on `piral-cli-parcel` (now works with any bundler)
+- Improved codegen imports to consistently use ESM
 - Added CLI commands for building a pilet
+- Added auto support for `publicPath` in router
 
 ## 0.11.5 (October 22, 2021)
 
