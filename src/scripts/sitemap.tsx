@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Redirect, matchPath, RouteComponentProps } from 'react-router-dom';
 import { NavLink, SectionInfo, SectionLink } from './types';
-
-const sitemap = require('../codegen/sitemap.codegen');
+import sitemap from '../codegen/sitemap.codegen';
 
 function lastLink(sectionInfo: SectionInfo) {
   if (sectionInfo) {

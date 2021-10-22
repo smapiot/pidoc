@@ -120,7 +120,6 @@ const writeFileQueue = {};
 function flushWriteQueue() {
   Object.keys(writeFileQueue).forEach(path => {
     const content = writeFileQueue[path];
-    console.log('Writing out file', path);
     writeFileSync(path, content, 'utf8');
     delete writeFileQueue[path];
   });

@@ -15,7 +15,7 @@ process.env.PIRAL_DOCS_BASE_DIR = baseDir;
 
 loadPlugins();
 
-const entry = `${relative(baseDir, __dirname)}/../src/index.pug`;
+const entry = `${relative(baseDir, __dirname)}/../src/index.html`;
 const emulator = `${outputPath}/emulator`;
 const release = `${outputPath}/release`;
 const emulatorApp = `${emulator}/app`;

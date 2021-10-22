@@ -5,17 +5,7 @@ import { createDocletPlugin } from './plugin';
 import { LoadingIndicator } from './components';
 import { routes } from './sitemap';
 import { Layout } from './Layout';
-
-const {
-  Router,
-  NotFoundPage,
-  requestPilets,
-  setup,
-  plugins,
-  pages,
-  version,
-  updated,
-} = require('../codegen/app.codegen');
+import { Router, NotFoundPage, requestPilets, setup, plugins, pages, version, updated } from '../codegen/app.codegen';
 
 const instance = createInstance({
   requestPilets,

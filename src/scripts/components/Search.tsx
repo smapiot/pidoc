@@ -24,7 +24,7 @@ function useSearch(open: boolean): [string, (value: string) => void, Array<any>]
                   field: ['content', 'keywords', 'title'],
                 },
               });
-              index.import(docs, { serialize: false });
+              index.import(docs.default, { serialize: false });
               indices.push(index);
             }),
           ),

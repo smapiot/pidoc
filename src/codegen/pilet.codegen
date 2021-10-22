@@ -14,7 +14,7 @@ module.exports = function () {
 
   return `${populateCode}
 
-module.exports = function (api) {
+export default function (api) {
   const sitemap = ${content};
   const categories = Object.keys(sitemap);
 

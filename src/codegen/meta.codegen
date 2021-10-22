@@ -1,0 +1,9 @@
+const { publicUrl } = require('../tools/meta');
+
+module.exports = function () {
+
+  return `
+const publicUrl = ${JSON.stringify(publicUrl)};
+export { publicUrl };
+`;
+};

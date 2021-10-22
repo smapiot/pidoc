@@ -1,1 +1,1 @@
-module.exports = require('./src/codegen/pilet.codegen');
+module.exports = require('./src/codegen/pilet.codegen').default;

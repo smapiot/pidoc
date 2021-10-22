@@ -2,5 +2,5 @@ const { createSearch } = require('../tools/search');
 
 module.exports = function () {
   const exportedIndex = createSearch();
-  return `module.exports = ${JSON.stringify(exportedIndex)}`;
+  return `export default ${JSON.stringify(exportedIndex)}`;
 };

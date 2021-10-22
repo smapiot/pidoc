@@ -14,6 +14,6 @@ import filterSitemap from ${JSON.stringify(path)};
 
 ${populateCode}
 
-module.exports = filterSitemap(${content});
+export default filterSitemap(${content});
 `;
 };
