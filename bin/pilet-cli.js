@@ -17,12 +17,13 @@ const target = `${outputPath}/index.js`;
 makeContent(sitemap);
 
 switch (process.argv.pop()) {
+  case 'run':
+  case 'debug':
   case 'watch':
     return apps
       .debugPilet(baseDir, {
         entry,
         target,
-        publicUrl,
       })
       .then(
         () => process.exit(0),
@@ -31,6 +32,7 @@ switch (process.argv.pop()) {
           process.exit(1);
         },
       );
+  case 'bundle':
   case 'build':
   default:
     return apps

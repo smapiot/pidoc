@@ -31,6 +31,8 @@ function processHtml(outDir) {
 }
 
 switch (process.argv.pop()) {
+  case 'run':
+  case 'debug':
   case 'watch':
     return apps
       .debugPiral(baseDir, {
@@ -45,6 +47,7 @@ switch (process.argv.pop()) {
           process.exit(1);
         },
       );
+  case 'emulator':
   case 'sdk':
     return apps
       .buildPiral(baseDir, {
@@ -80,6 +83,7 @@ switch (process.argv.pop()) {
           process.exit(1);
         },
       );
+  case 'bundle':
   case 'build':
   default:
     return apps

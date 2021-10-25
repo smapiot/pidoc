@@ -1,5 +1,10 @@
 # `piral-docs-tools` Changelog
 
+## 0.12.2 (October 26, 2021)
+
+- Fixed the pilet watch command
+- Added aliases for the build commands
+
 ## 0.12.1 (October 26, 2021)
 
 - Fixed HTML transformation in emulator build
