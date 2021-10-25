@@ -40,7 +40,10 @@ switch (process.argv.pop()) {
       })
       .then(
         () => process.exit(0),
-        () => process.exit(1),
+        (err) => {
+          console.error(err);
+          process.exit(1);
+        },
       );
   case 'sdk':
     return apps
@@ -50,7 +53,7 @@ switch (process.argv.pop()) {
         type: 'emulator-sources',
         publicUrl,
       })
-      .then(() => processHtml(emulator))
+      .then(() => processHtml(emulatorApp))
       .then(() =>
         updateExistingJson(emulator, 'package.json', {
           name: package.name,
@@ -72,7 +75,10 @@ switch (process.argv.pop()) {
       .then(() => packageEmulator(emulator))
       .then(
         () => process.exit(0),
-        () => process.exit(1),
+        (err) => {
+          console.error(err);
+          process.exit(1);
+        },
       );
   case 'build':
   default:
@@ -86,6 +92,9 @@ switch (process.argv.pop()) {
       .then(() => processHtml(release))
       .then(
         () => process.exit(0),
-        () => process.exit(1),
+        (err) => {
+          console.error(err);
+          process.exit(1);
+        },
       );
 }

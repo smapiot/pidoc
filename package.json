@@ -1,6 +1,6 @@
 {
   "name": "piral-docs-tools",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "description": "Tools for generating a dynamic documentation experience like for docs.piral.io.",
   "app": "./src/index.html",
   "main": "./src/tools/index.js",

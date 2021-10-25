@@ -1,5 +1,10 @@
 # `piral-docs-tools` Changelog
 
+## 0.12.1 (October 26, 2021)
+
+- Fixed HTML transformation in emulator build
+- Added error output when commands fail
+
 ## 0.12.0 (October 24, 2021)
 
 - Removed dependency on `piral-cli-parcel` (now works with any bundler)

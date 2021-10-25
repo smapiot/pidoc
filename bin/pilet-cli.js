@@ -26,7 +26,10 @@ switch (process.argv.pop()) {
       })
       .then(
         () => process.exit(0),
-        () => process.exit(1),
+        (err) => {
+          console.error(err);
+          process.exit(1);
+        },
       );
   case 'build':
   default:
@@ -37,6 +40,9 @@ switch (process.argv.pop()) {
       })
       .then(
         () => process.exit(0),
-        () => process.exit(1),
+        (err) => {
+          console.error(err);
+          process.exit(1);
+        },
       );
 }
