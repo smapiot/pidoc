@@ -1,5 +1,10 @@
 # `piral-docs-tools` Changelog
 
+## 0.12.3 (October 29, 2021)
+
+- Support for webpack with SASS variables
+- Improved docs generation
+
 ## 0.12.2 (October 26, 2021)
 
 - Fixed the pilet watch command

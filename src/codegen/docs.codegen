@@ -1,12 +1,15 @@
-const { sitemap } = require('../tools/meta');
+const { sitemap, styles } = require('../tools/meta');
 const { makeContent } = require('../tools/content');
 
 module.exports = function () {
   const dependencies = makeContent(sitemap);
+  const sheets = styles.map((style) => `import ${JSON.stringify(relative(__dirname, style))};`);
+  sheets.push(`import '../styles/index.scss';`);
 
   for (const dependency of dependencies) {
     this.addDependency(dependency, { includedInParent: true });
   }
 
-  return `import '../scripts/app.tsx';`;
+  return `${sheets.join('\n')}
+import '../scripts/app.tsx';`;
 };

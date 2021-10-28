@@ -1,5 +1,5 @@
 const { relative } = require('path');
-const { package, changelogPath, redirects, pages, components, helpers, styles } = require('../tools/meta');
+const { package, changelogPath, redirects, pages, components, helpers } = require('../tools/meta');
 const { getChangelogVersion } = require('../tools/version');
 
 module.exports = function () {
@@ -10,7 +10,6 @@ module.exports = function () {
   const setupPath = relative(__dirname, helpers.setup);
   const pluginsPath = relative(__dirname, helpers.plugins);
   const requestPiletsPath = relative(__dirname, helpers.requestPilets);
-  const sheets = styles.map((style) => `import ${JSON.stringify(relative(__dirname, style))};`).join('\n');
   const routes = [
     ...Object.keys(redirects).map(
       (from) =>
@@ -31,7 +30,6 @@ import Router from ${JSON.stringify(routerPath)};
 import requestPilets from ${JSON.stringify(requestPiletsPath)};
 import plugins from ${JSON.stringify(pluginsPath)};
 import setup from ${JSON.stringify(setupPath)};
-${sheets}
 
 function replaceAllParams(path, params) {
   Object.keys(params).forEach(key => {
