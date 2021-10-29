@@ -18,6 +18,7 @@ module.exports = {
   author,
   branch,
   repository: config.repositoryUrl,
+  bundlerName: config.bundlerName,
   rootPath,
   skipEditLabel,
   outputPath,

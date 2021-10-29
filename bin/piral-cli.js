@@ -5,7 +5,7 @@ const { packageEmulator, updateExistingJson, readText, updateExistingFile } = re
 const { loadPlugins } = require('piral-cli/lib/plugin');
 const { readFileSync, writeFileSync } = require('fs');
 const { relative, resolve } = require('path');
-const { outputPath, package, sitemap, publicUrl, title } = require('../src/tools/meta');
+const { outputPath, package, sitemap, publicUrl, title, bundlerName } = require('../src/tools/meta');
 const { makeContent } = require('../src/tools/content');
 const { name, version } = require('../package.json');
 
@@ -38,6 +38,7 @@ switch (process.argv.pop()) {
       .debugPiral(baseDir, {
         entry,
         target,
+        bundlerName,
         publicUrl,
       })
       .then(
@@ -53,6 +54,7 @@ switch (process.argv.pop()) {
       .buildPiral(baseDir, {
         entry,
         target,
+        bundlerName,
         type: 'emulator-sources',
         publicUrl,
       })
@@ -90,6 +92,7 @@ switch (process.argv.pop()) {
       .buildPiral(baseDir, {
         entry,
         target,
+        bundlerName,
         type: 'release',
         publicUrl,
       })

@@ -2,7 +2,7 @@
 
 const { apps } = require('piral-cli');
 const { loadPlugins } = require('piral-cli/lib/plugin');
-const { outputPath, sitemap } = require('../src/tools/meta');
+const { outputPath, sitemap, bundlerName } = require('../src/tools/meta');
 const { makeContent } = require('../src/tools/content');
 
 const baseDir = process.cwd();
@@ -24,6 +24,7 @@ switch (process.argv.pop()) {
       .debugPilet(baseDir, {
         entry,
         target,
+        bundlerName,
       })
       .then(
         () => process.exit(0),
@@ -39,6 +40,7 @@ switch (process.argv.pop()) {
       .buildPilet(baseDir, {
         entry,
         target,
+        bundlerName,
       })
       .then(
         () => process.exit(0),

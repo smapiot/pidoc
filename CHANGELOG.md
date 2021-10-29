@@ -4,6 +4,7 @@
 
 - Support for webpack with SASS variables
 - Improved docs generation
+- Added ability to configure the bundler
 
 ## 0.12.2 (October 26, 2021)
 
