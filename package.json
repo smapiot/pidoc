@@ -78,7 +78,6 @@
     "@types/react-router-dom": "^5.1.7",
     "piral-core": "latest",
     "piral-cli": "latest",
-    "piral-cli-parcel": "latest",
     "prettier": "^2.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
