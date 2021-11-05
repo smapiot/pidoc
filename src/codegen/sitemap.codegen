@@ -1,8 +1,10 @@
-const { relative } = require('path');
+const { posix } = require('path');
 const { readFileSync } = require('fs');
 const { helpers } = require('../tools/meta');
 const { populateCode } = require('../tools/content');
 const { getGeneratedFilePath } = require('../tools/utils');
+
+const relative = posix.relative;
 
 module.exports = function () {
   const sitemap = getGeneratedFilePath('sitemap', 'js');

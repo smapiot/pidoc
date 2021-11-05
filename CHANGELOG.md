@@ -1,5 +1,11 @@
 # `piral-docs-tools` Changelog
 
+## 0.12.4 (November 4, 2021)
+
+- Fixed missing `relative` import
+- Fixed codegen paths on Windows to use posix
+- Handle SPA / relative links in Markdown correctly
+
 ## 0.12.3 (October 29, 2021)
 
 - Support for webpack with SASS variables

@@ -1,8 +1,8 @@
 import * as React from 'react';
+import { useGlobalState } from 'piral-core';
 import { BrowserRouter } from 'react-router-dom';
-import { publicUrl } from '../codegen/meta.codegen';
 
-function getBasename() {
+function getBasename(publicUrl: string) {
   const prefix = publicUrl.endsWith('/') ? publicUrl.substr(0, publicUrl.length - 1) : publicUrl;
   const [, version] = location.pathname.substr(prefix.length).split('/');
 
@@ -13,4 +13,8 @@ function getBasename() {
   return publicUrl;
 }
 
-export default ({ children }) => <BrowserRouter basename={getBasename()}>{children}</BrowserRouter>;
+export default ({ children }) => {
+  const publicUrl = useGlobalState((s) => s.docs.basePath);
+  const path = getBasename(publicUrl);
+  return <BrowserRouter basename={path}>{children}</BrowserRouter>;
+};

@@ -1,5 +1,8 @@
+const { posix } = require('path');
 const { sitemap, styles } = require('../tools/meta');
 const { makeContent } = require('../tools/content');
+
+const relative = posix.relative;
 
 module.exports = function () {
   const dependencies = makeContent(sitemap);

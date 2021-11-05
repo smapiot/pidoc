@@ -53,6 +53,7 @@ export interface PiralDocletState {
   docs: {
     version: string;
     updated: string;
+    basePath: string;
   };
 }
 

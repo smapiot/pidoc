@@ -1,5 +1,7 @@
-const { relative } = require('path');
+const { posix } = require('path');
 const { components, name } = require('../tools/meta');
+
+const relative = posix.relative;
 
 module.exports = function () {
   const footerPath = relative(__dirname, components.footer);

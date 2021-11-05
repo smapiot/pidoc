@@ -1,6 +1,8 @@
-const { relative } = require('path');
-const { package, changelogPath, redirects, pages, components, helpers } = require('../tools/meta');
+const { posix } = require('path');
+const { package, changelogPath, redirects, pages, components, helpers, publicUrl } = require('../tools/meta');
 const { getChangelogVersion } = require('../tools/version');
+
+const relative = posix.relative;
 
 module.exports = function () {
   const updated = process.env.BUILD_TIME;
@@ -42,10 +44,11 @@ function replaceAllParams(path, params) {
 const NotFoundPage = React.lazy(() => import(${JSON.stringify(notFoundPagePath)}));
 const version = ${JSON.stringify(version) || 'undefined'};
 const updated = ${JSON.stringify(updated)};
+const publicUrl = ${JSON.stringify(publicUrl)};
 const pages = {
   ${routes}
 };
 
-export { Router, NotFoundPage, requestPilets, pages, plugins, setup, version, updated };
+export { Router, NotFoundPage, requestPilets, pages, plugins, setup, version, updated, publicUrl };
 `;
 };

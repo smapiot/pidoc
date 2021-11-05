@@ -5,7 +5,17 @@ import { createDocletPlugin } from './plugin';
 import { LoadingIndicator } from './components';
 import { routes } from './sitemap';
 import { Layout } from './Layout';
-import { Router, NotFoundPage, requestPilets, setup, plugins, pages, version, updated } from '../codegen/app.codegen';
+import {
+  Router,
+  NotFoundPage,
+  requestPilets,
+  setup,
+  plugins,
+  pages,
+  version,
+  updated,
+  publicUrl,
+} from '../codegen/app.codegen';
 
 const instance = createInstance({
   requestPilets,
@@ -13,6 +23,7 @@ const instance = createInstance({
     docs: {
       version,
       updated,
+      basePath: publicUrl,
     },
     components: {
       Router,
