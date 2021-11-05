@@ -12,18 +12,20 @@ export const Markdown: React.FC<MarkdownProps> = ({ content, link, editLabel = '
   const publicUrl = useGlobalState((s) => s.docs.basePath);
   const history = useHistory();
   const adjustLinks = (container: HTMLDivElement) => {
-    const links = container.querySelectorAll('a');
+    if (container) {
+      const links = container.querySelectorAll('a');
 
-    links.forEach((link) => {
-      const path = link.getAttribute('href');
+      links.forEach((link) => {
+        const path = link.getAttribute('href');
 
-      if (path.indexOf(publicUrl) === 0) {
-        link.addEventListener('click', (ev) => {
-          ev.preventDefault();
-          history.push(path);
-        });
-      }
-    });
+        if (path.indexOf(publicUrl) === 0) {
+          link.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            history.push(path);
+          });
+        }
+      });
+    }
   };
 
   return (

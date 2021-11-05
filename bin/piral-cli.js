@@ -40,6 +40,12 @@ switch (process.argv.pop()) {
         target,
         bundlerName,
         publicUrl,
+        hooks: {
+          afterBuild({ bundler }) {
+            const { dir } = bundler.bundle;
+            processHtml(dir);
+          },
+        },
       })
       .then(
         () => process.exit(0),

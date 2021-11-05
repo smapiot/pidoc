@@ -1,5 +1,10 @@
 # `piral-docs-tools` Changelog
 
+## 0.12.5 (November 5, 2021)
+
+- Fixed checking for `container`
+- Added HTML modification during debug
+
 ## 0.12.4 (November 4, 2021)
 
 - Fixed missing `relative` import
