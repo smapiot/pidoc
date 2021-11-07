@@ -1,17 +1,15 @@
-const { posix } = require('path');
 const { package, changelogPath, redirects, pages, components, helpers, publicUrl } = require('../tools/meta');
+const { makeRelativePath } = require('../tools/utils');
 const { getChangelogVersion } = require('../tools/version');
-
-const relative = posix.relative;
 
 module.exports = function () {
   const updated = process.env.BUILD_TIME;
   const version = changelogPath ? getChangelogVersion(changelogPath) : package.version;
-  const routerPath = relative(__dirname, components.router);
-  const notFoundPagePath = relative(__dirname, components.notFoundPage);
-  const setupPath = relative(__dirname, helpers.setup);
-  const pluginsPath = relative(__dirname, helpers.plugins);
-  const requestPiletsPath = relative(__dirname, helpers.requestPilets);
+  const routerPath = makeRelativePath(__dirname, components.router);
+  const notFoundPagePath = makeRelativePath(__dirname, components.notFoundPage);
+  const setupPath = makeRelativePath(__dirname, helpers.setup);
+  const pluginsPath = makeRelativePath(__dirname, helpers.plugins);
+  const requestPiletsPath = makeRelativePath(__dirname, helpers.requestPilets);
   const routes = [
     ...Object.keys(redirects).map(
       (from) =>
@@ -21,7 +19,7 @@ module.exports = function () {
     ),
     ...Object.keys(pages).map(
       (path) =>
-        `${JSON.stringify(path)}: React.lazy(() => import(${JSON.stringify(relative(__dirname, pages[path]))}))`,
+        `${JSON.stringify(path)}: React.lazy(() => import(${JSON.stringify(makeRelativePath(__dirname, pages[path]))}))`,
     ),
   ].join(', ');
 

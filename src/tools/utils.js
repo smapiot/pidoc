@@ -1,5 +1,5 @@
 const { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } = require('fs');
-const { basename, extname, relative, resolve, dirname } = require('path');
+const { basename, extname, relative, resolve, dirname, sep, posix } = require('path');
 const { generated } = require('./constants');
 const { repository, branch, docsPath, docsFolder } = require('./meta-core');
 
@@ -44,7 +44,7 @@ function getName(file) {
 }
 
 function makeRelativePath(baseDir, target) {
-  return relative(baseDir, target).split('\\').join('/');
+  return relative(baseDir, target).split(sep).join(posix.sep);
 }
 
 function getAbsolutePath(path, basePath = docsPath) {

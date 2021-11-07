@@ -1,15 +1,13 @@
-const { posix } = require('path');
 const { readFileSync } = require('fs');
 const { helpers } = require('../tools/meta');
+const { makeRelativePath } = require('../tools/utils');
 const { populateCode } = require('../tools/content');
 const { getGeneratedFilePath } = require('../tools/utils');
-
-const relative = posix.relative;
 
 module.exports = function () {
   const sitemap = getGeneratedFilePath('sitemap', 'js');
   const content = readFileSync(sitemap, 'utf8');
-  const path = relative(__dirname, helpers.filter);
+  const path = makeRelativePath(__dirname, helpers.filter);
 
   return `
 import filterSitemap from ${JSON.stringify(path)};

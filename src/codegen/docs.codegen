@@ -1,12 +1,10 @@
-const { posix } = require('path');
 const { sitemap, styles } = require('../tools/meta');
+const { makeRelativePath } = require('../tools/utils');
 const { makeContent } = require('../tools/content');
-
-const relative = posix.relative;
 
 module.exports = function () {
   const dependencies = makeContent(sitemap);
-  const sheets = styles.map((style) => `import ${JSON.stringify(relative(__dirname, style))};`);
+  const sheets = styles.map((style) => `import ${JSON.stringify(makeRelativePath(__dirname, style))};`);
   sheets.push(`import '../styles/index.scss';`);
 
   for (const dependency of dependencies) {

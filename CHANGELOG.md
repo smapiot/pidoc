@@ -1,5 +1,9 @@
 # `piral-docs-tools` Changelog
 
+## 0.12.6 (November 5, 2021)
+
+- Fixed relative paths in Windows
+
 ## 0.12.5 (November 5, 2021)
 
 - Fixed checking for `container`
