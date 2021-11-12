@@ -6,7 +6,7 @@
 
 # [`piral-docs-tools`](https://docs.piral.io) &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/smapiot/piral-docs-tools/blob/main/LICENSE)
 
-The tools for making the documentation page of the Piral project. You can find it at [docs.piral.io](https://docs.piral.io).
+The tools for making the documentation page of the Piral project (and more). You can find it at [docs.piral.io](https://docs.piral.io).
 
 ## Installation
 
@@ -19,7 +19,7 @@ npm i piral-docs-tool --save-dev
 A couple of peer dependencies also need to be resolved. If can install all peer dependencies using:
 
 ```sh
-npm i piral-core piral-cli piral-cli-parcel react react-dom react-router-dom --save-dev
+npm i piral-core piral-cli piral-cli-webpack5 react react-dom react-router-dom --save-dev
 ```
 
 ## Configuration
@@ -48,6 +48,7 @@ Place a file called *docs.config.json* in the project folder where `piral-docs` 
     "infoBar": "./src/InfoBar.tsx",
     "breadcrumbs": "./src/Breadcrumbs.tsx",
     "footer": "./src/Footer.tsx",
+    "header": "./src/Header.tsx",
     "notFoundPage": "./src/NotFoundPage.tsx"
   },
   "pages": {
@@ -134,4 +135,4 @@ interface Sitemap {
 
 ## License
 
-Thest tools are released using the MIT license. For more information see the [license file](./LICENSE).
+The `piral-docs-tools` package is released using the MIT license. For more information see the [license file](./LICENSE).

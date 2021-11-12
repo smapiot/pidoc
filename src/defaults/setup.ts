@@ -1,3 +1,3 @@
-import type { PiletApi } from "piral-core";
+import type { PiletApi } from 'piral-core';
 
 export default function setup(api: PiletApi) {}

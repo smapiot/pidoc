@@ -18,9 +18,11 @@ const pages = {
 };
 const components = {
   footer: resolve(defaultsDir, 'Footer.tsx'),
+  header: resolve(defaultsDir, 'Header.tsx'),
   logo: resolve(defaultsDir, 'Logo.tsx'),
   infoBar: resolve(defaultsDir, 'InfoBar.tsx'),
   breadcrumbs: resolve(defaultsDir, 'Breadcrumbs.tsx'),
+  sectionNav: resolve(defaultsDir, 'SectionNav.tsx'),
   router: resolve(defaultsDir, 'Router.tsx'),
   notFoundPage: resolve(defaultsDir, 'NotFoundPage.tsx'),
   ...normalizeObj(baseDir, config.components),

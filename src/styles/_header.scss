@@ -34,14 +34,13 @@ header nav {
   }
 
   @media (max-width: $docs-mobile-brk) {
+    nav[data-open=true] .menu {
+      display: block;
+    }
+
     .menu {
       display: none;
       flex: 1 100%;
-
-      &.active {
-        display: block;
-      }
-
       flex-direction: column;
 
       > li {

@@ -9,6 +9,32 @@ declare module 'piral-core/lib/types/custom' {
   interface PiralCustomState extends PiralDocletState {}
 }
 
+export interface PiralDocsBreadcrumbsComponentProps {}
+
+export interface PiralDocsFooterComponentProps {}
+
+export interface PiralDocsHeaderComponentProps {
+  title: React.ReactNode;
+  search: React.ReactNode;
+  logo: React.ReactNode;
+  nav: React.ReactNode;
+}
+
+export interface PiralDocsInfoBarComponentProps {}
+
+export interface PiralDocsLayoutComponentProps {}
+
+export interface PiralDocsLogoComponentProps {}
+
+export interface PiralDocsNotFoundPageComponentProps {}
+
+export interface PiralDocsRouterComponentProps {}
+
+export interface PiralDocsSectionNavComponentProps {
+  prev: SectionLink;
+  next: SectionLink;
+}
+
 export interface SectionLink {
   id: string;
   route: string;

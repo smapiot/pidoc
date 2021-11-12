@@ -1,3 +1,6 @@
 import * as React from 'react';
+import { PiralDocsFooterComponentProps } from '../scripts/types';
 
-export default ({ children }) => <>{children}</>;
+const Footer: React.FC<PiralDocsFooterComponentProps> = ({ children }) => <>{children}</>;
+
+export default Footer;

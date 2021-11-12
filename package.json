@@ -1,12 +1,13 @@
 {
   "name": "piral-docs-tools",
-  "version": "0.12.6",
+  "version": "0.13.0",
   "description": "Tools for generating a dynamic documentation experience like for docs.piral.io.",
   "app": "./src/index.html",
   "main": "./src/tools/index.js",
   "typings": "./src/scripts/types.ts",
   "scripts": {
     "build": "echo \"Error: no build specified\"",
+    "check": "tsc --noEmit",
     "lint": "echo \"Error: no lint specified\"",
     "test": "echo \"Error: no test specified\""
   },
@@ -62,7 +63,8 @@
     "markdown-it-video": "^0.6.3",
     "pug": "^3.0.2",
     "stickyfilljs": "^2.1.0",
-    "yaml": "^1.10.2"
+    "yaml": "^1.10.2",
+    "yargs": "^15.4.1"
   },
   "peerDependencies": {
     "piral-core": "*",
@@ -76,6 +78,7 @@
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.5",
     "@types/react-router-dom": "^5.1.7",
+    "@types/yargs": "^15.0.4",
     "piral-core": "latest",
     "piral-cli": "latest",
     "prettier": "^2.3.0",

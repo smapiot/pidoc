@@ -1,4 +1,4 @@
-import type { PiralPlugin } from "piral-core";
+import type { PiralPlugin } from 'piral-core';
 
 const plugins: Array<PiralPlugin> = [];
 

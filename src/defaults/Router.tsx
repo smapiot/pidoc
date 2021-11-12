@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useGlobalState } from 'piral-core';
 import { BrowserRouter } from 'react-router-dom';
+import { PiralDocsRouterComponentProps } from '../scripts/types';
 
 function getBasename(publicUrl: string) {
   const prefix = publicUrl.endsWith('/') ? publicUrl.substr(0, publicUrl.length - 1) : publicUrl;
@@ -13,8 +14,10 @@ function getBasename(publicUrl: string) {
   return publicUrl;
 }
 
-export default ({ children }) => {
+const Router: React.FC<PiralDocsRouterComponentProps> = ({ children }) => {
   const publicUrl = useGlobalState((s) => s.docs.basePath);
   const path = getBasename(publicUrl);
   return <BrowserRouter basename={path}>{children}</BrowserRouter>;
 };
+
+export default Router;

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useLocation, Link } from 'react-router-dom';
-import { resolveNavigation } from '../sitemap';
+import { Link } from 'react-router-dom';
+import { PiralDocsSectionNavComponentProps } from '../scripts/types';
 
 const ArrowLeft: React.FC = () => (
   <div className="nav-button">
@@ -18,10 +18,7 @@ const ArrowRight: React.FC = () => (
   </div>
 );
 
-export const QuickNav: React.FC = () => {
-  const { pathname } = useLocation();
-  const [prev, next] = React.useMemo(() => resolveNavigation(pathname), [pathname]);
-
+const SectionNav: React.FC<PiralDocsSectionNavComponentProps> = ({ prev, next }) => {
   return (
     <div className="quick-nav">
       <nav className="layout-container">
@@ -51,3 +48,5 @@ export const QuickNav: React.FC = () => {
     </div>
   );
 };
+
+export default SectionNav;

@@ -3,17 +3,21 @@ const { makeRelativePath } = require('../tools/utils');
 
 module.exports = function () {
   const footerPath = makeRelativePath(__dirname, components.footer);
+  const headerPath = makeRelativePath(__dirname, components.header);
   const logoPath = makeRelativePath(__dirname, components.logo);
   const infoBarPath = makeRelativePath(__dirname, components.infoBar);
   const breadcrumbsPath = makeRelativePath(__dirname, components.breadcrumbs);
+  const sectionNavPath = makeRelativePath(__dirname, components.sectionNav);
   return `
 import Footer from ${JSON.stringify(footerPath)};
+import Header from ${JSON.stringify(headerPath)};
 import Logo from ${JSON.stringify(logoPath)};
 import InfoBar from ${JSON.stringify(infoBarPath)};
 import Breadcrumbs from ${JSON.stringify(breadcrumbsPath)};
+import SectionNav from ${JSON.stringify(sectionNavPath)};
 
 const brandName = ${JSON.stringify(name)};
 
-export { Footer, Logo, InfoBar, Breadcrumbs, brandName };
+export { Footer, Header, Logo, InfoBar, Breadcrumbs, SectionNav, brandName };
 `;
 };

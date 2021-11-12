@@ -13,13 +13,11 @@ function renderNavItems(items: Array<React.ReactNode>) {
   );
 }
 
-export interface TopNavProps {
-  active?: boolean;
-}
+export interface TopNavProps {}
 
-export const TopNav: React.FC<TopNavProps> = ({ active }) => {
+export const TopNav: React.FC<TopNavProps> = () => {
   return (
-    <ul className={active ? 'menu active' : 'menu'}>
+    <ul className="menu">
       {topNavItems.map((item) => (
         <li key={item.link}>
           <NavLink to={item.link}>{item.title}</NavLink>

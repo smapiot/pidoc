@@ -1,5 +1,10 @@
 # `piral-docs-tools` Changelog
 
+## 0.13.0 (tbd)
+
+- Improved CLI commands (support for flags etc.)
+- Added support for templates
+
 ## 0.12.6 (November 5, 2021)
 
 - Fixed relative paths in Windows

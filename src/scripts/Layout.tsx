@@ -1,57 +1,24 @@
 import * as React from 'react';
-import { Link, Route } from 'react-router-dom';
-import { useGlobalState } from 'piral-core';
-import { Search, QuickNav, TopNav, LoadingIndicator, ScrollToTop } from './components';
-import { brandName, Footer, Logo, InfoBar } from '../codegen/layout.codegen';
+import { Route, useLocation } from 'react-router-dom';
+import { resolveNavigation } from './sitemap';
+import { Search, TopNav, LoadingIndicator, ScrollToTop } from './components';
+import { brandName, Footer, Header, Logo, InfoBar, SectionNav } from '../codegen/layout.codegen';
 
-export const Layout: React.FC = ({ children }) => {
-  const [active, setActive] = React.useState(false);
-  const version = useGlobalState(s => s.docs.version);
-  const updated = useGlobalState(s => s.docs.updated);
-  const toggleActive = React.useCallback(() => setActive((active) => !active), []);
-
-  return (
-    <>
-      <Route component={ScrollToTop} />
-      <header>
-        <div className="layout-container header">
-          <div className="logo">
-            <Link to="/">
-              <Logo />
-            </Link>
-            <span className="brand-name">{brandName}</span>
-            <span className="brand-suffix">Docs</span>
-          </div>
-          <Search />
-          <div className="hamburger">
-            <a href="#" onClick={toggleActive}>
-              <i className="fas fa-bars" />
-            </a>
-          </div>
-          <div className="version-info">
-            {version && (
-              <>
-                <i className="fas fa-code-branch" />v{version}
-              </>
-            )}
-            {updated && (
-              <>
-                <i className="far fa-clock" />
-                Updated {updated}
-              </>
-            )}
-          </div>
-        </div>
-        <nav className="layout-container">
-          <TopNav active={active} />
-        </nav>
-      </header>
-      <InfoBar />
-      <div className="layout-container content">
-        <React.Suspense fallback={<LoadingIndicator />}>{children}</React.Suspense>
-      </div>
-      <QuickNav />
-      <Footer />
-    </>
-  );
+const QuickNav: React.FC = () => {
+  const { pathname } = useLocation();
+  const [prev, next] = React.useMemo(() => resolveNavigation(pathname), [pathname]);
+  return <SectionNav prev={prev} next={next} />;
 };
+
+export const Layout: React.FC = ({ children }) => (
+  <>
+    <Route component={ScrollToTop} />
+    <Header title={brandName} nav={<TopNav />} search={<Search />} logo={<Logo />} />
+    <InfoBar />
+    <div className="layout-container content">
+      <React.Suspense fallback={<LoadingIndicator />}>{children}</React.Suspense>
+    </div>
+    <QuickNav />
+    <Footer title={brandName} />
+  </>
+);

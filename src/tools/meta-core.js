@@ -1,7 +1,15 @@
 const { resolve } = require('path');
+const { existsSync } = require('fs');
 
 const baseDir = process.env.PIRAL_DOCS_BASE_DIR || process.cwd();
-const config = require(resolve(baseDir, 'docs.config.json'));
+const configFileName = 'docs.config.json';
+const configPath = resolve(baseDir, configFileName);
+
+if (!existsSync(configPath)) {
+  throw new Error(`Missing file "${configFileName}". This file should be located in "${baseDir}".`);
+}
+
+const config = require(configPath);
 const packageRoot = config.packageRoot || baseDir;
 const package = require(resolve(baseDir, packageRoot, 'package.json'));
 const author = config.author || 'smapiot';
