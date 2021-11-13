@@ -7,6 +7,7 @@ const config = meta.config;
 const defaultsDir = resolve(__dirname, '../defaults');
 const redirects = config.redirects || {};
 const publicUrl = config.publicPath || '/';
+const name = config.name || 'Project';
 const changelogPath = config.changelogFile && resolve(baseDir, config.changelogFile);
 const sass = {
   variables: resolve(defaultsDir, 'variables.scss'),
@@ -41,9 +42,9 @@ const layouts = {
 
 module.exports = {
   ...meta,
-  title: config.title || config.name,
-  name: config.name,
-  description: config.description,
+  title: config.title || name,
+  name,
+  description: config.description || '',
   changelogPath,
   components,
   styles,

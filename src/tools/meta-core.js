@@ -16,9 +16,9 @@ const author = config.author || 'smapiot';
 const branch = config.branch || 'master';
 const docsFolder = config.docsDirName || 'docs';
 const skipEditLabel = config.skipEditLabel || false;
-const sitemap = config.sitemap;
-const rootPath = resolve(baseDir, config.rootDir);
-const outputPath = resolve(baseDir, config.outputDir);
+const sitemap = config.sitemap || {};
+const rootPath = resolve(baseDir, config.rootDir || '.');
+const outputPath = resolve(baseDir, config.outputDir || 'dist');
 
 module.exports = {
   config,

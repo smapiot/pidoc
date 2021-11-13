@@ -4,6 +4,8 @@
 
 - Improved CLI commands (support for flags etc.)
 - Added support for templates
+- Added types of config
+- Added support for `Header` and `SectionNav` component
 
 ## 0.12.6 (November 5, 2021)
 

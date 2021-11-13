@@ -89,3 +89,112 @@ export interface PiletDocletApi {
   registerSearchProvider(cb: () => Promise<any>): void;
   unregisterSearchProvider(cb: () => Promise<any>): void;
 }
+
+export interface PiralDocsFragmentConfig {
+  /**
+   * @default '.'
+   */
+  rootDir: string;
+  /**
+   * @default 'dist'
+   */
+  outputDir: string;
+  /**
+   * @default process.cwd()
+   */
+  packageRoot: string;
+  /**
+   * @default 'smapiot'
+   */
+  author: string;
+  /**
+   * @default 'master'
+   */
+  branch: string;
+  /**
+   * @default 'docs'
+   */
+  docsDirName: string;
+  /**
+   * @default false
+   */
+  skipEditLabel: boolean;
+  /**
+   * @default {}
+   */
+  sitemap: Sitemap;
+}
+
+export interface PiralDocsFullConfig extends PiralDocsFragmentConfig {
+  /**
+   * @default 'Project'
+   */
+  name: string;
+  /**
+   * @default name
+   */
+  title: string;
+  /**
+   * @default ''
+   */
+  description: string;
+  /**
+   * @default {}
+   */
+  redirects: {
+    [path: string]: string;
+  };
+  /**
+   * @default {}
+   */
+  pages: {
+    [path: string]: string;
+  };
+  /**
+   * @default '/'
+   */
+  publicPath: string;
+  /**
+   * @default undefined
+   */
+  changelogFile: string;
+  /**
+   * @default []
+   */
+  styles: Array<string>;
+  /**
+   * @default {}
+   */
+  sass: {
+    variables: string;
+  };
+  /**
+   * @default {}
+   */
+  components: {
+    footer: string;
+    header: string;
+    logo: string;
+    infoBar: string;
+    breadcrumbs: string;
+    sectionNav: string;
+    router: string;
+    notFoundPage: string;
+  };
+  /**
+   * @default {}
+   */
+  helpers: {
+    setup: string;
+    filter: string;
+    plugins: string;
+    requestPilets: string;
+  };
+  /**
+   * @default {}
+   */
+  layouts: {
+    default: string;
+    [name: string]: string;
+  };
+}
