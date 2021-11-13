@@ -34,7 +34,7 @@ header nav {
   }
 
   @media (max-width: $docs-mobile-brk) {
-    nav[data-open=true] .menu {
+    &[data-open=true] .menu {
       display: block;
     }
 
