@@ -1,5 +1,6 @@
 {
-  "name": "@piral-docs/example-app",
+  "name": "@pidoc/example-app",
+  "private": true,
   "version": "0.13.0",
   "description": "Example documentation page",
   "scripts": {
