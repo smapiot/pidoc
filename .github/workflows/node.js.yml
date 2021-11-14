@@ -17,14 +17,16 @@ jobs:
         with:
           node-version: "14.x"
           registry-url: "https://registry.npmjs.org"
+      - name: Install Yarn
+        run: npm install -g yarn
       - name: Install Dependencies
-        run: npm install
+        run: npx lerna bootstrap
       - name: Lint Package
-        run: npm run lint
+        run: npx lerna run lint
       - name: Test Package
-        run: npm run test
+        run: npx lerna run test
       - name: Verify Building Package
-        run: npm run build
+        run: npx lerna run build
 
   pre_release:
     runs-on: ubuntu-latest
@@ -40,14 +42,14 @@ jobs:
         with:
           node-version: "14.x"
           registry-url: "https://registry.npmjs.org"
+      - name: Install Yarn
+        run: npm install -g yarn
       - name: Install Dependencies
-        run: npm install
-      - name: Make Pre-Version
-        run: npm version $(node -e "console.log(require('./package.json').version)")-pre.${{ github.run_number }} --no-git-tag-version
+        run: npx lerna bootstrap
       - name: Build Package
-        run: npm run build
+        run: npx lerna run build
       - name: Publish Package
-        run: npm publish --tag next
+        run: yarn ci:prerelease
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
@@ -65,22 +67,13 @@ jobs:
         with:
           node-version: "14.x"
           registry-url: "https://registry.npmjs.org"
+      - name: Install Yarn
+        run: npm install -g yarn
       - name: Install Dependencies
-        run: npm install
+        run: npx lerna bootstrap
       - name: Build Package
-        run: npm run build
+        run: npx lerna run build
       - name: Publish Package
-        run: npm publish
+        run: yarn ci:release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-      - name: Create tag for release
-        uses: actions/github-script@v3
-        with:
-          github-token: ${{ github.token }}
-          script: |
-            github.git.createRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: `refs/tags/v${require(require('path').resolve(process.env.GITHUB_WORKSPACE, 'package.json')).version}`,
-              sha: context.sha
-            })
