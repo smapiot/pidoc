@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpiral_docs_tools=self.webpackChunkpiral_docs_tools||[]).push([[553],{1553:(e,l,r)=>{r.r(l),r.d(l,{"default":()=>n});var t=r(2784);const n=function(e){var l=e.children;return t.createElement(t.Fragment,null,l)}}}]);
+//# sourceMappingURL=ea0f48.js.map
