@@ -55,7 +55,9 @@
     "markdown-it-footnote": "^3.0.2",
     "markdown-it-front-matter": "^0.2.3",
     "markdown-it-highlightjs": "^3.5.0",
+    "markdown-it-include": "^2.0.0",
     "markdown-it-mark": "^3.0.1",
+    "markdown-it-task-checkbox": "^1.0.6",
     "markdown-it-replace-link": "^1.1.0",
     "markdown-it-smartarrows": "^1.0.1",
     "markdown-it-sub": "^1.0.0",
@@ -74,20 +76,14 @@
     "react-router-dom": "*"
   },
   "devDependencies": {
-    "@types/node": "^15.3.0",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.5",
     "@types/react-router-dom": "^5.1.7",
     "@types/yargs": "^15.0.4",
     "piral-core": "latest",
     "piral-cli": "latest",
-    "prettier": "^2.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-router-dom": "^5.2.0",
-    "tslint": "^5.12.1",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-plugin-prettier": "^2.3.0",
-    "typescript": "~4.3.4"
+    "react-router-dom": "^5.2.0"
   }
 }

@@ -9,15 +9,17 @@ const markdownItEmoji = require('markdown-it-emoji');
 const markdownItFootnote = require('markdown-it-footnote');
 const markdownItFrontMatter = require('markdown-it-front-matter');
 const markdownItHljs = require('markdown-it-highlightjs');
+const markdownItInclude = require('markdown-it-include');
 const markdownItContainer = require('markdown-it-container');
 const markdownItMark = require('markdown-it-mark');
+const markdownItTaskCheckbox = require('markdown-it-task-checkbox');
 const markdownItReplaceLink = require('markdown-it-replace-link');
 const markdownItSmartArrows = require('markdown-it-smartarrows');
 const markdownItSub = require('markdown-it-sub');
 const markdownItSup = require('markdown-it-sup');
 const markdownItVideo = require('markdown-it-video');
 const { readFileSync } = require('fs');
-const { extname, basename } = require('path');
+const { extname, basename, dirname } = require('path');
 const { createHash } = require('crypto');
 const { docRef, imgRef, makeRelativePath } = require('./utils');
 const { rootPath } = require('./meta-core');
@@ -30,14 +32,17 @@ function computeHash(content) {
 
 function getMdValue(result) {
   let content = result.content
-    .split('`').join('\\`')
-    .split('$').join('\\$')
-    .split('<table>').join('<div class="responsive-table"><table>')
-    .split('</table>').join('</table></div>');
-  Object.keys(result.images).forEach(id => {
+    .split('`')
+    .join('\\`')
+    .split('$')
+    .join('\\$')
+    .split('<table>')
+    .join('<div class="responsive-table"><table>')
+    .split('</table>')
+    .join('</table></div>');
+  Object.keys(result.images).forEach((id) => {
     const path = result.images[id];
-    content = content
-      .split(id).join('${require("' + path + '")}');
+    content = content.split(id).join('${require("' + path + '")}');
   });
   return content;
 }
@@ -123,7 +128,13 @@ function render(file, baseDir = __dirname, resolveLink = defaultLinkResolver) {
     .use(markdownItAttrs)
     .use(markdownItEmoji)
     .use(markdownItFootnote)
-    .use(markdownItFrontMatter, fm => (result.meta = parseMeta(fm)))
+    .use(markdownItInclude, {
+      includeRe: /#include(.+)/,
+      bracesAreOptional: true,
+      root: dirname(file),
+    })
+    .use(markdownItTaskCheckbox)
+    .use(markdownItFrontMatter, (fm) => (result.meta = parseMeta(fm)))
     .use(markdownItHljs)
     .use(markdownItContainer, 'warning', wrapContainer('warning', md.utils))
     .use(markdownItContainer, 'tip', wrapContainer('tip', md.utils))

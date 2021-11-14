@@ -40,6 +40,14 @@ const layouts = {
   ...normalizeObj(baseDir, config.layouts),
 };
 
+if (redirects['/'] === undefined && pages['/'] === undefined) {
+  const [mainSection] = Object.keys(config.sitemap);
+
+  if (mainSection) {
+    redirects['/'] = `/${mainSection}`;
+  }
+}
+
 module.exports = {
   ...meta,
   title: config.title || name,

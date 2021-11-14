@@ -1,0 +1,34 @@
+{
+  "title": "Pidoc - Piral Documentation Engine",
+  "name": "Pidoc",
+  "description": "Documentation for using pidoc.",
+  "author": "smapiot",
+  "branch": "develop",
+  "repositoryUrl": "https://github.com/smapiot/pidoc",
+  "docsDirName": "packages/example-app/docs",
+  "rootDir": "../..",
+  "skipEditLabel": false,
+  "changelogFile": "../../CHANGELOG.md",
+  "sitemap": {
+    "basics": {
+      "title": "Basics",
+      "sections": [
+        {
+          "generator": "markdown",
+          "segment": "",
+          "dir": "basics"
+        }
+      ]
+    },
+    "customizing": {
+      "title": "Customizing",
+      "sections": [
+        {
+          "generator": "markdown",
+          "segment": "",
+          "dir": "customizing"
+        }
+      ]
+    }
+  }
+}

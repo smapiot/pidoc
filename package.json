@@ -1,23 +1,31 @@
 {
-  "name": "piral-docs-tools-monorepo",
+  "name": "pidoc",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
   "author": "smapiot",
   "license": "MIT",
-  "homepage": "https://github.com/smapiot/piral-docs-tools#readme",
+  "homepage": "https://github.com/smapiot/pidoc#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/smapiot/piral-docs-tools.git"
+    "url": "git+https://github.com/smapiot/pidoc.git"
   },
   "bugs": {
-    "url": "https://github.com/smapiot/piral-docs-tools/issues"
+    "url": "https://github.com/smapiot/pidoc/issues"
   },
   "scripts": {
+    "ci:deploy": "gh-pages -d packages/example-app/dist/release",
     "ci:version": "node tools/changelog-version.js"
   },
   "devDependencies": {
-    "lerna": "^3.10.7"
+    "@types/node": "^15.3.0",
+    "gh-pages": "^3.2.3",
+    "lerna": "^3.10.7",
+    "prettier": "^2.3.0",
+    "tslint": "^5.12.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.3.0",
+    "typescript": "~4.3.4"
   }
 }

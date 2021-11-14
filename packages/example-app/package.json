@@ -1,0 +1,24 @@
+{
+  "name": "@piral-docs/example-app",
+  "version": "0.13.0",
+  "description": "Example documentation page",
+  "scripts": {
+    "start": "piral-docs debug",
+    "build": "piral-docs build"
+  },
+  "author": "smapiot",
+  "homepage": "https://docs.piral.io",
+  "license": "MIT",
+  "dependencies": {
+    "piral-core": "latest",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0"
+  },
+  "peerDependencies": {},
+  "devDependencies": {
+    "piral-docs-tools": "^0.13.0",
+    "piral-cli": "latest",
+    "piral-cli-webpack5": "latest"
+  }
+}
