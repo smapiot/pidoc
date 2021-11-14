@@ -15,9 +15,7 @@
     "url": "https://github.com/smapiot/piral-docs-tools/issues"
   },
   "scripts": {
-    "ci:version": "node tools/changelog-version.js",
-    "ci:prerelease": "npx lerna publish $(yarn --silent ci:version)-pre.${{ github.run_number }} --no-git-tag-version --tag next",
-    "ci:release": "npx lerna publish $(yarn --silent ci:version) --tag latest"
+    "ci:version": "node tools/changelog-version.js"
   },
   "devDependencies": {
     "lerna": "^3.10.7"

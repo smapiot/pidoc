@@ -49,7 +49,7 @@ jobs:
       - name: Build Package
         run: npx lerna run build
       - name: Publish Package
-        run: yarn ci:prerelease
+        run: npx lerna publish $(yarn --silent ci:version)-pre.${{ github.run_number }} --no-git-tag-version --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
@@ -74,6 +74,6 @@ jobs:
       - name: Build Package
         run: npx lerna run build
       - name: Publish Package
-        run: yarn ci:release
+        run: npx lerna publish $(yarn --silent ci:version) --tag latest
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
