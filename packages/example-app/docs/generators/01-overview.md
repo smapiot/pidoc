@@ -6,6 +6,6 @@ level: Beginner
 section: Generators
 ---
 
-## Generators Overview
+# Generators Overview
 
 (tbd)

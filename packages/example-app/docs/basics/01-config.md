@@ -42,7 +42,7 @@ Below you'll find an example configuration.
 
 This configuration ends up with a single top-level section (called "chapter") named "basis" (written on the page as "Basics"). It contains the content from a single section - everything in `docs/basics` will be consumed by the `markdown` generator. This is the most "standard" (or from a documentation-perspective "expected") generator. It is capable of transforming Markdown files (`*.md`) to pages.
 
-More about generators can be found in the [generators section](./05-generators.md).
+More about generators can be found in the [generators section](../generators/01-overview.md).
 
 ## Configuration Typings
 

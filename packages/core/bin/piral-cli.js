@@ -1,18 +1,12 @@
 #!/usr/bin/env node
 
-process.on('uncaughtException', (err) => {
-  console.error('Critical runtime error:', err.message);
-  process.exit(1);
-});
-
 const yargs = require('yargs');
 const { apps } = require('piral-cli');
 const { packageEmulator, updateExistingJson, readText, updateExistingFile } = require('piral-cli/lib/common');
-const { loadPlugins } = require('piral-cli/lib/plugin');
 const { readFileSync, writeFileSync } = require('fs');
 const { relative, resolve } = require('path');
-const { outputPath, package, sitemap, publicUrl, title, bundlerName } = require('../src/tools/meta');
-const { makeContent } = require('../src/tools/content');
+const { prepare, copyStatic } = require('../src/tools/cli');
+const { outputPath, package, publicUrl, title, bundlerName } = require('../src/tools/meta');
 const { name, version } = require('../package.json');
 
 const baseDir = process.cwd();
@@ -21,12 +15,6 @@ const emulator = `${outputPath}/emulator`;
 const release = `${outputPath}/release`;
 const emulatorApp = `${emulator}/app`;
 const target = `${outputPath}/index.html`;
-
-function prepare() {
-  process.env.PIRAL_DOCS_BASE_DIR = baseDir;
-  loadPlugins();
-  makeContent(sitemap);
-}
 
 function processHtml(outDir) {
   const file = resolve(outDir, 'index.html');
@@ -52,7 +40,7 @@ yargs
         .default('log-level', 3);
     },
     (args) => {
-      prepare();
+      prepare(baseDir);
       return apps
         .debugPiral(baseDir, {
           entry,
@@ -66,6 +54,7 @@ yargs
             afterBuild({ bundler }) {
               const { dir } = bundler.bundle;
               processHtml(dir);
+              copyStatic(dir);
             },
           },
         })
@@ -85,7 +74,7 @@ yargs
       return argv.number('log-level').describe('log-level', 'The log level to use (0-5).').default('log-level', 3);
     },
     (args) => {
-      prepare();
+      prepare(baseDir);
       return apps
         .buildPiral(baseDir, {
           entry,
@@ -94,8 +83,13 @@ yargs
           logLevel: args['log-level'],
           type: 'emulator-sources',
           publicUrl,
+          hooks: {
+            afterBuild() {
+              processHtml(emulatorApp);
+              copyStatic(emulatorApp);
+            },
+          },
         })
-        .then(() => processHtml(emulatorApp))
         .then(() =>
           updateExistingJson(emulator, 'package.json', {
             name: package.name,
@@ -128,13 +122,16 @@ yargs
     ['$0', 'bundle', 'build'],
     'Builds the release assets for your documentation website.',
     (argv) => {
-      return argv.number('log-level').describe('log-level', 'The log level to use (0-5).').default('log-level', 3)
-      .boolean('source-maps')
-      .describe('source-maps', 'Includes the source maps with the pilet.')
-      .default('source-maps', true);
+      return argv
+        .number('log-level')
+        .describe('log-level', 'The log level to use (0-5).')
+        .default('log-level', 3)
+        .boolean('source-maps')
+        .describe('source-maps', 'Includes the source maps with the pilet.')
+        .default('source-maps', true);
     },
     (args) => {
-      prepare();
+      prepare(baseDir);
       return apps
         .buildPiral(baseDir, {
           entry,
@@ -144,8 +141,13 @@ yargs
           logLevel: args['log-level'],
           type: 'release',
           publicUrl,
+          hooks: {
+            afterBuild() {
+              processHtml(release);
+              copyStatic(release);
+            },
+          },
         })
-        .then(() => processHtml(release))
         .then(
           () => process.exit(0),
           (err) => {

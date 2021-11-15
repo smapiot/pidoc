@@ -5,6 +5,7 @@
   "description": "Example documentation page",
   "scripts": {
     "start": "piral-docs debug",
+    "sdk": "piral-docs sdk",
     "build": "piral-docs build"
   },
   "author": "smapiot",

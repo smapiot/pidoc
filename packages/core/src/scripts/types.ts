@@ -100,6 +100,10 @@ export interface PiralDocsFragmentConfig {
    */
   outputDir: string;
   /**
+   * @default undefined
+   */
+  staticDir: string;
+  /**
    * @default process.cwd()
    */
   packageRoot: string;

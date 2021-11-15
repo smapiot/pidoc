@@ -18,6 +18,7 @@ const docsFolder = config.docsDirName || 'docs';
 const skipEditLabel = config.skipEditLabel || false;
 const sitemap = config.sitemap || {};
 const rootPath = resolve(baseDir, config.rootDir || '.');
+const staticPath = config.staticDir && resolve(baseDir, config.staticDir);
 const outputPath = resolve(baseDir, config.outputDir || 'dist');
 
 module.exports = {
@@ -30,6 +31,7 @@ module.exports = {
   rootPath,
   skipEditLabel,
   outputPath,
+  staticPath,
   sitemap,
   baseDir,
   docsFolder,

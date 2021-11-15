@@ -7,6 +7,7 @@
 - Added types of config
 - Added support for `Header` and `SectionNav` component
 - Added automatic redirect to first chapter for `/`
+- Added option for static files (`staticDir`)
 - Added support for Markdown tasklists
 - Added support for Markdown (arbitrary) file inclusions
 

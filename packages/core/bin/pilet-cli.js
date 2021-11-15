@@ -1,25 +1,13 @@
 #!/usr/bin/env node
 
-process.on('uncaughtException', (err) => {
-  console.error('Critical runtime error:', err.message);
-  process.exit(1);
-});
-
 const yargs = require('yargs');
 const { apps } = require('piral-cli');
-const { loadPlugins } = require('piral-cli/lib/plugin');
-const { outputPath, sitemap, bundlerName } = require('../src/tools/meta');
-const { makeContent } = require('../src/tools/content');
+const { prepare, copyStatic } = require('../src/tools/cli');
+const { outputPath, bundlerName } = require('../src/tools/meta-core');
 
 const baseDir = process.cwd();
 const entry = `./src/index.tsx`;
 const target = `${outputPath}/index.js`;
-
-function prepare() {
-  process.env.PIRAL_DOCS_BASE_DIR = baseDir;
-  loadPlugins();
-  makeContent(sitemap);
-}
 
 yargs
   .command(
@@ -41,7 +29,7 @@ yargs
         .default('log-level', 3);
     },
     (args) => {
-      prepare();
+      prepare(baseDir);
       return apps
         .debugPilet(baseDir, {
           entry,
@@ -51,6 +39,11 @@ yargs
           logLevel: args['log-level'],
           open: args.open,
           port: args.port,
+          hooks: {
+            afterBuild() {
+              copyStatic(outputPath);
+            },
+          },
         })
         .then(
           () => process.exit(0),
@@ -77,7 +70,7 @@ yargs
         .default('log-level', 3);
     },
     (args) => {
-      prepare();
+      prepare(baseDir);
       return apps
         .buildPilet(baseDir, {
           entry,
@@ -86,6 +79,11 @@ yargs
           target,
           bundlerName,
           logLevel: args['log-level'],
+          hooks: {
+            afterBuild() {
+              copyStatic(outputPath);
+            },
+          },
         })
         .then(
           () => process.exit(0),
