@@ -12,10 +12,8 @@
   "homepage": "https://docs.piral.io",
   "license": "MIT",
   "dependencies": {
-    "pidoc": "^0.13.0"
+    "pidoc": "0.13.0"
   },
-  "peerDependencies": {},
-  "devDependencies": {},
   "piral": {
     "name": "@pidoc/core"
   }
