@@ -1,67 +1,14 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import FlexSearch from 'flexsearch';
-import { getSearchProviders } from '../searchProviders';
+import { GetSearchProviders, useSearch } from './hooks';
 
-const indices: Array<any> = [];
-
-function useSearch(open: boolean): [string, (value: string) => void, Array<any>] {
-  const [input, setInput] = React.useState('');
-  const [items, setItems] = React.useState([]);
-  const loading = React.useRef<Promise<any>>();
-
-  React.useEffect(() => {
-    if (open) {
-      document.querySelector<HTMLInputElement>('#searchInput').focus();
-
-      if (!loading.current) {
-        loading.current = Promise.all(
-          getSearchProviders().map((provider) =>
-            provider().then((docs) => {
-              const index: any = FlexSearch.create({
-                doc: {
-                  id: 'id',
-                  field: ['content', 'keywords', 'title'],
-                },
-              });
-              index.import(docs.default, { serialize: false });
-              indices.push(index);
-            }),
-          ),
-        );
-      }
-    }
-  }, [open, input]);
-
-  React.useEffect(() => {
-    const id = setTimeout(() => {
-      if (input) {
-        loading.current.then(() => {
-          const results = indices.reduce((agg: Array<any>, index, i) => {
-            const results = index.search(input);
-
-            for (let j = results.length; j--;) {
-              const k = Math.min(j + i, agg.length);
-              agg.splice(k, 0, results[j]);
-            }
-
-            return agg;
-          }, []);
-          setItems(results);
-        });
-      } else if (!items || items.length !== 0) {
-        setItems([]);
-      }
-    }, 300);
-    return () => clearTimeout(id);
-  }, [input]);
-
-  return [input, setInput, items];
+export interface SearchProps {
+  providers: GetSearchProviders;
 }
 
-export const Search: React.FC = () => {
+export const Search: React.FC<SearchProps> = ({ providers }) => {
   const [open, setOpen] = React.useState(false);
-  const [input, setInput, items] = useSearch(open);
+  const [input, setInput, items] = useSearch(open, providers);
   const closeSearch = () => setOpen(false);
   const openSearch = React.useCallback((e: React.SyntheticEvent) => {
     e.preventDefault();

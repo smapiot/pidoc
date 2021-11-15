@@ -20,27 +20,9 @@ This is best-suited if you just want to bring some documentation to a dynamic we
 
 (tbd)
 
-## Using the `piral-docs-tools` Library
-
-This is best-suited if you already have a project using `piral` (or other libraries like `piral-core`). For more information on Piral visit the [GitHub repository](https://github.com/smapiot/piral) or the official [homepage](https://piral.io).
-
-### Installation
-
-You can add the tool by installing it via NPM:
-
-```sh
-npm i piral-docs-tools --save-dev
-```
-
-A couple of peer dependencies also need to be resolved. If can install all peer dependencies using:
-
-```sh
-npm i piral-core piral-cli piral-cli-webpack5 react react-dom react-router-dom --save-dev
-```
-
 ### Configuration
 
-Place a file called *docs.config.json* in the project folder where `piral-docs` is being run. It should be adjacent to the *package.json*.
+Place a file called *docs.config.json* in the project folder where `pidoc` is being run. It should be adjacent to the *package.json*.
 
 ```json
 {
@@ -90,14 +72,14 @@ Place a file called *docs.config.json* in the project folder where `piral-docs` 
 
 ### Commands
 
-These commands are available when using the `piral-docs-tools` library.
+These commands are available when using the `pidoc` library.
 
 #### Building
 
 A documentation page can be built using
 
 ```sh
-piral-docs build
+pidoc build
 ```
 
 #### Watching
@@ -105,7 +87,7 @@ piral-docs build
 A documentation page can be watched using
 
 ```sh
-piral-docs watch
+pidoc watch
 ```
 
 #### Emulator
@@ -113,7 +95,7 @@ piral-docs watch
 An emulator package can be built using
 
 ```sh
-piral-docs sdk
+pidoc sdk
 ```
 
 ### Sitemap Structure
@@ -149,6 +131,24 @@ interface Sitemap {
     sections: Array<SitemapItem>;
   };
 }
+```
+
+## Using the `@pidoc/core` Library
+
+This is best-suited if you already have a project using `piral` (or other libraries like `piral-core`). For more information on Piral visit the [GitHub repository](https://github.com/smapiot/piral) or the official [homepage](https://piral.io).
+
+### Installation
+
+You can add the tool by installing it via NPM:
+
+```sh
+npm i @pidoc/core --save-dev
+```
+
+A couple of peer dependencies also need to be resolved. If can install all peer dependencies using:
+
+```sh
+npm i piral-core piral-cli piral-cli-webpack5 react react-dom react-router-dom --save-dev
 ```
 
 ## License

@@ -40,7 +40,7 @@ exports.build = function (entry, options) {
     title: name,
   };
   const imports = `
-    import { TypeInfo } from 'piral-docs-tools/components';
+    import { TypeInfo } from '@pidoc/components';
   `;
   const content = `
     <TypeInfo key="${name}">{${body}}</TypeInfo>

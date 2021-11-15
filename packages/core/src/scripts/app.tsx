@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { createInstance, Piral } from 'piral-core';
+import { LoadingIndicator, SectionMenu } from '@pidoc/components';
 import { createDocletPlugin } from './plugin';
-import { LoadingIndicator } from './components';
-import { routes } from './sitemap';
-import { Layout } from './Layout';
+import { routes, resolveSections } from './sitemap';
+import { Layout, Breadcrumbs } from './Layout';
 import {
   Router,
   NotFoundPage,
   requestPilets,
+  layouts,
   setup,
   plugins,
   pages,
@@ -23,6 +24,7 @@ const instance = createInstance({
     docs: {
       version,
       updated,
+      layouts,
       basePath: publicUrl,
     },
     components: {
@@ -39,6 +41,15 @@ const instance = createInstance({
     },
   },
   plugins: [...plugins, createDocletPlugin()],
+});
+
+instance.root.registerExtension('section-menu', ({ params: { pathname } }) => {
+  const sections = React.useMemo(() => resolveSections(pathname), [pathname]);
+  return <SectionMenu sections={sections} />;
+});
+
+instance.root.registerExtension('breadcrumbs', () => {
+  return <Breadcrumbs />;
 });
 
 setup(instance.root);

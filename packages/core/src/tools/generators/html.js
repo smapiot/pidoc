@@ -47,16 +47,15 @@ exports.build = function (entry, options) {
     source: file,
   };
   const head = `
-    import { PageContent, getPageLayout } from 'piral-docs-tools/components';
+    import { PageContent, PageLayout } from '@pidoc/components';
 
     const markup = {
       __html: ${JSON.stringify(html)},
     };
-    const PageLayout = getPageLayout(${JSON.stringify(layout)});
     const meta = ${JSON.stringify(meta)};
   `;
   const body = `
-    <PageLayout meta={meta}>
+    <PageLayout name={${JSON.stringify(layout)}} meta={meta}>
       <PageContent meta={meta}>
         <div dangerouslySetInnerHTML={markup} />
       </PageContent>

@@ -80,6 +80,7 @@ export interface PiralDocletState {
     version: string;
     updated: string;
     basePath: string;
+    layouts: Record<string, FC<PiralDocsLayoutComponentProps>>;
   };
 }
 
@@ -146,6 +147,9 @@ export interface PiralDocsFullConfig extends PiralDocsFragmentConfig {
    * @default {}
    */
   redirects: {
+    /**
+     * The (URL) path to (URL) path redirect rule.
+     */
     [path: string]: string;
   };
   /**
@@ -156,6 +160,10 @@ export interface PiralDocsFullConfig extends PiralDocsFragmentConfig {
    * @default {}
    */
   pages: {
+    /**
+     * The (URL) path to (relative) file system path (leading to a React component).
+     * The React component should have a default export.
+     */
     [path: string]: string;
   };
   /**
@@ -174,35 +182,106 @@ export interface PiralDocsFullConfig extends PiralDocsFragmentConfig {
    * @default {}
    */
   sass: {
+    /**
+     * The (relative) file system path to the SASS file used for overriding the variables.
+     */
     variables: string;
   };
   /**
    * @default {}
    */
   components: {
+    /**
+     * The (relative) file system path leading to a React component for the Footer.
+     * The React component should have a default export.
+     * The type of the export should be ComponentType<PiralDocsFooterComponentProps>.
+     */
     footer: string;
+    /**
+     * The (relative) file system path leading to a React component for the Header.
+     * The React component should have a default export.
+     * The type of the export should be ComponentType<PiralDocsHeaderComponentProps>.
+     */
     header: string;
+    /**
+     * The (relative) file system path leading to a React component for the Logo.
+     * The React component should have a default export.
+     * The type of the export should be ComponentType<PiralDocsLogoComponentProps>.
+     */
     logo: string;
+    /**
+     * The (relative) file system path leading to a React component for the InfoBar.
+     * The React component should have a default export.
+     * The type of the export should be ComponentType<PiralDocsInfoBarComponentProps>.
+     */
     infoBar: string;
+    /**
+     * The (relative) file system path leading to a React component for the Breadcrumbs.
+     * The React component should have a default export.
+     * The type of the export should be ComponentType<PiralDocsBreadcrumbsComponentProps>.
+     */
     breadcrumbs: string;
+    /**
+     * The (relative) file system path leading to a React component for the SectionNav.
+     * The React component should have a default export.
+     * The type of the export should be ComponentType<PiralDocsSectionNavComponentProps>.
+     */
     sectionNav: string;
+    /**
+     * The (relative) file system path leading to a React component for the Router.
+     * The React component should have a default export.
+     * The type of the export should be ComponentType<PiralDocsRouterComponentProps>.
+     */
     router: string;
+    /**
+     * The (relative) file system path leading to a React component for the NotFoundPage.
+     * The React component should have a default export.
+     * The type of the export should be ComponentType<PiralDocsNotFoundPageComponentProps>.
+     */
     notFoundPage: string;
   };
   /**
    * @default {}
    */
   helpers: {
+    /**
+     * The (relative) file system path leading to a setup function.
+     * The function should be the default export.
+     * The signature is (api: PiletApi) => void.
+     */
     setup: string;
+    /**
+     * The (relative) file system path leading to a filter function.
+     * The function should be the default export.
+     * The signature is (sitemap: Sitemap) => Sitemap.
+     */
     filter: string;
+    /**
+     * The (relative) file system path leading to a plugins array.
+     * The array should be the default export.
+     * The type is Array<PiralPlugin>.
+     */
     plugins: string;
+    /**
+     * The (relative) file system path leading to a requestPilets function.
+     * The function should be the default export.
+     * The signature is () => Promise<Array<PiletMetadata>>.
+     */
     requestPilets: string;
   };
   /**
    * @default {}
    */
   layouts: {
+    /**
+     * The (relative) file system path leading to a React component for the default layout.
+     * The React component should have a default export.
+     */
     default: string;
+    /**
+     * The (relative) file system path leading to a React component for the named layout.
+     * The React component should have a default export.
+     */
     [name: string]: string;
   };
 }

@@ -46,21 +46,20 @@ exports.build = function (entry, options) {
   };
   const editLabel = skipEditLabel ? '' : `Edit on ${getEditPlatform()}`;
   const head = `
-    import { PageContent, Markdown, getPageLayout } from 'piral-docs-tools/components';
+    import { PageContent, Markdown, PageLayout } from '@pidoc/components';
 
-    const PageLayout = getPageLayout(${JSON.stringify(layout)});
     const link = ${JSON.stringify(skipEditLabel ? '' : docRef(file))};
     const html = ${mdValue};
     const meta = ${JSON.stringify(meta)};
   `;
   const body = `
-    <PageLayout meta={meta}>
+    <PageLayout name={${JSON.stringify(layout)}} meta={meta}>
       <PageContent meta={meta}>
         <Markdown content={html} link={link} editLabel={${JSON.stringify(editLabel)}} />
       </PageContent>
     </PageLayout>
   `;
-  
+
   return generatePage(
     name,
     pageMeta,

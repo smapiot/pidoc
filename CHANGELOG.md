@@ -1,4 +1,4 @@
-# `piral-docs-tools` Changelog
+# `pidoc` Changelog
 
 ## 0.13.0 (tbd)
 
@@ -10,6 +10,9 @@
 - Added option for static files (`staticDir`)
 - Added support for Markdown tasklists
 - Added support for Markdown (arbitrary) file inclusions
+- Added dedicated components package `@pidoc/components`
+- Renamed `piral-docs-tools` to `@pidoc/core`
+- Introduced new `pidoc` package
 
 ## 0.12.6 (November 5, 2021)
 

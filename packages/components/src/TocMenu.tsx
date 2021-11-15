@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { usePage } from './PageContext';
 import { Sidebar } from './Sidebar';
-import { MenuItems, useMenuItems, useHash } from '../hooks';
+import { MenuItems, useMenuItems, useHash } from './hooks';
 
 function c(...items: Array<string | boolean | number>) {
   return items.filter((item) => !!item).join(' ');

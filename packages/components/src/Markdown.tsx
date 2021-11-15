@@ -9,7 +9,7 @@ export interface MarkdownProps {
 }
 
 export const Markdown: React.FC<MarkdownProps> = ({ content, link, editLabel = 'Edit' }) => {
-  const publicUrl = useGlobalState((s) => s.docs.basePath);
+  const publicUrl = useGlobalState((s: any) => s.docs.basePath);
   const history = useHistory();
   const adjustLinks = (container: HTMLDivElement) => {
     if (container) {

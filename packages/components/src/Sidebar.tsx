@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useStickySidebar } from '../hooks';
+import { useStickySidebar } from './hooks';
 
 export interface SidebarProps {
   className: string;

@@ -7,7 +7,7 @@ function generatePage(name, pageMeta, targetFile, head, body, route, title, sect
     targetFile,
     `// ${JSON.stringify(pageMeta)}
 import * as React from 'react';
-import { ContentPage } from 'piral-docs-tools/components';
+import { ContentPage } from '@pidoc/components';
 ${head}
 
 export default () => (
@@ -44,7 +44,7 @@ function generateCustomPage(
   meta = {},
 ) {
   const head = `
-    import { PageContent } from 'piral-docs-tools/components';
+    import { PageContent } from '@pidoc/components';
     ${imports}
 
     ${declarations}
@@ -71,7 +71,7 @@ function generateStandardPage(
 ) {
   const editLabel = skipEditLabel ? '' : `Edit on ${getEditPlatform()}`;
   const imports = `
-    import { Markdown } from 'piral-docs-tools/components';
+    import { Markdown } from '@pidoc/components';
   `;
   const declarations = `
     const link = ${JSON.stringify(skipEditLabel ? '' : docRef(sourceFile))};

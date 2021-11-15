@@ -1,4 +1,4 @@
-const { package, changelogPath, redirects, pages, components, helpers, publicUrl } = require('../tools/meta');
+const { package, changelogPath, redirects, pages, components, layouts, helpers, publicUrl } = require('../tools/meta');
 const { makeRelativePath } = require('../tools/utils');
 const { getChangelogVersion } = require('../tools/version');
 
@@ -10,6 +10,7 @@ module.exports = function () {
   const setupPath = makeRelativePath(__dirname, helpers.setup);
   const pluginsPath = makeRelativePath(__dirname, helpers.plugins);
   const requestPiletsPath = makeRelativePath(__dirname, helpers.requestPilets);
+
   const routes = [
     ...Object.keys(redirects).map(
       (from) =>
@@ -19,9 +20,20 @@ module.exports = function () {
     ),
     ...Object.keys(pages).map(
       (path) =>
-        `${JSON.stringify(path)}: React.lazy(() => import(${JSON.stringify(makeRelativePath(__dirname, pages[path]))}))`,
+        `${JSON.stringify(path)}: React.lazy(() => import(${JSON.stringify(
+          makeRelativePath(__dirname, pages[path]),
+        )}))`,
     ),
   ].join(', ');
+
+  const layoutComponents = Object.keys(layouts)
+    .map(
+      (layoutName) =>
+        `${JSON.stringify(layoutName)}: React.lazy(() => import(${JSON.stringify(
+          makeRelativePath(__dirname, layouts[layoutName]),
+        )}))`,
+    )
+    .join(', ');
 
   return `
 import * as React from "react";
@@ -46,7 +58,10 @@ const publicUrl = ${JSON.stringify(publicUrl)};
 const pages = {
   ${routes}
 };
+const layouts = {
+  ${layoutComponents}
+};
 
-export { Router, NotFoundPage, requestPilets, pages, plugins, setup, version, updated, publicUrl };
+export { Router, NotFoundPage, requestPilets, pages, plugins, setup, version, updated, publicUrl, layouts };
 `;
 };

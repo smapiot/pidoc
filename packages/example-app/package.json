@@ -19,7 +19,7 @@
   },
   "peerDependencies": {},
   "devDependencies": {
-    "piral-docs-tools": "^0.13.0",
+    "@pidoc/core": "^0.13.0",
     "piral-cli": "latest",
     "piral-cli-webpack5": "latest"
   }

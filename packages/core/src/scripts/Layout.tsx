@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Route, useLocation } from 'react-router-dom';
-import { resolveNavigation } from './sitemap';
-import { Search, TopNav, LoadingIndicator, ScrollToTop } from './components';
-import { brandName, Footer, Header, Logo, InfoBar, SectionNav } from '../codegen/layout.codegen';
+import { Search, TopNav, LoadingIndicator, ScrollToTop } from '@pidoc/components';
+import { resolveNavigation, topNavItems } from './sitemap';
+import { getSearchProviders } from './searchProviders';
+import { brandName, Footer, Header, Logo, InfoBar, SectionNav, Breadcrumbs } from '../codegen/layout.codegen';
 
 const QuickNav: React.FC = () => {
   const { pathname } = useLocation();
@@ -10,10 +11,15 @@ const QuickNav: React.FC = () => {
   return <SectionNav prev={prev} next={next} />;
 };
 
-export const Layout: React.FC = ({ children }) => (
+const Layout: React.FC = ({ children }) => (
   <>
     <Route component={ScrollToTop} />
-    <Header title={brandName} nav={<TopNav />} search={<Search />} logo={<Logo />} />
+    <Header
+      title={brandName}
+      nav={<TopNav items={topNavItems} />}
+      search={<Search providers={getSearchProviders} />}
+      logo={<Logo />}
+    />
     <InfoBar />
     <div className="layout-container content">
       <React.Suspense fallback={<LoadingIndicator />}>{children}</React.Suspense>
@@ -22,3 +28,5 @@ export const Layout: React.FC = ({ children }) => (
     <Footer title={brandName} />
   </>
 );
+
+export { QuickNav, Breadcrumbs, Layout };

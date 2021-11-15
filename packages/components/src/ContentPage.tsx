@@ -3,20 +3,16 @@ import { useLocation } from 'react-router-dom';
 import { ExtensionSlot } from 'piral-core';
 import { Page } from './PageContext';
 import { TocMenu } from './TocMenu';
-import { SectionMenu } from './SectionMenu';
-import { resolveSections } from '../sitemap';
-import { Breadcrumbs } from '../../codegen/layout.codegen';
 
 export const ContentPage: React.FC = ({ children }) => {
   const { pathname } = useLocation();
-  const sections = React.useMemo(() => resolveSections(pathname), [pathname]);
 
   return (
     <Page>
-      <SectionMenu sections={sections} />
+      <ExtensionSlot name="section-menu" params={{ pathname }} />
       <TocMenu />
       <div className="content-display">
-        <Breadcrumbs />
+        <ExtensionSlot name="breadcrumbs" params={{ pathname }} />
         {children}
       </div>
       <ExtensionSlot name="content-page" params={{ pathname }} />

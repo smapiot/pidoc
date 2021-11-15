@@ -1,0 +1,43 @@
+{
+  "name": "@pidoc/components",
+  "version": "0.13.0",
+  "description": "Components for generating a dynamic documentation experience like for docs.piral.io.",
+  "main": "./src/index.ts",
+  "scripts": {
+    "check": "tsc --noEmit"
+  },
+  "keywords": [
+    "piral",
+    "page",
+    "documentation",
+    "docs",
+    "website",
+    "modular",
+    "smapiot"
+  ],
+  "author": "smapiot",
+  "homepage": "https://docs.piral.io",
+  "license": "MIT",
+  "dependencies": {
+    "flexsearch": "^0.6.32",
+    "stickyfilljs": "^2.1.0"
+  },
+  "peerDependencies": {
+    "piral-core": "*",
+    "piral-cli": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-router-dom": "*"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.5",
+    "@types/react-dom": "^17.0.5",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/yargs": "^15.0.4",
+    "piral-core": "latest",
+    "piral-cli": "latest",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0"
+  }
+}

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ExtensionSlot } from 'piral-core';
 import { NavLink } from 'react-router-dom';
-import { topNavItems } from '../sitemap';
 
 function renderNavItems(items: Array<React.ReactNode>) {
   return (
@@ -13,12 +12,17 @@ function renderNavItems(items: Array<React.ReactNode>) {
   );
 }
 
-export interface TopNavProps {}
+export interface TopNavProps {
+  items: Array<{
+    link: string;
+    title: string;
+  }>;
+}
 
-export const TopNav: React.FC<TopNavProps> = () => {
+export const TopNav: React.FC<TopNavProps> = ({ items }) => {
   return (
     <ul className="menu">
-      {topNavItems.map((item) => (
+      {items.map((item) => (
         <li key={item.link}>
           <NavLink to={item.link}>{item.title}</NavLink>
         </li>
