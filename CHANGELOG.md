@@ -1,6 +1,6 @@
 # `pidoc` Changelog
 
-## 0.13.0 (tbd)
+## 0.13.0 (November 15, 2021)
 
 - Improved CLI commands (support for flags etc.)
 - Added support for templates
