@@ -6,6 +6,9 @@
   "scripts": {
     "check": "tsc --noEmit"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "piral",
     "page",

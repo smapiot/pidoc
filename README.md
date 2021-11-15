@@ -11,6 +11,7 @@ A collection of tools and utiltiies for making a documentation page using Piral 
 - [pidoc.js.org](https://pidoc.js.org)
 - [docs.piral.io](https://docs.piral.io)
 - [docs.piral.cloud](https://docs.piral.cloud)
+- [anglesharp.github.io](https://anglesharp.github.io)
 
 A full documentation of this can be found [here](./packages/example-app/docs) or [online as a website already using pidoc](https://pidoc.js.org).
 

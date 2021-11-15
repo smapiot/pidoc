@@ -8,6 +8,9 @@
   "scripts": {
     "check": "tsc --noEmit"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "bin": {
     "piral-docs": "./bin/piral-cli.js",
     "pilet-docs": "./bin/pilet-cli.js"
