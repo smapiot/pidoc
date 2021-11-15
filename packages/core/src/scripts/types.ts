@@ -149,6 +149,10 @@ export interface PiralDocsFullConfig extends PiralDocsFragmentConfig {
     [path: string]: string;
   };
   /**
+   * @default undefined
+   */
+  template: string;
+  /**
    * @default {}
    */
   pages: {

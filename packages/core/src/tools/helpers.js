@@ -6,7 +6,7 @@ function normalizeObj(baseDir, obj) {
   if (obj) {
     Object.keys(obj).forEach(key => {
       const path = obj[key];
-  
+
       if (path && typeof path === 'string') {
         result[key] = resolve(baseDir, path);
       }
@@ -30,7 +30,20 @@ function normalizeArr(baseDir, obj) {
   return result;
 }
 
+function getTemplate(template) {
+  if (template && typeof template === 'string') {
+    const templateApp = require(template);
+
+    if (templateApp && typeof templateApp === 'object') {
+      return templateApp;
+    }
+  }
+
+  return {};
+}
+
 module.exports = {
   normalizeArr,
   normalizeObj,
+  getTemplate,
 };
