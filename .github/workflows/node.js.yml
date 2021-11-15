@@ -75,6 +75,8 @@ jobs:
         run: npx lerna run build
       - name: Publish Package
         run: |
+          git config --global user.email "support+actions@github.com"
+          git config --global user.name "github-actions-bot"
           yarn ci:version --update
           git add CHANGELOG.md
           git commit -m "updated release date"
