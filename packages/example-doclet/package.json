@@ -1,5 +1,5 @@
 {
-  "name": "@pidoc/example-app",
+  "name": "@pidoc/example-doclet",
   "private": true,
   "version": "0.13.0",
   "description": "Example documentation page",
@@ -15,5 +15,8 @@
     "pidoc": "^0.13.0"
   },
   "peerDependencies": {},
-  "devDependencies": {}
+  "devDependencies": {},
+  "piral": {
+    "name": "@pidoc/core"
+  }
 }

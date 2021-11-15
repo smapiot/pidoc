@@ -1,0 +1,20 @@
+{
+  "author": "smapiot",
+  "branch": "develop",
+  "repositoryUrl": "https://github.com/smapiot/pidoc",
+  "docsDirName": "packages/example-doclet/docs",
+  "rootDir": "../..",
+  "skipEditLabel": false,
+  "sitemap": {
+    "doclets": {
+      "title": "Doclets",
+      "sections": [
+        {
+          "generator": "markdown",
+          "segment": "",
+          "dir": ""
+        }
+      ]
+    }
+  }
+}

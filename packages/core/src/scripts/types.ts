@@ -91,7 +91,7 @@ export interface PiletDocletApi {
   unregisterSearchProvider(cb: () => Promise<any>): void;
 }
 
-export interface PiralDocsFragmentConfig {
+export interface PiralDocsCoreConfig {
   /**
    * @default '.'
    */
@@ -130,7 +130,14 @@ export interface PiralDocsFragmentConfig {
   sitemap: Sitemap;
 }
 
-export interface PiralDocsFullConfig extends PiralDocsFragmentConfig {
+export interface PiralDocsFragmentConfig extends PiralDocsCoreConfig {
+  /**
+   * @default false
+   */
+  fragment: true;
+}
+
+export interface PiralDocsFullConfig extends PiralDocsCoreConfig {
   /**
    * @default 'Project'
    */

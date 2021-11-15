@@ -2,12 +2,13 @@
 
 const yargs = require('yargs');
 const { apps } = require('piral-cli');
-const { prepare, copyStatic } = require('../src/tools/cli');
-const { outputPath, bundlerName } = require('../src/tools/meta-core');
+const { prepare, copyStatic, getDefault } = require('../src/tools/cli');
+const { outputPath, bundlerName, package } = require('../src/tools/meta-core');
 
 const baseDir = process.cwd();
-const entry = `./src/index.tsx`;
+const entry = package.source || getDefault(baseDir, `./src/index.tsx`);
 const target = `${outputPath}/index.js`;
+const app = package.piral ? package.piral.name : undefined;
 
 yargs
   .command(
@@ -37,6 +38,7 @@ yargs
           bundlerName,
           feed: args.feed,
           logLevel: args['log-level'],
+          app,
           open: args.open,
           port: args.port,
           hooks: {
@@ -76,6 +78,7 @@ yargs
           entry,
           schemaVersion: args.schema,
           sourceMaps: args['source-maps'],
+          app,
           target,
           bundlerName,
           logLevel: args['log-level'],

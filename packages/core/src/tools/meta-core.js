@@ -31,6 +31,7 @@ module.exports = {
   rootPath,
   skipEditLabel,
   outputPath,
+  fragment: config.fragment || package.piral !== undefined,
   staticPath,
   sitemap,
   baseDir,

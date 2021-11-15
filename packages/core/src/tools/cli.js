@@ -5,11 +5,11 @@ process.on('uncaughtException', (err) => {
 
 const rimraf = require('rimraf');
 const { loadPlugins } = require('piral-cli/lib/plugin');
-const { basename, join } = require('path');
+const { basename, join, resolve } = require('path');
 const { readFileSync, writeFileSync, existsSync, lstatSync, mkdirSync, readdirSync } = require('fs');
 const { generated } = require('./constants');
 const { makeContent } = require('./content');
-const { sitemap, staticPath } = require('./meta-core');
+const { sitemap, staticPath, fragment } = require('./meta-core');
 
 function copyFileSync(source, target) {
   let targetFile = target;
@@ -26,7 +26,7 @@ function copyFolderRecursiveSync(source, target) {
   if (lstatSync(source).isDirectory()) {
     const files = readdirSync(source);
 
-    files.forEach(file => {
+    files.forEach((file) => {
       const curSource = join(source, file);
 
       if (lstatSync(curSource).isDirectory()) {
@@ -57,7 +57,23 @@ function copyStatic(outputPath) {
   }
 }
 
+function isFragment() {
+  return fragment;
+}
+
+function getDefault(dir, file) {
+  const path = resolve(dir, file);
+
+  if (!existsSync(path)) {
+    return resolve(__dirname, '..', 'doclet.ts');
+  }
+
+  return file;
+}
+
 module.exports = {
   prepare,
   copyStatic,
+  isFragment,
+  getDefault,
 };
