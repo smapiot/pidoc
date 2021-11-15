@@ -1,9 +1,30 @@
 {
-  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "noImplicitAny": false,
+    "removeComments": false,
+    "noLib": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "sourceMap": true,
+    "outDir": "./lib",
+    "skipLibCheck": true,
+    "lib": ["dom", "es2015", "es2018"],
+    "module": "esnext",
+    "jsx": "react"
+  },
   "include": [
     "./src"
   ],
   "exclude": [
-    "./src/scaffold"
+    "dist",
+    "./src/scaffold",
+    "node_modules",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "src/**/node_modules",
+    "src/**/lib"
   ]
-}
+ }
