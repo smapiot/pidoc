@@ -1,6 +1,6 @@
 # `pidoc` Changelog
 
-## 0.13.1 (tbd)
+## 0.13.1 (December 6, 2021)
 
 - Added `sdk-raw` subcommand
 - Fixed issue with long section navigation
