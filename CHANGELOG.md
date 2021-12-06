@@ -1,5 +1,10 @@
 # `pidoc` Changelog
 
+## 0.13.1 (December 6, 2021)
+
+- Added `sdk-raw` subcommand
+- Fixed issue with long section navigation
+
 ## 0.13.0 (November 15, 2021)
 
 - Improved CLI commands (support for flags etc.)
