@@ -1,6 +1,6 @@
 # `pidoc` Changelog
 
-## 0.13.2 (tbd)
+## 0.13.2 (December 7, 2021)
 
 - Improved doclet quick fix
 - Imprvoed debugging in monorepo
