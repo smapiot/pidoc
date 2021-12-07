@@ -5,7 +5,7 @@ process.on('uncaughtException', (err) => {
 
 const rimraf = require('rimraf');
 const { loadPlugins } = require('piral-cli/lib/plugin');
-const { basename, join, resolve } = require('path');
+const { basename, join, resolve, relative } = require('path');
 const { readFileSync, writeFileSync, existsSync, lstatSync, mkdirSync, readdirSync } = require('fs');
 const { generated } = require('./constants');
 const { makeContent } = require('./content');
