@@ -1,5 +1,11 @@
 # `pidoc` Changelog
 
+## 0.13.2 (tbd)
+
+- Improved doclet quick fix
+- Imprvoed debugging in monorepo
+- Added support for `doclet` in *package.json*
+
 ## 0.13.1 (December 6, 2021)
 
 - Added `sdk-raw` subcommand

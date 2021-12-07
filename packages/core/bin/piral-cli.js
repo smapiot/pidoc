@@ -4,13 +4,13 @@ const yargs = require('yargs');
 const { apps } = require('piral-cli');
 const { packageEmulator, updateExistingJson, readText, updateExistingFile } = require('piral-cli/lib/common');
 const { readFileSync, writeFileSync } = require('fs');
-const { relative, resolve } = require('path');
-const { prepare, copyStatic } = require('../src/tools/cli');
+const { resolve } = require('path');
+const { prepare, copyStatic, getEntryFile } = require('../src/tools/cli');
 const { outputPath, package, publicUrl, title, bundlerName } = require('../src/tools/meta');
 const { name, version } = require('../package.json');
 
 const baseDir = process.cwd();
-const entry = `${relative(baseDir, __dirname)}/../src/index.html`;
+const entry = getEntryFile(baseDir);
 const emulator = `${outputPath}/emulator`;
 const release = `${outputPath}/release`;
 const emulatorApp = `${emulator}/app`;

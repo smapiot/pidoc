@@ -11,6 +11,21 @@ const { generated } = require('./constants');
 const { makeContent } = require('./content');
 const { sitemap, staticPath, fragment } = require('./meta-core');
 
+function getEntryFile(baseDir) {
+  const srcDir = resolve(__dirname, '..');
+  return `${relative(baseDir, srcDir)}/index.html`;
+}
+
+function getDoclet(baseDir, package) {
+  if (package.doclet) {
+    return getDefault(baseDir, package.doclet);
+  } else if (package.source) {
+    return package.source;
+  } else {
+    return getDefault(baseDir, `./src/index.tsx`);
+  }
+}
+
 function copyFileSync(source, target) {
   let targetFile = target;
 
@@ -62,17 +77,21 @@ function isFragment() {
 }
 
 function getDefault(dir, file) {
-  const path = resolve(dir, file);
+  if (dir && file) {
+    const path = resolve(dir, file);
 
-  if (!existsSync(path)) {
-    return resolve(__dirname, '..', 'doclet.ts');
+    if (existsSync(path)) {
+      return file;
+    }
   }
 
-  return file;
+  return resolve(__dirname, '..', 'doclet.ts');
 }
 
 module.exports = {
   prepare,
+  getEntryFile,
+  getDoclet,
   copyStatic,
   isFragment,
   getDefault,

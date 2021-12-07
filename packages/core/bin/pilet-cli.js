@@ -1,14 +1,24 @@
 #!/usr/bin/env node
 
 const yargs = require('yargs');
+const bundler = require('piral-cli/lib/bundler');
 const { apps } = require('piral-cli');
-const { prepare, copyStatic, getDefault } = require('../src/tools/cli');
+const { prepare, copyStatic, getDoclet, getEntryFile } = require('../src/tools/cli');
 const { outputPath, bundlerName, package } = require('../src/tools/meta-core');
 
 const baseDir = process.cwd();
-const entry = package.source || getDefault(baseDir, `./src/index.tsx`);
+const entry = getDoclet(baseDir, package);
 const target = `${outputPath}/index.js`;
-const app = package.piral ? package.piral.name : undefined;
+const defaultApp = package.piral ? package.piral.name : undefined;
+const debugDocumentation = bundler.callDebugPiralFromMonoRepo;
+
+bundler.callDebugPiralFromMonoRepo = (args) => {
+  const { makeExternals } = require('piral-cli/utils');
+  const data = require('../package.json');
+  args.entryFiles = getEntryFile(baseDir);
+  args.externals = makeExternals(data.dependencies, data.pilets.externals);
+  return debugDocumentation(args);
+};
 
 yargs
   .command(
@@ -25,6 +35,9 @@ yargs
         .boolean('open')
         .describe('open', 'Opens the URL in your webbrowser.')
         .default('open', true)
+        .string('app')
+        .describe('app', 'The name of the documentation page emulator to debug in.')
+        .default('app', defaultApp)
         .number('log-level')
         .describe('log-level', 'The log level to use (0-5).')
         .default('log-level', 3);
@@ -38,7 +51,7 @@ yargs
           bundlerName,
           feed: args.feed,
           logLevel: args['log-level'],
-          app,
+          app: args.app,
           open: args.open,
           port: args.port,
           hooks: {
@@ -67,6 +80,9 @@ yargs
         .boolean('source-maps')
         .describe('source-maps', 'Includes the source maps with the pilet.')
         .default('source-maps', true)
+        .string('app')
+        .describe('app', 'The name of the documentation page to build for.')
+        .default('app', defaultApp)
         .number('log-level')
         .describe('log-level', 'The log level to use (0-5).')
         .default('log-level', 3);
@@ -78,7 +94,7 @@ yargs
           entry,
           schemaVersion: args.schema,
           sourceMaps: args['source-maps'],
-          app,
+          app: args.app,
           target,
           bundlerName,
           logLevel: args['log-level'],
