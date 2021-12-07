@@ -1,6 +1,6 @@
 {
   "name": "@pidoc/core",
-  "version": "0.13.1",
+  "version": "0.13.2",
   "description": "Tools for generating a dynamic documentation experience like for docs.piral.io.",
   "app": "./src/index.html",
   "main": "./src/tools/index.js",
@@ -43,7 +43,7 @@
   "homepage": "https://docs.piral.io",
   "license": "MIT",
   "dependencies": {
-    "@pidoc/components": "0.13.1",
+    "@pidoc/components": "0.13.2",
     "keyword-extractor": "0.0.20",
     "markdown-it": "^12.0.6",
     "markdown-it-abbr": "^1.0.4",

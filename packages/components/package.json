@@ -1,6 +1,6 @@
 {
   "name": "@pidoc/components",
-  "version": "0.13.1",
+  "version": "0.13.2",
   "description": "Components for generating a dynamic documentation experience like for docs.piral.io.",
   "main": "./src/index.ts",
   "scripts": {

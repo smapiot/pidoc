@@ -1,7 +1,7 @@
 {
   "name": "@pidoc/example-app",
   "private": true,
-  "version": "0.13.1",
+  "version": "0.13.2",
   "description": "Example documentation page",
   "scripts": {
     "start": "pidoc debug",
@@ -12,6 +12,6 @@
   "homepage": "https://docs.piral.io",
   "license": "MIT",
   "dependencies": {
-    "pidoc": "0.13.1"
+    "pidoc": "0.13.2"
   }
 }
