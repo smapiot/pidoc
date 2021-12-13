@@ -1,4 +1,5 @@
 export * from './ContentPage';
+export * from './getPageLayout';
 export * from './Markdown';
 export * from './ImageCard';
 export * from './LoadingIndicator';

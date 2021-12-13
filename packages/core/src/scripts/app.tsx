@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { createInstance, Piral } from 'piral-core';
-import { LoadingIndicator, SectionMenu } from '@pidoc/components';
+import { LoadingIndicator, SectionMenu, setPageLayouts } from '@pidoc/components';
 import { createDocletPlugin } from './plugin';
 import { routes, resolveSections } from './sitemap';
 import { Layout, Breadcrumbs } from './Layout';
@@ -17,6 +17,9 @@ import {
   updated,
   publicUrl,
 } from '../codegen/app.codegen';
+
+// for backwards compatibility
+setPageLayouts(layouts);
 
 const instance = createInstance({
   requestPilets,
