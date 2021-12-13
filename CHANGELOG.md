@@ -1,9 +1,14 @@
 # `pidoc` Changelog
 
+## 0.13.3 (tbd)
+
+- Added backwards compatibility support
+- Improved exported typings of `pidoc`
+
 ## 0.13.2 (December 7, 2021)
 
 - Improved doclet quick fix
-- Imprvoed debugging in monorepo
+- Improved debugging in monorepo
 - Added support for `doclet` in *package.json*
 
 ## 0.13.1 (December 6, 2021)

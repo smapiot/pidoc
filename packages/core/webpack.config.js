@@ -9,8 +9,17 @@ function getExtender(packageName) {
   }
 }
 
-module.exports = extendWebpack({
+const getConfig = extendWebpack({
   sassLoaderOptions: {
     additionalData: data,
   },
 });
+
+module.exports = (config) => {
+  const newConfig = getConfig(config);
+  newConfig.resolve.alias = {
+    // For backwards compatibility
+    'piral-docs-tools/components': require.resolve('@pidoc/components'),
+  };
+  return newConfig;
+};

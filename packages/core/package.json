@@ -29,7 +29,8 @@
   ],
   "pilets": {
     "externals": [
-      "@pidoc/components"
+      "@pidoc/components",
+      "piral-docs-tools/components"
     ],
     "files": [
       {
