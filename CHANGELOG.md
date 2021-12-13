@@ -1,6 +1,6 @@
 # `pidoc` Changelog
 
-## 0.13.3 (tbd)
+## 0.13.3 (December 13, 2021)
 
 - Added backwards compatibility support
 - Improved exported typings of `pidoc`
