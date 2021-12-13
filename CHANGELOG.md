@@ -1,6 +1,6 @@
 # `pidoc` Changelog
 
-## 0.13.4 (tbd)
+## 0.13.4 (December 13, 2021)
 
 - Added `getPageLayout` for backwards compatiblity
 
