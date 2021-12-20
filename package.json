@@ -15,6 +15,7 @@
     "url": "https://github.com/smapiot/pidoc/issues"
   },
   "scripts": {
+    "start": "lerna run start --scope @pidoc/example-app --stream",
     "ci:deploy": "gh-pages -d packages/example-app/dist/release",
     "ci:version": "node tools/changelog-version.js"
   },

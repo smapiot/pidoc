@@ -6,7 +6,7 @@ export function useHash(current: HTMLElement) {
 
   useEffect(() => {
     const tid = setTimeout(() => {
-      const id = hash.substr(1);
+      const id = hash.substring(1);
 
       if (id) {
         const element = document.getElementById(id);

@@ -63,7 +63,7 @@ function seen(offset: number, position: number, height: number, scrollHeight: nu
 function querySections(current: HTMLElement): Array<HTMLElement> {
   if (current) {
     const sections = current.querySelectorAll<HTMLElement>('h2, h3, h4, h5, h6');
-    return Array.prototype.map.call(sections, section => section);
+    return Array.prototype.map.call(sections, (section) => section);
   } else {
     return [];
   }
@@ -87,16 +87,17 @@ export function useMenuItems(current: HTMLElement) {
   useEffect(() => {
     if (sections.length > 0) {
       let active = undefined;
-  
+
       const handler = () => {
         const position = document.documentElement.scrollTop;
         const height = document.documentElement.clientHeight;
         const scrollHeight = document.documentElement.scrollHeight;
         const length = sections.length;
         const newActive =
-          sections.filter((section, i) => seen(section.offsetTop, position, height, scrollHeight, i + 1 === length))
+          sections
+            .filter((section, i) => seen(section.offsetTop, position, height, scrollHeight, i + 1 === length))
             .pop() || sections[0];
-  
+
         if (active !== newActive) {
           setItems(extractMenuItems(sections, newActive) || []);
           active = newActive;

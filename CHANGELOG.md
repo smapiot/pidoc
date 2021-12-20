@@ -1,5 +1,10 @@
 # `pidoc` Changelog
 
+## 0.13.5 (tbd)
+
+- Added optional dark mode (with auto detection)
+- Fixed memory leak in DOMRectReadOnly
+
 ## 0.13.4 (December 13, 2021)
 
 - Added `getPageLayout` for backwards compatiblity

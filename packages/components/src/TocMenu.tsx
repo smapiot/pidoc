@@ -15,9 +15,7 @@ function renderMenuItems(items: MenuItems, level = 1) {
         {items.map((item) => (
           <li key={item.href} className={c(item.active && 'active')}>
             <Link className={c(`level-${level}`, item.children.length && 'children')} to={item.href}>
-              <div>
-                {item.title}
-              </div>
+              <div>{item.title}</div>
             </Link>
             {item.children.length > 0 && renderMenuItems(item.children, level + 1)}
           </li>
