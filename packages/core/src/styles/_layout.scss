@@ -86,14 +86,26 @@ div.content {
 }
 
 .version-info {
-  margin: 0.5rem 0;
-  flex: 1 0 270px;
+  margin-top: 0.5rem;
+  flex: 1 0 330px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   text-align: right;
   font-size: 0.8em;
   color: $docs-color-tabs-border-normal;
 
+  > div + div {
+    margin-left: 1rem;
+  }
+
   i {
-    margin: 0 0.5rem 0 1rem;
+    margin: 0 0.5rem 0;
+  }
+
+  @media (min-width: $docs-desktop-brk) {
+    justify-content: space-evenly;
+    margin-top: 0;
   }
 
   @media (max-width: $docs-mobile-brk) {
