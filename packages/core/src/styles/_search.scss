@@ -4,11 +4,11 @@
   width: 30rem;
 
   @media (max-width: $docs-desktop-brk) {
-    width: 23rem;
+    width: 21rem;
   }
 
   @media (max-width: $docs-mobile-brk) {
-    width: 1rem;
+    width: 0;
   }
 
   .search-overlay {

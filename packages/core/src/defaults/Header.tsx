@@ -55,6 +55,7 @@ const Header: React.FC<PiralDocsHeaderComponentProps> = ({ title, search, logo, 
           <span className="brand-suffix">Docs</span>
         </div>
         {search}
+        <ToggleDark />
         <div className="hamburger">
           <a href="#" onClick={toggleActive}>
             <i className="fas fa-bars" />
@@ -72,7 +73,6 @@ const Header: React.FC<PiralDocsHeaderComponentProps> = ({ title, search, logo, 
               Updated {updated}
             </div>
           )}
-          <ToggleDark />
         </div>
       </div>
       <nav className="layout-container" data-open={active}>

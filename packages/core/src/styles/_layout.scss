@@ -87,7 +87,7 @@ div.content {
 
 .version-info {
   margin-top: 0.5rem;
-  flex: 1 0 330px;
+  flex: 1 0 280px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -95,7 +95,7 @@ div.content {
   font-size: 0.8em;
   color: $docs-color-tabs-border-normal;
 
-  > div + div {
+  > div {
     margin-left: 1rem;
   }
 

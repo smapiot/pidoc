@@ -88,6 +88,7 @@ header .header {
   @media (max-width: $docs-mobile-brk) {
     .hamburger {
       display: block;
+      margin-left: 1rem;
     }
   }
 }
