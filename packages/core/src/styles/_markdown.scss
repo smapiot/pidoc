@@ -1,6 +1,7 @@
 .markdown-body {
   text-size-adjust: 100%;
   color: $docs-color-md-text;
+  background: $docs-color-back;
   font-family: $docs-font-family-text;
   font-size: 1rem;
   line-height: 1.5;
@@ -19,6 +20,11 @@
       height: 100%;
       border: 0;
     }
+  }
+
+  body.dark & {
+    color: $docs-color-md-text-dark;
+    background: $docs-color-back-dark;
   }
 
   * {
@@ -71,6 +77,10 @@
       color: $docs-color-md-code;
       vertical-align: middle;
       visibility: hidden;
+
+      body.dark & {
+        color: $docs-color-md-code-dark;
+      }
     }
 
     &:hover .anchor {
@@ -146,6 +156,11 @@
     margin: 1.5em 0;
     padding: 0;
 
+    body.dark & {
+      border-bottom: 1px solid $docs-color-shadow-dark;
+      background-color: $docs-color-md-line-dark;
+    }
+
     &:before {
       content: "";
       display: table;
@@ -174,6 +189,10 @@
   h1, h2 {
     border-bottom: 1px solid $docs-color-md-border;
     padding-bottom: .3em;
+
+    body.dark & {
+      border-bottom: 1px solid $docs-color-md-border-dark;
+    }
   }
 
   h1 {
@@ -206,6 +225,10 @@
   h6 {
     font-size: 0.85em;
     color: $docs-color-md-inactive;
+
+    body.dark & {
+      color: $docs-color-md-inactive-dark;
+    }
   }
 
   p {
@@ -283,6 +306,10 @@
 
   .text-gray-light {
     color: $docs-color-md-inactive !important;
+
+    body.dark & {
+      color: $docs-color-md-inactive-dark !important;
+    }
   }
 
   .lh-condensed {
@@ -313,6 +340,7 @@
   blockquote {
     border-left: 0.25em solid $docs-color-md-table;
     color: $docs-color-md-inactive;
+
     padding: 0 1em;
 
     > :first-child {
@@ -321,6 +349,10 @@
 
     > :last-child {
       margin-bottom: 0;
+    }
+
+    body.dark & {
+      color: $docs-color-md-inactive-dark;
     }
   }
 
@@ -336,6 +368,13 @@
     line-height: 10px;
     padding: 3px 5px;
     vertical-align: middle;
+
+    body.dark & {
+      border: 1px solid $docs-color-md-front-dark;
+      border-bottom-color: $docs-color-md-box-dark;
+      box-shadow: inset 0 -1px 0 $docs-color-md-box-dark;
+      color: $docs-color-md-kbd-dark;
+    }
   }
 
   ol, ul {
@@ -385,11 +424,20 @@
   table th {
     border: 1px solid $docs-color-md-table;
     padding: 0.5em 0.8em;
+
+    body.dark & {
+      border: 1px solid $docs-color-md-table-dark;
+    }
   }
 
   table tr {
     background-color: $docs-color-back;
     border-top: 1px solid $docs-color-md-front;
+
+    body.dark & {
+      background-color: $docs-color-back-dark;
+      border-top: 1px solid $docs-color-md-front-dark;
+    }
   }
 
   table tr:nth-child(2n) {
@@ -435,6 +483,10 @@
       padding: 0;
       white-space: pre-wrap;
       word-break: normal;
+    }
+
+    body.dark & {
+      background-color: $docs-color-md-back-dark;
     }
   }
 
@@ -508,6 +560,10 @@
     overflow: visible;
     white-space: pre;
     word-wrap: normal;
+
+    body.dark & {
+      color: $docs-color-md-text-dark;
+    }
   }
 
   .pl-token.active, .pl-token:hover {
@@ -527,6 +583,14 @@
     line-height: 10px;
     padding: 3px 5px;
     vertical-align: middle;
+
+    body.dark & {
+      color: $docs-color-md-kbd-dark;
+      box-shadow: inset 0 -1px 0 $docs-color-md-front-dark;
+      background-color: $docs-color-md-shadow-dark;
+      border: 1px solid $docs-color-md-edge-dark;
+      border-bottom-color: $docs-color-md-front-dark;
+    }
   }
 
   :checked + .radio-label {
@@ -554,6 +618,11 @@
     color: $docs-color-md-keyword;
     background: $docs-color-md-paper;
     word-break: break-word;
+
+    body.dark & {
+      color: $docs-color-md-keyword-dark;
+      background: $docs-color-md-paper-dark;
+    }
   }
 
   .hljs-comment,
@@ -567,6 +636,10 @@
   .hljs-subst {
     color: $docs-color-md-keyword;
     font-weight: bold;
+
+    body.dark & {
+      color: $docs-color-md-keyword-dark;
+    }
   }
 
   .hljs-number,

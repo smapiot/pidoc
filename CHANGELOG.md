@@ -1,6 +1,6 @@
 # `pidoc` Changelog
 
-## 0.13.5 (tbd)
+## 0.14.0 (tbd)
 
 - Added optional dark mode (with auto detection)
 

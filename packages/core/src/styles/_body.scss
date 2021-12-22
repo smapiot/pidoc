@@ -16,7 +16,6 @@ button {
   font-family: $docs-font-family;
   font-weight: 300;
   color: $docs-color-text;
-  background: $docs-color-back;
 }
 
 body {
@@ -154,6 +153,12 @@ a:focus {
   display: flex;
   flex-direction: column;
   flex: 1 0 auto;
-  height: 100%;
+  margin-bottom: auto;
   width: 100%;
+  min-height: 100%;
+  background: $docs-color-back;
+
+  body.dark & {
+    background: $docs-color-back-dark;
+  }
 }
