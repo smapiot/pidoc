@@ -1,6 +1,6 @@
 # `pidoc` Changelog
 
-## 0.14.0 (tbd)
+## 0.14.0 (December 22, 2021)
 
 - Added optional dark mode (with auto detection)
 
