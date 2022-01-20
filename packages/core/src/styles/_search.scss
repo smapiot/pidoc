@@ -1,14 +1,12 @@
 .search-dialog {
   display: flex;
   justify-content: flex-end;
-  width: 30rem;
-
-  @media (max-width: $docs-desktop-brk) {
-    width: 21rem;
-  }
+  min-width: 15rem;
+  flex: 999;
 
   @media (max-width: $docs-mobile-brk) {
     width: 0;
+    min-width: 0;
   }
 
   .search-overlay {
@@ -90,6 +88,11 @@
     width: 10rem;
     transition: width 250ms cubic-bezier(0.1, 0.7, 0.1, 1);
     position: relative;
+
+    @media (max-width: $docs-mobile-brk) {
+      display: flex;
+      flex-direction: row-reverse;
+    }
   }
 
   .search-form {
@@ -141,7 +144,6 @@
       }
 
       .search-icon {
-        top: 8px;
         left: -2rem;
       }
     }

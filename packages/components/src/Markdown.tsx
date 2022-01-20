@@ -18,7 +18,8 @@ export const Markdown: React.FC<MarkdownProps> = ({ content, link, editLabel = '
       links.forEach((link) => {
         const path = link.getAttribute('href');
 
-        if (path.indexOf(publicUrl) === 0) {
+        if (path[0] === '/' && path[1] !== '/') {
+          link.setAttribute('href', publicUrl + path.substring(1));
           link.addEventListener('click', (ev) => {
             ev.preventDefault();
             history.push(path);

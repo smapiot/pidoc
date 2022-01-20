@@ -61,7 +61,7 @@ header .header {
     flex-direction: row;
     align-items: center;
     color: $docs-color-header-text;
-    flex: 9999;
+    padding-right: 1rem;
 
     img {
       max-height: 2em;

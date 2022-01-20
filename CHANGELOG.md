@@ -1,5 +1,10 @@
 # `pidoc` Changelog
 
+## 0.14.1 (tbd)
+
+- Fixed issue with `publicPath` in Markdown links
+- Improved styling of header section
+
 ## 0.14.0 (December 22, 2021)
 
 - Added optional dark mode (with auto detection)

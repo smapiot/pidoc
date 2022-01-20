@@ -104,6 +104,7 @@ div.content {
   }
 
   @media (min-width: $docs-desktop-brk) {
+    flex: 0 0 280px;
     justify-content: space-evenly;
     margin-top: 0;
   }
