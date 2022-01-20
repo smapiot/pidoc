@@ -1,2 +1,2 @@
 "use strict";(self.webpackChunk_pidoc_core=self.webpackChunk_pidoc_core||[]).push([[292],{1292:(e,t,n)=>{n.r(t),n.d(t,{"default":()=>c});var a=n(2784),r=n(4302),o={title:"React",description:"Information about the React generator.",audience:"Everyone",level:"Beginner",section:"Generators"};const c=function(){return a.createElement(r.ContentPage,null,a.createElement(r.PageLayout,{name:"default",meta:o},a.createElement(r.PageContent,{meta:o},a.createElement(r.Markdown,{content:'\n<h1 id="react-generator">React Generator</h1>\n<p>(tbd)</p>\n',link:"https://github.com/smapiot/pidoc/tree/develop/packages/example-app/docs/generators/03-react.md",editLabel:"Edit on GitHub"}))))}}}]);
-//# sourceMappingURL=22fb6a.js.map
+//# sourceMappingURL=bbfee7.js.map
