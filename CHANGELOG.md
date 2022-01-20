@@ -3,6 +3,7 @@
 ## 0.14.2 (tbd)
 
 - Fixed issue with most recent TypeDoc not showing types
+- Removed previously unused styling
 
 ## 0.14.1 (January 20, 2022)
 
