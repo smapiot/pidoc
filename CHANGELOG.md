@@ -1,6 +1,6 @@
 # `pidoc` Changelog
 
-## 0.14.1 (tbd)
+## 0.14.1 (January 20, 2022)
 
 - Fixed issue with `publicPath` in Markdown links
 - Improved styling of header section
