@@ -17,6 +17,7 @@ const getConfig = extendWebpack({
 
 module.exports = (config) => {
   const newConfig = getConfig(config);
+  newConfig.externals = [];
   newConfig.resolve.alias = {
     // For backwards compatibility
     'piral-docs-tools/components': require.resolve('@pidoc/components'),
