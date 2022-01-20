@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { withSep, gref, keyOf } from './utils';
+import { withSep, gref, keyOf, ma } from './utils';
 import { TiType, TiNode, TiKind } from './types';
 
 export interface TypeRendererProps {
@@ -40,7 +40,7 @@ export const TypeArgumentRenderer: React.FC<TypeArgumentRendererProps> = ({ args
     <span>
       &lt;
       {withSep(
-        args.map((ta) => <TypeRenderer key={keyOf(ta)} render={render} node={ta} />),
+        ma(args).map((ta) => <TypeRenderer key={keyOf(ta)} render={render} node={ta} />),
         ', ',
       )}
       &gt;
@@ -49,7 +49,7 @@ export const TypeArgumentRenderer: React.FC<TypeArgumentRendererProps> = ({ args
   defaultResult;
 
 export const TypeParameterRenderer: React.FC<TypeParameterRendererProps> = ({ args, render }) => (
-  <TypeArgumentRenderer render={render} args={args && args.map(convertParamToArg)} />
+  <TypeArgumentRenderer render={render} args={args && ma(args).map(convertParamToArg)} />
 );
 
 export const TypeRenderer: React.FC<TypeRendererProps> = ({ node, render }) => {
@@ -58,7 +58,7 @@ export const TypeRenderer: React.FC<TypeRendererProps> = ({ node, render }) => {
       return (
         <>
           {withSep(
-            (node.types || []).map((t) => <TypeRenderer render={render} node={t} key={keyOf(t)} />),
+            ma(node.types).map((t) => <TypeRenderer render={render} node={t} key={keyOf(t)} />),
             ' & ',
           )}
         </>
@@ -67,7 +67,7 @@ export const TypeRenderer: React.FC<TypeRendererProps> = ({ node, render }) => {
       return (
         <>
           {withSep(
-            (node.types || []).map((t) => <TypeRenderer render={render} node={t} key={keyOf(t)} />),
+            ma(node.types).map((t) => <TypeRenderer render={render} node={t} key={keyOf(t)} />),
             ' | ',
           )}
         </>
@@ -94,7 +94,7 @@ export const TypeRenderer: React.FC<TypeRendererProps> = ({ node, render }) => {
         <span>
           [
           {withSep(
-            (node.elements || []).map((t) => <TypeRenderer render={render} node={t} key={keyOf(t)} />),
+            ma(node.elements).map((t) => <TypeRenderer render={render} node={t} key={keyOf(t)} />),
             ', ',
           )}
           ]

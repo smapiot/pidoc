@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SignatureRenderer } from './SignatureRenderer';
 import { Details } from './Details';
-import { gid } from './utils';
+import { gid, ma } from './utils';
 import { TiNode, TiKind } from './types';
 
 export interface FunctionRendererProps {
@@ -17,7 +17,7 @@ export const FunctionRenderer: React.FC<FunctionRendererProps> = ({ node, render
     title={node.name}
     description={node.signatures[0].comment}>
     <ul className="interface-map">
-      {node.signatures.map(
+      {ma(node.signatures).map(
         (child) =>
           child.kind === TiKind.CallSignature && (
             <li key={child.id}>

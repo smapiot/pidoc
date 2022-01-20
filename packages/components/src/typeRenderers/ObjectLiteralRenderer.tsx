@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Details } from './Details';
 import { TiNode, TiKind } from './types';
+import { ma } from './utils';
 
 export interface ObjectLiteralRendererProps {
   node: TiNode;
@@ -10,7 +11,7 @@ export interface ObjectLiteralRendererProps {
 export const ObjectLiteralRenderer: React.FC<ObjectLiteralRendererProps> = ({ node }) => (
   <Details color="red" kind={node.kindString} description={node.comment} title={node.name}>
     <ul className="interface-map">
-      {node.children.map(
+      {ma(node.children).map(
         (child) =>
           child.kind === TiKind.Variable && (
             <li key={child.id}>

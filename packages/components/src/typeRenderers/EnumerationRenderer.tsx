@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Details } from './Details';
 import { TiNode, TiKind } from './types';
+import { ma } from './utils';
 
 export interface EnumerationRendererProps {
   node: TiNode;
@@ -10,7 +11,7 @@ export interface EnumerationRendererProps {
 export const EnumerationRenderer: React.FC<EnumerationRendererProps> = ({ node }) => (
   <Details color="orange" description={node.comment} kind={node.kindString} title={node.name}>
     <ul className="interface-map">
-      {node.children.map(
+      {ma(node.children).map(
         (child) =>
           child.kind === TiKind.EnumerationMember && (
             <li key={child.id}>

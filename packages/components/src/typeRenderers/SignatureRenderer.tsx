@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TypeParameterRenderer, TypeRenderer } from './TypeRenderer';
-import { withSep } from './utils';
+import { ma, withSep } from './utils';
 import { TiNode } from './types';
 
 export interface SignatureRendererProps {
@@ -14,7 +14,7 @@ export const SignatureRenderer: React.FC<SignatureRendererProps> = ({ node, rend
     <TypeParameterRenderer args={node.typeParameter} render={render} />
     {brackets[0]}
     {withSep(
-      (node.parameters || []).map((p) => (
+      ma(node.parameters).map((p) => (
         <span key={p.id}>
           {p.name}: <TypeRenderer node={p.type} render={render} />
         </span>

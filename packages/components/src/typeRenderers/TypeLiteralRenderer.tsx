@@ -2,6 +2,7 @@ import * as React from 'react';
 import { TypeRenderer } from './TypeRenderer';
 import { SignatureRenderer } from './SignatureRenderer';
 import { TiNode, TiKind } from './types';
+import { ma } from './utils';
 
 export interface TypeLiteralRendererProps {
   node: TiNode;
@@ -10,7 +11,7 @@ export interface TypeLiteralRendererProps {
 
 export const TypeLiteralRenderer: React.FC<TypeLiteralRendererProps> = ({ node, render }) => (
   <ul className="interface-map">
-    {(node.children || []).map((child) =>
+    {ma(node.children).map((child) =>
       child.kind === TiKind.Property || child.kind === TiKind.Variable ? (
         <li key={child.id}>
           <span className="block">{child.comment && child.comment.shortText}</span>
@@ -41,7 +42,7 @@ export const TypeLiteralRenderer: React.FC<TypeLiteralRendererProps> = ({ node, 
         </li>
       ) : undefined,
     )}
-    {(node.signatures || []).map(
+    {ma(node.signatures).map(
       (child) =>
         child.kind === TiKind.CallSignature && (
           <li key={child.id}>
@@ -54,7 +55,7 @@ export const TypeLiteralRenderer: React.FC<TypeLiteralRendererProps> = ({ node, 
           </li>
         ),
     )}
-    {(node.indexSignature || []).map(
+    {ma(node.indexSignature).map(
       (child) =>
         child.kind === TiKind.IndexSignature && (
           <li key={child.id}>

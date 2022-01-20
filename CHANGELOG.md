@@ -1,5 +1,9 @@
 # `pidoc` Changelog
 
+## 0.14.2 (tbd)
+
+- Fixed issue with most recent TypeDoc not showing types
+
 ## 0.14.1 (January 20, 2022)
 
 - Fixed issue with `publicPath` in Markdown links
