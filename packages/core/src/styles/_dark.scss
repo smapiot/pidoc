@@ -85,4 +85,7 @@ body.dark {
   img {
     pointer-events: none;
   }
+ body.dark img.auto {
+  filter: invert()hue-rotate(180deg);
+} 
 }
