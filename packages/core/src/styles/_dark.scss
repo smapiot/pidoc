@@ -3,6 +3,10 @@ body.dark {
 
   img {
     filter: brightness(.8) contrast(1.2);
+
+    &.auto {
+      filter: #{"invert() hue-rotate(180deg)"};
+    }
   }
 }
 
@@ -85,7 +89,4 @@ body.dark {
   img {
     pointer-events: none;
   }
- body.dark img.auto {
-  filter: invert()hue-rotate(180deg);
-} 
 }

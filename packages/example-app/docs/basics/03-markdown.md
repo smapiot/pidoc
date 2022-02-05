@@ -189,3 +189,15 @@ This text was inserted from some other file. The code for the line above was:
 ```md
 #\include ../assets/foo.txt
 ```
+
+## Diagrams
+
+Quite often you have some diagrams already available, e.g.:
+
+![Sample diagram](../assets/diagram.png){.auto}
+
+To have such images (potentially transparent background, lines) correctly displayed in dark mode you should add the `.auto` class:
+
+```md
+![Sample diagram](../assets/diagram.png){.auto}
+```
