@@ -55,6 +55,9 @@ yargs
           open: args.open,
           port: args.port,
           hooks: {
+            beforeBuild() {
+              installWatchers('pilet');
+            },
             afterBuild() {
               copyStatic(outputPath);
             },

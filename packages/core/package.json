@@ -45,6 +45,7 @@
   "license": "MIT",
   "dependencies": {
     "@pidoc/components": "0.14.2",
+    "chokidar": "^3.5.3",
     "keyword-extractor": "0.0.20",
     "markdown-it": "^12.0.6",
     "markdown-it-abbr": "^1.0.4",

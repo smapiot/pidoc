@@ -6,10 +6,22 @@ process.on('uncaughtException', (err) => {
 const rimraf = require('rimraf');
 const { loadPlugins } = require('piral-cli/lib/plugin');
 const { basename, join, resolve, relative } = require('path');
-const { readFileSync, writeFileSync, existsSync, lstatSync, mkdirSync, readdirSync } = require('fs');
+const { watch } = require('chokidar');
+const {
+  readFileSync,
+  writeFileSync,
+  existsSync,
+  lstatSync,
+  mkdirSync,
+  readdirSync,
+  utimesSync,
+  openSync,
+  closeSync,
+} = require('fs');
+
 const { generated } = require('./constants');
 const { makeContent } = require('./content');
-const { sitemap, staticPath, fragment } = require('./meta-core');
+const { sitemap, staticPath, fragment, docsPath } = require('./meta-core');
 
 function getEntryFile(baseDir) {
   const srcDir = resolve(__dirname, '..');
@@ -88,11 +100,37 @@ function getDefault(dir, file) {
   return resolve(__dirname, '..', 'doclet.ts');
 }
 
+function touchFile(filename) {
+  const time = new Date();
+
+  try {
+    utimesSync(filename, time, time);
+  } catch (err) {
+    closeSync(openSync(filename, 'w'));
+  }
+}
+
+function installWatchers(type) {
+  const cwd = process.cwd();
+
+  watch(docsPath, {
+    recursive: true,
+    persistent: true,
+    ignoreInitial: true,
+    cwd,
+  }).on('all', (ev, path) => {
+    console.log('Processing [%s] in "%s" ...', ev, path);
+    makeContent(sitemap);
+    touchFile(resolve(__dirname, '..', 'codegen', `${type}.codegen`));
+  });
+}
+
 module.exports = {
   prepare,
   getEntryFile,
   getDoclet,
   copyStatic,
+  installWatchers,
   isFragment,
   getDefault,
 };

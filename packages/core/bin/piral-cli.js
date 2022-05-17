@@ -5,7 +5,7 @@ const { apps } = require('piral-cli');
 const { packageEmulator, updateExistingJson, readText, updateExistingFile } = require('piral-cli/lib/common');
 const { readFileSync, writeFileSync, renameSync, mkdirSync } = require('fs');
 const { resolve } = require('path');
-const { prepare, copyStatic, getEntryFile } = require('../src/tools/cli');
+const { prepare, copyStatic, getEntryFile, installWatchers } = require('../src/tools/cli');
 const { getChangelogVersion, getVersionPath } = require('../src/tools/version');
 const {
   outputPath,
@@ -111,6 +111,9 @@ yargs
           logLevel: args['log-level'],
           publicUrl,
           hooks: {
+            beforeBuild() {
+              installWatchers('sitemap');
+            },
             afterBuild({ bundler }) {
               const { dir } = bundler.bundle;
               processHtml(dir);

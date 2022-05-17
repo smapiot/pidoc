@@ -12,7 +12,7 @@ The main piece for running `pidoc` is the *docs.config.json* file. It should be 
 
 ## Example Configuration
 
-Below you'll find an example configuration.
+Below you'll find an example configuration. Feel free to use this as a boilerplate.
 
 ```json
 {
@@ -46,7 +46,7 @@ More about generators can be found in the [generators section](../generators/01-
 
 ## Configuration Typings
 
-(tbd)
+The configuration is also fully typed. You'll find it exported from the types of `@pidoc/core` (name `PiralDocsFullConfig`).
 
 ## Advanced Scenarios
 

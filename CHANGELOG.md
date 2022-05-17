@@ -5,6 +5,7 @@
 - Fixed issue with no JS robot not showing
 - Added adjustable images for dark mode (#8) [@RishiKumarRay]
 - Added versioned output as default via `--versioned` (#2)
+- Improved change handlers (#3)
 
 ## 0.14.2 (January 20, 2022)
 
