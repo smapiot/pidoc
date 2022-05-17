@@ -2,6 +2,7 @@
 
 ## 0.15.0 (tbd)
 
+- Fixed issue with no JS robot not showing
 - Added adjustable images for dark mode (#8) [@RishiKumarRay]
 - Added versioned output as default via `--versioned` (#2)
 

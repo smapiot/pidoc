@@ -7,7 +7,17 @@ const { readFileSync, writeFileSync, renameSync, mkdirSync } = require('fs');
 const { resolve } = require('path');
 const { prepare, copyStatic, getEntryFile } = require('../src/tools/cli');
 const { getChangelogVersion, getVersionPath } = require('../src/tools/version');
-const { outputPath, package, publicUrl, title, bundlerName, changelogPath } = require('../src/tools/meta');
+const {
+  outputPath,
+  package,
+  publicUrl,
+  title,
+  author,
+  description,
+  bundlerName,
+  changelogPath,
+} = require('../src/tools/meta');
+
 const { name, version } = require('../package.json');
 
 const baseDir = process.cwd();
@@ -18,10 +28,22 @@ const temp = `${outputPath}/temp`;
 const emulatorApp = `${emulator}/app`;
 const target = `${outputPath}/index.html`;
 
+function replaceAll(content, variables) {
+  Object.keys(variables).forEach((name) => {
+    content = content.split(`{{${name}}}`).join(variables[name] || '');
+  });
+
+  return content;
+}
+
 function processHtml(outDir) {
   const file = resolve(outDir, 'index.html');
   const content = readFileSync(file, 'utf8');
-  const newContent = content.replace('${title}', title);
+  const newContent = replaceAll(content, {
+    title,
+    author,
+    description,
+  });
   writeFileSync(file, newContent, 'utf8');
 }
 
@@ -159,9 +181,7 @@ yargs
     (args) => {
       prepare(baseDir);
       const version = changelogPath ? getChangelogVersion(changelogPath) : package.version;
-      const url = args.versioned
-        ? getVersionPath(publicUrl, version)
-        : publicUrl;
+      const url = args.versioned ? getVersionPath(publicUrl, version) : publicUrl;
       return apps
         .buildPiral(baseDir, {
           entry,
