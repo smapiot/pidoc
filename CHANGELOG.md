@@ -1,8 +1,9 @@
 # `pidoc` Changelog
 
-## 0.14.3 (tbd)
+## 0.15.0 (tbd)
 
 - Added adjustable images for dark mode (#8) [@RishiKumarRay]
+- Added versioned output as default via `--versioned` (#2)
 
 ## 0.14.2 (January 20, 2022)
 

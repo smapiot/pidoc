@@ -5,13 +5,20 @@ function getChangelogVersion(changelogPath) {
   const matches = /^\#\# (\d+\.\d+\.\d+).*/gm.exec(CHANGELOG);
 
   if (!matches) {
-    throw new Error('Invalid CHANGELOG format found. Need to fine line starting with "## x.y.z" to get the latest version.');
+    throw new Error(
+      'Invalid CHANGELOG format found. Need to fine line starting with "## x.y.z" to get the latest version.',
+    );
   }
 
   const version = matches[1];
   return version;
 }
 
+function getVersionPath(publicUrl, version) {
+  return `${publicUrl}/${version}`.split('//').join('/');
+}
+
 module.exports = {
   getChangelogVersion,
+  getVersionPath,
 };

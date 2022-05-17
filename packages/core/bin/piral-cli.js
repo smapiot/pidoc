@@ -3,16 +3,18 @@
 const yargs = require('yargs');
 const { apps } = require('piral-cli');
 const { packageEmulator, updateExistingJson, readText, updateExistingFile } = require('piral-cli/lib/common');
-const { readFileSync, writeFileSync } = require('fs');
+const { readFileSync, writeFileSync, renameSync, mkdirSync } = require('fs');
 const { resolve } = require('path');
 const { prepare, copyStatic, getEntryFile } = require('../src/tools/cli');
-const { outputPath, package, publicUrl, title, bundlerName } = require('../src/tools/meta');
+const { getChangelogVersion, getVersionPath } = require('../src/tools/version');
+const { outputPath, package, publicUrl, title, bundlerName, changelogPath } = require('../src/tools/meta');
 const { name, version } = require('../package.json');
 
 const baseDir = process.cwd();
 const entry = getEntryFile(baseDir);
 const emulator = `${outputPath}/emulator`;
 const release = `${outputPath}/release`;
+const temp = `${outputPath}/temp`;
 const emulatorApp = `${emulator}/app`;
 const target = `${outputPath}/index.html`;
 
@@ -147,12 +149,19 @@ yargs
         .number('log-level')
         .describe('log-level', 'The log level to use (0-5).')
         .default('log-level', 3)
+        .boolean('versioned')
+        .describe('versioned', 'Puts the artifacts in a version folder and creates a soft-redirect.')
+        .default('versioned', true)
         .boolean('source-maps')
         .describe('source-maps', 'Includes the source maps with the pilet.')
         .default('source-maps', true);
     },
     (args) => {
       prepare(baseDir);
+      const version = changelogPath ? getChangelogVersion(changelogPath) : package.version;
+      const url = args.versioned
+        ? getVersionPath(publicUrl, version)
+        : publicUrl;
       return apps
         .buildPiral(baseDir, {
           entry,
@@ -161,11 +170,19 @@ yargs
           sourceMaps: args['source-maps'],
           logLevel: args['log-level'],
           type: 'release',
-          publicUrl,
+          publicUrl: url,
           hooks: {
             afterBuild() {
               processHtml(release);
               copyStatic(release);
+
+              if (args.versioned) {
+                const redirect = `<meta http-equiv="refresh" content="1; url='${url}/'"><script>location.href = location.path.replace("${publicUrl}", "${url}");</script>`;
+                renameSync(release, temp);
+                mkdirSync(release);
+                renameSync(temp, `${release}/${version}`);
+                writeFileSync(`${release}/index.html`, redirect, 'utf8');
+              }
             },
           },
         })
