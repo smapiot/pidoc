@@ -32,11 +32,28 @@ function sorter(sorting) {
   }
 }
 
-function getDocsFrom(dir, tester = /\.md$/, sorting = 'asc') {
+function getDocsNames(dir, orderBy, tester) {
+  if (!existsSync(dir)) {
+    return [];
+  }
+
   return readdirSync(dir)
-    .sort(sorter(sorting))
-    .filter((name) => tester.test(name) && name !== readme)
-    .map((name) => resolve(dir, name));
+    .sort(orderBy)
+    .filter((name) => tester.test(name) && name !== readme);
+}
+
+function getDocsFrom(dir, locale, tester = /\.md$/, sorting = 'asc') {
+  const orderBy = sorter(sorting);
+  const localeDir = resolve(dir, locale);
+  const mainDocs = getDocsNames(dir, orderBy, tester);
+  const localeDocs = getDocsNames(localeDir, orderBy, tester);
+  return mainDocs.map((item) => {
+    if (localeDocs.includes(item)) {
+      return resolve(localeDir, item);
+    } else {
+      return resolve(dir, item);
+    }
+  });
 }
 
 function getName(file) {
@@ -118,7 +135,7 @@ function readGeneratedFile(name, type) {
 const writeFileQueue = {};
 
 function flushWriteQueue() {
-  Object.keys(writeFileQueue).forEach(path => {
+  Object.keys(writeFileQueue).forEach((path) => {
     const content = writeFileQueue[path];
     writeFileSync(path, content, 'utf8');
     delete writeFileQueue[path];
@@ -140,13 +157,13 @@ function generateFile(name, content, type = 'codegen') {
 
 function makeFileFilter(fileNames, include, exclude) {
   if (fileNames && Array.isArray(fileNames)) {
-    return name => fileNames.includes(name);
+    return (name) => fileNames.includes(name);
   } else if (include || exclude) {
     const irx = include ? new RegExp(include) : new RegExp('.*');
     const erx = exclude ? new RegExp(exclude) : new RegExp('.*');
-    return name => irx.test(name) || !erx.test(name);
+    return (name) => irx.test(name) || !erx.test(name);
   } else {
-    return _ => true;
+    return (_) => true;
   }
 }
 

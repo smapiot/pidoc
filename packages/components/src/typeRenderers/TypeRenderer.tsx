@@ -4,20 +4,19 @@ import { TiType, TiNode, TiKind } from './types';
 
 export interface TypeRendererProps {
   node: TiType;
-  render(child: TiNode): JSX.Element;
+  render: (child: TiNode) => JSX.Element;
 }
 
 export interface TypeArgumentRendererProps {
   args?: Array<TiType>;
-  render(child: TiNode): JSX.Element;
+  render: (child: TiNode) => JSX.Element;
 }
 
 export interface TypeParameterRendererProps {
   args?: Array<TiNode>;
-  render(child: TiNode): JSX.Element;
+  render: (child: TiNode) => JSX.Element;
 }
 
-// tslint:disable-next-line
 const defaultResult = null;
 
 function convertParamToArg(param: TiNode): TiType {

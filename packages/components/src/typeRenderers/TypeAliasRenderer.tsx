@@ -6,7 +6,7 @@ import { TiNode } from './types';
 
 export interface TypeAliasRendererProps {
   node: TiNode;
-  render(child: TiNode): JSX.Element;
+  render: (child: TiNode) => JSX.Element;
 }
 
 export const TypeAliasRenderer: React.FC<TypeAliasRendererProps> = ({ node, render }) => (

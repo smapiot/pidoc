@@ -5,7 +5,7 @@ import { ma } from './utils';
 
 export interface ObjectLiteralRendererProps {
   node: TiNode;
-  render(child: TiNode): JSX.Element;
+  render: (child: TiNode) => JSX.Element;
 }
 
 export const ObjectLiteralRenderer: React.FC<ObjectLiteralRendererProps> = ({ node }) => (

@@ -86,13 +86,13 @@ export function useMenuItems(current: HTMLElement) {
 
   useEffect(() => {
     if (sections.length > 0) {
-      let active = undefined;
+      let active;
 
       const handler = () => {
         const position = document.documentElement.scrollTop;
         const height = document.documentElement.clientHeight;
-        const scrollHeight = document.documentElement.scrollHeight;
-        const length = sections.length;
+        const { scrollHeight } = document.documentElement;
+        const { length } = sections;
         const newActive =
           sections
             .filter((section, i) => seen(section.offsetTop, position, height, scrollHeight, i + 1 === length))

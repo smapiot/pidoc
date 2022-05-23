@@ -1,4 +1,4 @@
-$docs-color-primary: #00FFAD !default;
+$docs-color-primary: #00ffad !default;
 $docs-color-secondary: #192440 !default;
 $docs-color-heart: #ea5395 !default;
 $docs-color-text: #000 !default;
@@ -71,13 +71,13 @@ $docs-color-scrollbar: transparentize($color: $docs-color-text, $amount: 0.68) !
 $docs-color-scrollbar-dark: invert($docs-color-scrollbar) !default;
 $docs-color-button-normal: lighten(#192440, 10%) !default;
 $docs-color-button-active: #268fff !default;
-$docs-color-spinner: #56AA1C !default;
+$docs-color-spinner: #56aa1c !default;
 
 $docs-screen-brk: 1200px !default;
 $docs-desktop-brk: 992px !default;
 $docs-tablet-brk: 768px !default;
 $docs-mobile-brk: 576px !default;
 
-$docs-font-family-code: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace !default;
-$docs-font-family-text: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol !default;
+$docs-font-family-code: sfmono-regular, consolas, liberation mono, menlo, courier, monospace !default;
+$docs-font-family-text: -apple-system, blinkmacsystemfont, segoe ui, helvetica, arial, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol !default;
 $docs-font-family: 'Lato', sans-serif !default;

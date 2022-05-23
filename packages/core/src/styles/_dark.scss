@@ -2,7 +2,7 @@ body.dark {
   color: $docs-color-text-dark;
 
   img {
-    filter: brightness(.8) contrast(1.2);
+    filter: brightness(0.8) contrast(1.2);
 
     &.auto {
       filter: #{"invert() hue-rotate(180deg)"};
@@ -32,7 +32,7 @@ body.dark {
   border-radius: 50%;
   background-color: #fafafa;
   box-sizing: border-box;
-  transition: all .5s cubic-bezier(.23,1,.32,1) 0ms;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   box-sizing: border-box;
 
   body.dark & {
@@ -69,7 +69,7 @@ body.dark {
 
   body.dark & {
     opacity: 1;
-    transition: opacity .25s ease;
+    transition: opacity 0.25s ease;
   }
 }
 
@@ -83,7 +83,7 @@ body.dark {
   padding: 0;
   border-radius: 30px;
   background-color: #0f1114;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   box-sizing: border-box;
 
   img {

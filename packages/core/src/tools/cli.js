@@ -34,7 +34,7 @@ function getDoclet(baseDir, package) {
   } else if (package.source) {
     return package.source;
   } else {
-    return getDefault(baseDir, `./src/index.tsx`);
+    return getDefault(baseDir, './src/index.tsx');
   }
 }
 

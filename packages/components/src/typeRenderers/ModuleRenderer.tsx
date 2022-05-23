@@ -4,7 +4,7 @@ import { ma } from './utils';
 
 export interface ModuleRendererProps {
   node: TiNode;
-  render(child: TiNode): JSX.Element;
+  render: (child: TiNode) => JSX.Element;
 }
 
 export const ModuleRenderer: React.FC<ModuleRendererProps> = ({ node, render }) => (

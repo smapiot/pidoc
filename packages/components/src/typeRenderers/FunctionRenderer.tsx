@@ -6,7 +6,7 @@ import { TiNode, TiKind } from './types';
 
 export interface FunctionRendererProps {
   node: TiNode;
-  render(child: TiNode): JSX.Element;
+  render: (child: TiNode) => JSX.Element;
 }
 
 export const FunctionRenderer: React.FC<FunctionRendererProps> = ({ node, render }) => (
@@ -15,7 +15,8 @@ export const FunctionRenderer: React.FC<FunctionRendererProps> = ({ node, render
     id={gid(node)}
     kind={node.kindString}
     title={node.name}
-    description={node.signatures[0].comment}>
+    description={node.signatures[0].comment}
+  >
     <ul className="interface-map">
       {ma(node.signatures).map(
         (child) =>

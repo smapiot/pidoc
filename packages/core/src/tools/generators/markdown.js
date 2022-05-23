@@ -10,9 +10,9 @@ function getRoute(basePath, name) {
 }
 
 exports.find = function (basePath, docsFolder, options) {
-  const { segment, dir, fileNames, exclude, include, sorting = 'asc' } = options;
+  const { segment, dir, fileNames, exclude, include, sorting = 'asc', locale = 'en' } = options;
   const folder = resolve(docsFolder, dir);
-  const files = getDocsFrom(folder, /\.md$/, sorting);
+  const files = getDocsFrom(folder, locale, /\.md$/, sorting);
   const filter = makeFileFilter(fileNames, include, exclude);
   const path = segment ? `${basePath}/${segment}` : basePath;
   return files
@@ -33,7 +33,7 @@ exports.find = function (basePath, docsFolder, options) {
 
 exports.build = function (entry, options) {
   const { name, file, route } = entry;
-  const { segment, dir, layout = 'default', resolveLink } = options;
+  const { segment, dir, locale, resolveLink, layout = 'default' } = options;
   const prefix = segment || dir;
 
   const title = getTitle(file);
@@ -63,7 +63,7 @@ exports.build = function (entry, options) {
   return generatePage(
     name,
     pageMeta,
-    `${prefix}-${name}`,
+    `${prefix}-${name}.${locale}`,
     head,
     body,
     route,

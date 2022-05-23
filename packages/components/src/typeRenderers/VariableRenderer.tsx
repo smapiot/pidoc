@@ -5,7 +5,7 @@ import { TiNode } from './types';
 
 export interface VariableRendererProps {
   node: TiNode;
-  render(child: TiNode): JSX.Element;
+  render: (child: TiNode) => JSX.Element;
 }
 
 export const VariableRenderer: React.FC<VariableRendererProps> = ({ node, render }) => (

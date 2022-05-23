@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ExtensionSlot } from 'piral-core';
 import { NavLink } from 'react-router-dom';
+import { LanguageItem, LanguageSelector } from './LanguageSelector';
 
 function renderNavItems(items: Array<React.ReactNode>) {
   return (
@@ -12,22 +13,26 @@ function renderNavItems(items: Array<React.ReactNode>) {
   );
 }
 
-export interface TopNavProps {
-  items: Array<{
-    link: string;
-    title: string;
-  }>;
+export interface NavItem {
+  link: string;
+  title: string;
 }
 
-export const TopNav: React.FC<TopNavProps> = ({ items }) => {
+export interface TopNavProps {
+  items: Array<NavItem>;
+  languages: Array<LanguageItem>;
+}
+
+export const TopNav: React.FC<TopNavProps> = ({ items, languages }) => {
   return (
-    <ul className="menu">
+    <div className="menu">
+      <LanguageSelector languages={languages} />
       {items.map((item) => (
-        <li key={item.link}>
+        <div key={item.link}>
           <NavLink to={item.link}>{item.title}</NavLink>
-        </li>
+        </div>
       ))}
       <ExtensionSlot name="top-nav" render={renderNavItems} />
-    </ul>
+    </div>
   );
 };

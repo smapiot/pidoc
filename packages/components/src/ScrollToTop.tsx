@@ -8,6 +8,5 @@ export const ScrollToTop: React.FC<RouteComponentProps> = ({ history, location }
     }
   }, [location.pathname]);
 
-  // tslint:disable-next-line:no-null-keyword
   return null;
 };

@@ -45,7 +45,7 @@ export function useSearch(
           const results = indices.reduce((agg: Array<any>, index, i) => {
             const results = index.search(input);
 
-            for (let j = results.length; j--; ) {
+            for (let j = results.length; j--;) {
               const k = Math.min(j + i, agg.length);
               agg.splice(k, 0, results[j]);
             }

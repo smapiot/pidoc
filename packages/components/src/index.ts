@@ -2,6 +2,7 @@ export * from './ContentPage';
 export * from './getPageLayout';
 export * from './Markdown';
 export * from './ImageCard';
+export * from './LanguageSelector';
 export * from './LoadingIndicator';
 export * from './PageContent';
 export * from './PageContext';

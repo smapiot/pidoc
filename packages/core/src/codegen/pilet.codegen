@@ -5,7 +5,7 @@ const { getGeneratedFilePath } = require('../tools/utils');
 
 module.exports = function () {
   const dependencies = makeContent(sitemap);
-  const docsitemap = getGeneratedFilePath('sitemap', 'js');
+  const docsitemap = getGeneratedFilePath(`sitemap.${language.default}`, 'js');
   const content = readFileSync(docsitemap, 'utf8');
 
   for (const dependency of dependencies) {

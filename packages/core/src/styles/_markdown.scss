@@ -52,7 +52,7 @@
 
   .octicon {
     display: inline-block;
-    fill: currentColor;
+    fill: currentcolor;
     vertical-align: text-bottom;
   }
 
@@ -150,7 +150,7 @@
     box-sizing: content-box;
     border: 0;
     border-bottom: 1px solid $docs-color-shadow;
-    height: .25em;
+    height: 0.25em;
     overflow: hidden;
     background-color: $docs-color-md-line;
     margin: 1.5em 0;
@@ -188,7 +188,7 @@
 
   h1, h2 {
     border-bottom: 1px solid $docs-color-md-border;
-    padding-bottom: .3em;
+    padding-bottom: 0.3em;
 
     body.dark & {
       border-bottom: 1px solid $docs-color-md-border-dark;
@@ -197,7 +197,7 @@
 
   h1 {
     font-size: 2em;
-    margin: .67em 0;
+    margin: 0.67em 0;
   }
 
   h2 {
@@ -219,7 +219,7 @@
   }
 
   h5 {
-    font-size: .875em;
+    font-size: 0.875em;
   }
 
   h6 {
@@ -389,7 +389,7 @@
     }
   }
 
-  li+li {
+  li + li {
     margin-top: 0.25em;
   }
 
@@ -459,11 +459,11 @@
   }
 
   code {
-    background-color: rgba($docs-color-md-code, .05);
+    background-color: rgba($docs-color-md-code, 0.05);
     border-radius: 3px;
     font-size: 85%;
     margin: 0;
-    padding: .2em .4em;
+    padding: 0.2em 0.4em;
   }
 
   pre {
@@ -522,7 +522,7 @@
   }
 
   .blob-num {
-    color: rgba($docs-color-md-code, .3);
+    color: rgba($docs-color-md-code, 0.3);
     cursor: pointer;
     font-family: $docs-font-family-code;
     font-size: 0.75rem;
@@ -537,7 +537,7 @@
     width: 1%;
 
     &:hover {
-      color: rgba($docs-color-md-code, .6);
+      color: rgba($docs-color-md-code, 0.6);
     }
 
     &:before {
@@ -603,7 +603,7 @@
     list-style-type: none;
 
     input {
-      margin: 0 .2em .25em -1.6em;
+      margin: 0 0.2em 0.25em -1.6em;
       vertical-align: middle;
     }
   }

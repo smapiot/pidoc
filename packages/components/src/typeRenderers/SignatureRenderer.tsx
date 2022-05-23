@@ -5,7 +5,7 @@ import { TiNode } from './types';
 
 export interface SignatureRendererProps {
   node: TiNode;
-  render(child: TiNode): JSX.Element;
+  render: (child: TiNode) => JSX.Element;
   brackets?: string;
 }
 

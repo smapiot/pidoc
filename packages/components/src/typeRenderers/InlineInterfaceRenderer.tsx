@@ -4,7 +4,7 @@ import { TiNode } from './types';
 
 export interface InlineInterfaceRendererProps {
   node: TiNode;
-  render(child: TiNode): JSX.Element;
+  render: (child: TiNode) => JSX.Element;
 }
 
 export const InlineInterfaceRenderer: React.FC<InlineInterfaceRendererProps> = ({ node, render }) => (

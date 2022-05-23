@@ -8,9 +8,9 @@ function getRoute(basePath, name) {
 }
 
 exports.find = function (basePath, docsFolder, options) {
-  const { segment, dir, fileNames, exclude, include, sorting = 'asc' } = options;
+  const { segment, dir, fileNames, exclude, include, sorting = 'asc', locale = 'en' } = options;
   const folder = resolve(docsFolder, dir);
-  const files = getDocsFrom(folder, /\.json$/, sorting);
+  const files = getDocsFrom(folder, locale, /\.json$/, sorting);
   const filter = makeFileFilter(fileNames, include, exclude);
   const path = segment ? `${basePath}/${segment}` : basePath;
   return files
@@ -31,7 +31,7 @@ exports.find = function (basePath, docsFolder, options) {
 
 exports.build = function (entry, options) {
   const { name, file, route } = entry;
-  const { segment, dir } = options;
+  const { segment, dir, locale } = options;
   const prefix = segment || dir;
   const body = readFileSync(file, 'utf8');
   const pageMeta = {
@@ -46,5 +46,5 @@ exports.build = function (entry, options) {
     <TypeInfo key="${name}">{${body}}</TypeInfo>
   `;
 
-  return generateCustomPage(name, pageMeta, `${prefix}-${name}`, imports, '', content, route, name);
+  return generateCustomPage(name, pageMeta, `${prefix}-${name}.${locale}`, imports, '', content, route, name);
 };

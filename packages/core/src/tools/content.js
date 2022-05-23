@@ -1,6 +1,6 @@
 const { resolve } = require('path');
 const { docRef, generateFile, flushWriteQueue } = require('./utils');
-const { docsPath, baseDir } = require('./meta-core');
+const { docsPath, baseDir, language } = require('./meta-core');
 
 function getGeneratorPath(genPath, options) {
   if (genPath === 'custom') {
@@ -10,9 +10,10 @@ function getGeneratorPath(genPath, options) {
   }
 }
 
-function makeLinks(items, basePath, resolveLink) {
+function makeLinks(items, basePath, resolveLink, locale) {
   const links = [];
   const flat = !Array.isArray(items);
+  let id = 0;
 
   if (flat) {
     items = [items];
@@ -23,8 +24,8 @@ function makeLinks(items, basePath, resolveLink) {
       const { generator, ...options } = item;
       const genPath = getGeneratorPath(generator, options);
       const { find, build } = require(genPath);
-      const entries = find(basePath, docsPath, options);
-      const content = entries.map((entry) => build(entry, { ...options, resolveLink })).join(', ');
+      const entries = find(basePath, docsPath, { ...options, locale });
+      const content = entries.map((entry) => build(entry, { ...options, locale, resolveLink })).join(', ');
 
       if (flat) {
         links.push(content);
@@ -33,8 +34,9 @@ function makeLinks(items, basePath, resolveLink) {
       }
     } else {
       links.push(`{
+        "id": ${JSON.stringify((id++).toString() + item.title)},
         "title": ${JSON.stringify(item.title)},
-        "links": [${makeLinks(item.links, basePath, resolveLink)}],
+        "links": [${makeLinks(item.links, basePath, resolveLink, locale)}],
       }`);
     }
   }
@@ -42,7 +44,7 @@ function makeLinks(items, basePath, resolveLink) {
   return links.join(', ');
 }
 
-function fillPageMap(items, basePath, pageMap) {
+function fillPageMap(items, basePath, pageMap, locale) {
   const flat = !Array.isArray(items);
 
   if (flat) {
@@ -54,7 +56,7 @@ function fillPageMap(items, basePath, pageMap) {
       const { generator, ...options } = item;
       const genPath = getGeneratorPath(generator, options);
       const { find } = require(genPath);
-      const entries = find(basePath, docsPath, options);
+      const entries = find(basePath, docsPath, { ...options, locale });
 
       for (const entry of entries) {
         if (entry.file) {
@@ -65,12 +67,22 @@ function fillPageMap(items, basePath, pageMap) {
         }
       }
     } else {
-      fillPageMap(item.links, basePath, pageMap);
+      fillPageMap(item.links, basePath, pageMap, locale);
     }
   }
 }
 
-exports.makeContent = function makeContent(sitemap) {
+function getString(title, key, locale) {
+  if (typeof title === 'string') {
+    return JSON.stringify(title);
+  } else if (!title || typeof title !== 'object') {
+    return JSON.stringify(key);
+  } else {
+    return JSON.stringify(title[locale] || title[language.default] || key);
+  }
+}
+
+function makeTranslatedContent(sitemap, locale, basePath) {
   const pageMap = {
     links: {},
     dependencies: [],
@@ -78,23 +90,30 @@ exports.makeContent = function makeContent(sitemap) {
 
   Object.keys(sitemap).forEach((key) => {
     const { sections } = sitemap[key];
-    fillPageMap(sections, '/' + key, pageMap);
+    fillPageMap(sections, `/${key}`, pageMap, locale);
   });
 
   const resolveLink = (link) => pageMap.links[link] || link;
   const content = Object.keys(sitemap)
     .map(
       (key) => `${JSON.stringify(key)}: {
-      "title": ${JSON.stringify(sitemap[key].title)},
-      "sections": [${makeLinks(sitemap[key].sections, '/' + key, resolveLink)}],
+      "title": ${getString(sitemap[key].title, key, locale)},
+      "sections": [${makeLinks(sitemap[key].sections, `${basePath}/${key}`, resolveLink, locale)}],
     }`,
     )
     .join(',');
 
-  generateFile('sitemap', `{ ${content} }`, 'js');
-  flushWriteQueue();
+  generateFile(`sitemap.${locale}`, `{ ${content} }`, 'js');
 
   return pageMap.dependencies;
+}
+
+exports.makeContent = function makeContent(sitemap) {
+  const hasSelection = Object.keys(language.selection).length > 1;
+  const basePath = hasSelection ? `/${language.default}` : '';
+  const dependencies = makeTranslatedContent(sitemap, language.default, basePath);
+  flushWriteQueue();
+  return dependencies;
 };
 
 exports.populateCode = `

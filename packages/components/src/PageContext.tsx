@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export interface PageApi {
   current: HTMLElement;
-  setCurrent(element: HTMLElement): void;
+  setCurrent: (element: HTMLElement) => void;
 }
 
 export const PageContext = React.createContext<PageApi>(undefined);

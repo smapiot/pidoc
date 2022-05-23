@@ -3,8 +3,10 @@
 ## 0.15.0 (tbd)
 
 - Fixed issue with no JS robot not showing
+- Fixed issue in layout with long version number
 - Added adjustable images for dark mode (#8) [@RishiKumarRay]
 - Added versioned output as default via `--versioned` (#2)
+- Added multi language support (#4)
 - Improved change handlers (#3)
 
 ## 0.14.2 (January 20, 2022)

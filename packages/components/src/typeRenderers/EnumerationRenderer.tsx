@@ -5,7 +5,7 @@ import { ma } from './utils';
 
 export interface EnumerationRendererProps {
   node: TiNode;
-  render(child: TiNode): JSX.Element;
+  render: (child: TiNode) => JSX.Element;
 }
 
 export const EnumerationRenderer: React.FC<EnumerationRendererProps> = ({ node }) => (

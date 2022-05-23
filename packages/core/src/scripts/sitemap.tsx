@@ -128,7 +128,7 @@ export function removeSection(section: SectionInfo, category: string) {
   const localRoutes: Record<string, React.ComponentType<RouteComponentProps>> = {};
 
   if (parent) {
-    //TODO fine and remove sections properly
+    // TODO fine and remove sections properly
   }
 
   return localRoutes;

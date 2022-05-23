@@ -4,9 +4,9 @@ import { PiletApi, PiralPlugin } from 'piral-core';
 export { PiletApi, PiralPlugin };
 
 declare module 'piral-core/lib/types/custom' {
-  interface PiletCustomApi extends PiletDocletApi {}
+  type PiletCustomApi = PiletDocletApi;
 
-  interface PiralCustomState extends PiralDocletState {}
+  type PiralCustomState = PiralDocletState;
 }
 
 export interface PiralDocsBreadcrumbsComponentProps {}
@@ -85,10 +85,10 @@ export interface PiralDocletState {
 }
 
 export interface PiletDocletApi {
-  registerDocumentation(section: SectionInfo, category: string): void;
-  unregisterDocumentation(section: SectionInfo, category: string): void;
-  registerSearchProvider(cb: () => Promise<any>): void;
-  unregisterSearchProvider(cb: () => Promise<any>): void;
+  registerDocumentation: (section: SectionInfo, category: string) => void;
+  unregisterDocumentation: (section: SectionInfo, category: string) => void;
+  registerSearchProvider: (cb: () => Promise<any>) => void;
+  unregisterSearchProvider: (cb: () => Promise<any>) => void;
 }
 
 export interface PiralDocsCoreConfig {

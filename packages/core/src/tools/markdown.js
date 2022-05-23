@@ -42,7 +42,7 @@ function getMdValue(result) {
     .join('</table></div>');
   Object.keys(result.images).forEach((id) => {
     const path = result.images[id];
-    content = content.split(id).join('${require("' + path + '")}');
+    content = content.split(id).join(`\${require("${path}")}`);
   });
   return content;
 }

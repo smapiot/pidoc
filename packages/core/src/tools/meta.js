@@ -2,8 +2,8 @@ const { resolve } = require('path');
 const { normalizeArr, normalizeObj, getTemplate } = require('./helpers');
 const meta = require('./meta-core');
 
-const baseDir = meta.baseDir;
-const config = meta.config;
+const { baseDir } = meta;
+const { config } = meta;
 const defaultsDir = resolve(__dirname, '../defaults');
 const redirects = config.redirects || {};
 const publicUrl = config.publicPath || '/';
@@ -17,7 +17,7 @@ const sass = {
 };
 const styles = [
   ...normalizeArr(baseDir, template.styles),
-  ...normalizeArr(baseDir, config.styles)
+  ...normalizeArr(baseDir, config.styles),
 ];
 const pages = {
   ...normalizeArr(baseDir, template.pages),

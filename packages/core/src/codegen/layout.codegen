@@ -1,4 +1,4 @@
-const { components, name } = require('../tools/meta');
+const { components, name, language } = require('../tools/meta');
 const { makeRelativePath } = require('../tools/utils');
 
 module.exports = function () {
@@ -8,6 +8,12 @@ module.exports = function () {
   const infoBarPath = makeRelativePath(__dirname, components.infoBar);
   const breadcrumbsPath = makeRelativePath(__dirname, components.breadcrumbs);
   const sectionNavPath = makeRelativePath(__dirname, components.sectionNav);
+  const languages = Object.keys(language.selection).map(code => JSON.stringify({
+    code,
+    flag: '',
+    title: language.selection[code],
+    current: code === language.default,
+  }));
   return `
 import Footer from ${JSON.stringify(footerPath)};
 import Header from ${JSON.stringify(headerPath)};
@@ -17,7 +23,13 @@ import Breadcrumbs from ${JSON.stringify(breadcrumbsPath)};
 import SectionNav from ${JSON.stringify(sectionNavPath)};
 
 const brandName = ${JSON.stringify(name)};
+const languages = [${languages.join(', ')}].map(s => ({
+  ...s,
+  select() {
+    location.href = '/' + s.code;
+  },
+}));
 
-export { Footer, Header, Logo, InfoBar, Breadcrumbs, SectionNav, brandName };
+export { Footer, Header, Logo, InfoBar, Breadcrumbs, SectionNav, brandName, languages };
 `;
 };

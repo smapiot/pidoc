@@ -21,6 +21,24 @@ const rootPath = resolve(baseDir, config.rootDir || '.');
 const staticPath = config.staticDir && resolve(baseDir, config.staticDir);
 const outputPath = resolve(baseDir, config.outputDir || 'dist');
 
+function getLanguage(cfg) {
+  if (!cfg || typeof cfg !== 'object') {
+    return {
+      default: 'en',
+      selection: {},
+    };
+  }
+
+  if (!cfg.default) {
+    const [defaultLanguage = 'en'] = Object.keys(cfg.selection || {});
+    cfg.default = defaultLanguage;
+  }
+
+  if (!cfg.selection || typeof cfg.selection !== 'object') {
+    cfg.selection = {};
+  }
+}
+
 module.exports = {
   config,
   package,
@@ -30,6 +48,7 @@ module.exports = {
   bundlerName: config.bundlerName,
   rootPath,
   skipEditLabel,
+  language: getLanguage(config.language),
   outputPath,
   fragment: config.fragment || package.piral !== undefined,
   staticPath,
