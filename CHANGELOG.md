@@ -1,6 +1,6 @@
 # `pidoc` Changelog
 
-## 0.14.3 (tbd)
+## 0.14.3 (June 23, 2022)
 
 - Fixed missing types in type renderer
 - Updated dependencies
