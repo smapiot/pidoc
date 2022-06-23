@@ -9,6 +9,11 @@
 - Added multi language support (#4)
 - Improved change handlers (#3)
 
+## 0.14.3 (June 23, 2022)
+
+- Fixed missing types in type renderer
+- Updated dependencies
+
 ## 0.14.2 (January 20, 2022)
 
 - Fixed issue with most recent TypeDoc not showing types

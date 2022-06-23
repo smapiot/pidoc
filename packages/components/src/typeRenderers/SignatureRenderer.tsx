@@ -16,6 +16,7 @@ export const SignatureRenderer: React.FC<SignatureRendererProps> = ({ node, rend
     {withSep(
       ma(node.parameters).map((p) => (
         <span key={p.id}>
+          {p.flags.isRest && '...'}
           {p.name}: <TypeRenderer node={p.type} render={render} />
         </span>
       )),

@@ -1,6 +1,14 @@
 import * as React from 'react';
 import { TiType, TiNode } from './types';
 
+function getSuffix() {
+  return `${~~(Math.random() * 10000)}`;
+}
+
+function getPrefix() {
+  return `${~~(Math.random() * 12345)}`;
+}
+
 export function ma<T>(value: undefined | T | Array<T>) {
   if (Array.isArray(value)) {
     return value;
@@ -16,7 +24,7 @@ export function gid(node: TiType | TiNode) {
 }
 
 export function keyOf(node: TiType) {
-  return `${node.id || node.name}-${~~(Math.random() * 1000)}`;
+  return `${node.id || node.name || getPrefix()}-${getSuffix()}`;
 }
 
 export function gref(node: TiType) {

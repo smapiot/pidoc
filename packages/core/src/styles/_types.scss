@@ -49,6 +49,21 @@
     word-break: break-word;
   }
 
+  span.comment {
+    margin-top: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+
+  span.block span.comment {
+    color: #bbb;
+
+    &::before {
+      content: '//';
+      padding-right: 0.5rem;
+      padding-left: 0.5rem;
+    }
+  }
+
   code {
     background: lighten($color: $docs-color-text, $amount: 14%);
     color: $docs-color-back;
