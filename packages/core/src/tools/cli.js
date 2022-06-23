@@ -71,10 +71,10 @@ function copyFolderRecursiveSync(source, target) {
   }
 }
 
-function prepare(baseDir) {
+async function prepare(baseDir) {
   process.env.PIRAL_DOCS_BASE_DIR = baseDir;
   rimraf.sync(generated);
-  loadPlugins();
+  await loadPlugins();
   makeContent(sitemap);
 }
 
