@@ -1,5 +1,10 @@
 # `pidoc` Changelog
 
+## 0.14.3 (tbd)
+
+- Fixed missing types in type renderer
+- Updated dependencies
+
 ## 0.14.2 (January 20, 2022)
 
 - Fixed issue with most recent TypeDoc not showing types

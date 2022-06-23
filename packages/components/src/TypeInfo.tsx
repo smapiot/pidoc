@@ -5,11 +5,11 @@ import {
   InlineInterfaceRenderer,
   InterfaceRenderer,
   ModuleRenderer,
-  EnumerationRenderer,
   TypeAliasRenderer,
   ObjectLiteralRenderer,
   VariableRenderer,
   FunctionRenderer,
+  EnumerationRenderer,
 } from './typeRenderers';
 
 function render(node: TiNode) {
@@ -32,6 +32,10 @@ function render(node: TiNode) {
       return <TypeAliasRenderer node={node} render={render} />;
     case TiKind.Enumeration:
       return <EnumerationRenderer node={node} render={render} />;
+    case TiKind.Placeholder1:
+    case TiKind.Placeholder2:
+    case TiKind.Placeholder3:
+    case TiKind.Namespace:
     case TiKind.Reference:
       return null;
     default:

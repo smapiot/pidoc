@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Details } from './Details';
+import { Comment } from './Comment';
 import { TiNode, TiKind } from './types';
 import { ma } from './utils';
 
@@ -15,7 +16,7 @@ export const EnumerationRenderer: React.FC<EnumerationRendererProps> = ({ node }
         (child) =>
           child.kind === TiKind.EnumerationMember && (
             <li key={child.id}>
-              {child.comment && child.comment.shortText}
+              <Comment comment={child.comment} />
               <span className="block">
                 {child.defaultValue ? (
                   <code>

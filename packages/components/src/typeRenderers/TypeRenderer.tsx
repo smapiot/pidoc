@@ -72,6 +72,15 @@ export const TypeRenderer: React.FC<TypeRendererProps> = ({ node, render }) => {
           )}
         </>
       );
+    case 'array':
+      return (
+        <span>
+          Array&lt;
+          <TypeRenderer render={render} node={node.elementType} />
+          &gt;
+        </span>
+      );
+    case 'literal':
     case 'stringLiteral':
       return <span>"{node.value}"</span>;
     case 'reference':
@@ -85,10 +94,40 @@ export const TypeRenderer: React.FC<TypeRendererProps> = ({ node, render }) => {
       );
     case 'reflection':
       return node.declaration ? render(node.declaration) : <span>any</span>;
+    case 'mapped':
+      return (
+        <span>
+          [{node.parameter} in <TypeRenderer render={render} node={node.parameterType} />
+          ]: <TypeRenderer render={render} node={node.templateType} />
+        </span>
+      );
+    case 'typeOperator':
+      return (
+        <span>
+          {node.operator} <TypeRenderer render={render} node={node.target} />
+        </span>
+      );
+    case 'indexedAccess':
+      return (
+        <span>
+          (<TypeRenderer render={render} node={node.objectType} />
+          )[
+          <TypeRenderer render={render} node={node.indexType} />]
+        </span>
+      );
     case 'unknown':
     case 'typeParameter':
+    case 'inferred':
     case 'intrinsic':
       return <span>{node.name}</span>;
+    case 'conditional':
+      return (
+        <span>
+          <TypeRenderer render={render} node={node.checkType} /> extends{' '}
+          <TypeRenderer render={render} node={node.extendsType} /> ?{' '}
+          <TypeRenderer render={render} node={node.trueType} /> : <TypeRenderer render={render} node={node.falseType} />
+        </span>
+      );
     case 'tuple':
       return (
         <span>
@@ -98,6 +137,13 @@ export const TypeRenderer: React.FC<TypeRendererProps> = ({ node, render }) => {
             ', ',
           )}
           ]
+        </span>
+      );
+    case 'named-tuple-member':
+      return (
+        <span>
+          {node.name}
+          {node.isOptional ? '?' : ''}: <TypeRenderer render={render} node={node.element} />
         </span>
       );
     default:
