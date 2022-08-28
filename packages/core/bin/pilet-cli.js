@@ -3,7 +3,7 @@
 const yargs = require('yargs');
 const bundler = require('piral-cli/lib/bundler');
 const { apps } = require('piral-cli');
-const { prepare, copyStatic, getDoclet, getEntryFile } = require('../src/tools/cli');
+const { prepare, copyStatic, getDoclet, getEntryFile, installWatchers } = require('../src/tools/cli');
 const { outputPath, bundlerName, package } = require('../src/tools/meta-core');
 
 const baseDir = process.cwd();
