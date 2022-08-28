@@ -1,4 +1,5 @@
 const { readFileSync } = require('fs');
+const { language } = require('../tools/meta');
 const { populateCode, makeContent } = require('../tools/content');
 const { sitemap } = require('../tools/meta-core');
 const { getGeneratedFilePath } = require('../tools/utils');
