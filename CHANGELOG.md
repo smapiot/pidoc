@@ -1,6 +1,6 @@
 # `pidoc` Changelog
 
-## 0.15.0 (tbd)
+## 0.15.0 (August 31, 2022)
 
 - Fixed issue with no JS robot not showing
 - Fixed issue in layout with long version number
