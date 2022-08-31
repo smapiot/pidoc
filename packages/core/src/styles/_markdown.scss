@@ -649,11 +649,19 @@
   .hljs-template-variable,
   .hljs-tag .hljs-attr {
     color: $docs-color-md-literal;
+
+    body.dark & {
+      color: $docs-color-md-literal-dark;
+    }
   }
 
   .hljs-string,
   .hljs-doctag {
     color: $docs-color-md-string;
+
+    body.dark & {
+      color: $docs-color-md-string-dark;
+    }
   }
 
   .hljs-title,
@@ -661,6 +669,10 @@
   .hljs-selector-id {
     color: $docs-color-md-section;
     font-weight: bold;
+
+    body.dark & {
+      color: $docs-color-md-section-dark;
+    }
   }
 
   .hljs-subst {
@@ -678,6 +690,10 @@
   .hljs-attribute {
     color: $docs-color-md-attribute;
     font-weight: normal;
+
+    body.dark & {
+      color: $docs-color-md-attribute-dark;
+    }
   }
 
   .hljs-regexp,
@@ -688,11 +704,19 @@
   .hljs-symbol,
   .hljs-bullet {
     color: $docs-color-md-symbol;
+
+    body.dark & {
+      color: $docs-color-md-symbol-dark;
+    }
   }
 
   .hljs-built_in,
   .hljs-builtin-name {
     color: $docs-color-md-builtin;
+
+    body.dark & {
+      color: $docs-color-md-builtin-dark;
+    }
   }
 
   .hljs-meta {

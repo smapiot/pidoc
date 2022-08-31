@@ -7,6 +7,7 @@
 - Added adjustable images for dark mode (#8) [@RishiKumarRay]
 - Added versioned output as default via `--versioned` (#2)
 - Added multi language support (#4)
+- Improved `useMenuItems` (#11) [@carvinlo]
 - Improved change handlers (#3)
 
 ## 0.14.3 (June 23, 2022)

@@ -31,3 +31,33 @@ The following plugins are configured:
 - `markdown-it-video`, to include videos nicely
 
 Most of the (supported / included) Markdown features are describes in the [Markdown section](../basics/03-markdown.md).
+
+The Markdown generator is pretty much the default generator as most content will most likely be written using Markdown. Let's say you have a folder structure like this:
+
+```plain
+docs/
+docs/foo/content.md
+docs.config.json
+```
+
+A sitemap section in *docs.config.json* to cover this would be:
+
+```json
+{
+  // ...
+  "sitemap": {
+    "example": {
+      "title": "Example",
+      "sections": [
+        {
+          "generator": "markdown",
+          "segment": "",
+          "dir": "foo"
+        }
+      ]
+    }
+  }
+}
+```
+
+This will look up the *.md* files in the `foo` directory below the `docs` documentation root directory.

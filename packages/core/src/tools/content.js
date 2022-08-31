@@ -1,10 +1,18 @@
-const { resolve } = require('path');
+const { resolve, isAbsolute } = require('path');
 const { docRef, generateFile, flushWriteQueue } = require('./utils');
 const { docsPath, baseDir, language } = require('./meta-core');
 
 function getGeneratorPath(genPath, options) {
   if (genPath === 'custom') {
-    return resolve(baseDir, options.path);
+    if (!isAbsolute(options.path)) {
+      try {
+        return require.resolve(options.path);
+      } catch {
+        return resolve(baseDir, options.path);
+      }
+    }
+
+    return options.path;
   } else {
     return resolve(__dirname, './generators', genPath);
   }
