@@ -20,6 +20,7 @@ const sitemap = config.sitemap || {};
 const rootPath = resolve(baseDir, config.rootDir || '.');
 const staticPath = config.staticDir && resolve(baseDir, config.staticDir);
 const outputPath = resolve(baseDir, config.outputDir || 'dist');
+const bundlerName = config.bundlerName || getDefaultBundlerName();
 
 function getLanguage(cfg) {
   if (!cfg || typeof cfg !== 'object') {
@@ -39,13 +40,22 @@ function getLanguage(cfg) {
   }
 }
 
+function getDefaultBundlerName() {
+  try {
+    require.resolve('piral-cli-webpack5');
+    return 'webpack5';
+  } catch {
+    return undefined;
+  }
+}
+
 module.exports = {
   config,
   package,
   author,
   branch,
   repository: config.repositoryUrl,
-  bundlerName: config.bundlerName,
+  bundlerName,
   rootPath,
   skipEditLabel,
   language: getLanguage(config.language),

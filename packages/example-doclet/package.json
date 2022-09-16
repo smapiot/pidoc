@@ -11,10 +11,11 @@
   "author": "smapiot",
   "homepage": "https://docs.piral.io",
   "license": "MIT",
-  "dependencies": {
-    "pidoc": "0.15.0"
-  },
   "piral": {
     "name": "@pidoc/core"
+  },
+  "devDependencies": {
+    "@pidoc/example-app": "0.15.0",
+    "pidoc": "0.15.0"
   }
 }

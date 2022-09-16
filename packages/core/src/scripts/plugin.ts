@@ -19,9 +19,9 @@ export function createDocletPlugin(): PiralPlugin<PiletDocletApi> {
       const routes = removeSection(section, category);
       context.dispatch((state) => ({
         ...state,
-        routes: Object.keys(routes).reduce((oldRoutes, path) => {
-          delete oldRoutes[path];
-          return oldRoutes;
+        routes: routes.reduce((oldRoutes, path) => {
+          const { [path]: _, ...newRoutes } = oldRoutes;
+          return newRoutes;
         }, state.routes),
       }));
     },

@@ -1,5 +1,10 @@
 # `pidoc` Changelog
 
+## 0.15.1 (tbd)
+
+- Fixed issue with shared dependencies on auto doclets via `@pidoc/core`
+- Fixed handling of `@pidoc/core` as empty documentation shell
+
 ## 0.15.0 (August 31, 2022)
 
 - Fixed issue with no JS robot not showing

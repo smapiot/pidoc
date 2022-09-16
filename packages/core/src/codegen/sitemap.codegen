@@ -1,19 +1,23 @@
 const { readFileSync } = require('fs');
-const { helpers, language } = require('../tools/meta');
+const { helpers, language, fragment } = require('../tools/meta');
 const { makeRelativePath } = require('../tools/utils');
 const { populateCode } = require('../tools/content');
 const { getGeneratedFilePath } = require('../tools/utils');
 
 module.exports = function () {
-  const sitemap = getGeneratedFilePath(`sitemap.${language.default}`, 'js');
-  const content = readFileSync(sitemap, 'utf8');
-  const path = makeRelativePath(__dirname, helpers.filter);
+  if (!fragment) {
+    const sitemap = getGeneratedFilePath(`sitemap.${language.default}`, 'js');
+    const content = readFileSync(sitemap, 'utf8');
+    const path = makeRelativePath(__dirname, helpers.filter);
 
-  return `
-import filterSitemap from ${JSON.stringify(path)};
+    return `
+      import filterSitemap from ${JSON.stringify(path)};
 
-${populateCode}
+      ${populateCode}
 
-export default filterSitemap(${content});
-`;
+      export default filterSitemap(${content});
+    `;
+  }
+
+  return `export default {}`;
 };

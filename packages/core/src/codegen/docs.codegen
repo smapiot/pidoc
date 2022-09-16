@@ -1,16 +1,22 @@
-const { sitemap, styles } = require('../tools/meta');
+const { sitemap, styles, fragment } = require('../tools/meta');
 const { makeRelativePath } = require('../tools/utils');
 const { makeContent } = require('../tools/content');
 
 module.exports = function () {
-  const dependencies = makeContent(sitemap);
-  const sheets = styles.map((style) => `import ${JSON.stringify(makeRelativePath(__dirname, style))};`);
-  sheets.push(`import '../styles/index.scss';`);
+  const sheets = [`import '../styles/index.scss';`];
 
-  for (const dependency of dependencies) {
-    this.addDependency(dependency, { includedInParent: true });
+  if (!fragment) {
+    const dependencies = makeContent(sitemap);
+
+    for (const dependency of dependencies) {
+      this.addDependency(dependency, { includedInParent: true });
+    }
+
+    styles.forEach((style) => sheets.push(`import ${JSON.stringify(makeRelativePath(__dirname, style))};`));
   }
 
-  return `${sheets.join('\n')}
-import '../scripts/app.tsx';`;
+  return `
+    ${sheets.join('\n')}
+    import '../scripts/app.tsx';
+  `;
 };

@@ -16,7 +16,7 @@ bundler.callDebugPiralFromMonoRepo = (args) => {
   const { makeExternals } = require('piral-cli/utils');
   const data = require('../package.json');
   args.entryFiles = getEntryFile(baseDir);
-  args.externals = makeExternals(data.dependencies, data.pilets.externals);
+  args.externals = makeExternals(baseDir, { ...data.dependencies, ...data.devDependencies }, data.pilets.externals);
   return debugDocumentation(args);
 };
 

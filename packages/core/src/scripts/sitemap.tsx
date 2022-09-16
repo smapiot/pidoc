@@ -98,17 +98,23 @@ export function addSections(sections: Array<SectionInfo>) {
 export function appendSection(section: SectionInfo, category: string) {
   const parent = resolveSections(`/${category}`);
   const localRoutes: Record<string, React.ComponentType<RouteComponentProps>> = {};
+  const isEmpty = Object.keys(resolvers).length === 0;
 
   if (parent) {
     const j = parent.length;
+    const child = parent[j - 1];
 
     if (section.links.length > 0) {
-      const prevRoute = lastLink(parent[j - 1]).route;
-      navLinks[prevRoute] = [navLinks[prevRoute][0], section.links[0]];
+      const link = lastLink(child);
+
+      if (link) {
+        const prevRoute = link.route;
+        navLinks[prevRoute] = [navLinks[prevRoute][0], section.links[0]];
+      }
     }
 
     for (let i = 0; i < section.links.length; i++) {
-      const prev = section.links[i - 1] || lastLink(parent[j - 1]);
+      const prev = section.links[i - 1] || lastLink(child);
       const curr = section.links[i];
       const next = section.links[i + 1];
       localRoutes[curr.route] = curr.page;
@@ -120,15 +126,47 @@ export function appendSection(section: SectionInfo, category: string) {
     parent.push(section);
   }
 
+  if (isEmpty) {
+    const [firstRoute] = Object.keys(localRoutes);
+
+    if (firstRoute) {
+      localRoutes['/'] = () => <Redirect to={firstRoute} />;
+    }
+  }
+
   return localRoutes;
 }
 
 export function removeSection(section: SectionInfo, category: string) {
   const parent = resolveSections(`/${category}`);
-  const localRoutes: Record<string, React.ComponentType<RouteComponentProps>> = {};
+  const localRoutes: Array<string> = [];
 
   if (parent) {
-    // TODO fine and remove sections properly
+    const j = parent.indexOf(section);
+    const child = parent[j];
+
+    if (child) {
+      // if (section.links.length > 0) {
+      //   const link = lastLink(child);
+
+      //   if (link) {
+      //     const prevRoute = link.route;
+      //     navLinks[prevRoute] = [navLinks[prevRoute][0], section.links[0]];
+      //   }
+      // }
+
+      // for (let i = 0; i < section.links.length; i++) {
+      //   const prev = section.links[i - 1] || lastLink(child);
+      //   const curr = section.links[i];
+      //   const next = section.links[i + 1];
+      //   localRoutes[curr.route] = curr.page;
+      //   routes[curr.route] = curr.page;
+      //   resolvers[curr.route] = parent;
+      //   navLinks[curr.route] = [prev, next];
+      // }
+
+      parent.splice(j, 1);
+    }
   }
 
   return localRoutes;
