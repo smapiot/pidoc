@@ -6,7 +6,7 @@
   "scripts": {
     "start": "pidoc debug",
     "sdk": "pidoc sdk",
-    "build": "pidoc build"
+    "build": "pidoc build --no-versioned"
   },
   "author": "smapiot",
   "homepage": "https://docs.piral.io",
