@@ -1,6 +1,6 @@
 # `pidoc` Changelog
 
-## 0.15.1 (tbd)
+## 0.15.1 (September 19, 2022)
 
 - Fixed issue with shared dependencies on auto doclets via `@pidoc/core`
 - Fixed handling of `@pidoc/core` as empty documentation shell
