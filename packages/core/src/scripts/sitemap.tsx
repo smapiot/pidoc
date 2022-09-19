@@ -146,24 +146,25 @@ export function removeSection(section: SectionInfo, category: string) {
     const child = parent[j];
 
     if (child) {
-      // if (section.links.length > 0) {
-      //   const link = lastLink(child);
+      if (section.links.length > 0) {
+        const sectionLink = section.links[0];
 
-      //   if (link) {
-      //     const prevRoute = link.route;
-      //     navLinks[prevRoute] = [navLinks[prevRoute][0], section.links[0]];
-      //   }
-      // }
+        Object.keys(navLinks).forEach((route) => {
+          const [prev, next] = navLinks[route];
 
-      // for (let i = 0; i < section.links.length; i++) {
-      //   const prev = section.links[i - 1] || lastLink(child);
-      //   const curr = section.links[i];
-      //   const next = section.links[i + 1];
-      //   localRoutes[curr.route] = curr.page;
-      //   routes[curr.route] = curr.page;
-      //   resolvers[curr.route] = parent;
-      //   navLinks[curr.route] = [prev, next];
-      // }
+          if (next === sectionLink) {
+            navLinks[route] = [prev, parent[j + 1]?.links?.[0]];
+          }
+        });
+      }
+
+      for (let i = 0; i < section.links.length; i++) {
+        const { route } = section.links[i];
+        localRoutes.push(route);
+        delete routes[route];
+        delete resolvers[route];
+        delete navLinks[route];
+      }
 
       parent.splice(j, 1);
     }
