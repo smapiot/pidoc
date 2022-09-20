@@ -104,9 +104,9 @@ function render(file, baseDir = __dirname, resolveLink = defaultLinkResolver) {
     replaceLink(link) {
       if (link.startsWith('http://') || link.startsWith('https://')) {
         return resolveLink(link);
-      } else if (/\.md$/.test(link)) {
+      } else if (/\.md$/i.test(link)) {
         return resolveLink(docRef(link, file));
-      } else if (/\.(png|jpg|jpeg|gif|svg)$/.test(link)) {
+      } else if (/\.(png|jpg|jpeg|gif|svg)$/i.test(link)) {
         const ext = extname(link);
         const name = basename(link, ext);
         const target = imgRef(link, file);
@@ -115,7 +115,7 @@ function render(file, baseDir = __dirname, resolveLink = defaultLinkResolver) {
         const id = `${name}_${hash}${ext}`;
         result.images[id] = makeRelativePath(baseDir, target);
         return id;
-      } else if (/LICENSE$/.test(link)) {
+      } else if (/LICENSE$/i.test(link)) {
         return docRef(link, rootPath);
       }
 

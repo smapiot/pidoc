@@ -1,5 +1,9 @@
 # `pidoc` Changelog
 
+## 0.15.2 (tbd)
+
+- Fixed handling of file extensions (ignore case)
+
 ## 0.15.1 (September 19, 2022)
 
 - Fixed issue with shared dependencies on auto doclets via `@pidoc/core`
