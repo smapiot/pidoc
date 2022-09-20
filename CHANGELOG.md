@@ -1,6 +1,6 @@
 # `pidoc` Changelog
 
-## 0.16.0 (tbd)
+## 0.16.0 (September 20, 2022)
 
 - Fixed handling of file extensions (ignore case)
 - Improved initial scaffolding of new doclets
