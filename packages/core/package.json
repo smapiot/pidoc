@@ -47,6 +47,11 @@
         "from": "./src/scaffold/hello.md",
         "to": "./docs/hello.md",
         "template": true
+      },
+      {
+        "from": "./src/scaffold/webpack.config.js",
+        "to": "./webpack.config.js",
+        "template": true
       }
     ]
   },
