@@ -32,7 +32,7 @@ exports.find = function (basePath, docsFolder, options) {
 exports.build = function (entry, options) {
   const { name, file, route } = entry;
   const { segment, dir, locale } = options;
-  const prefix = segment || dir;
+  const prefix = (segment || dir).replace(/\./g, '') || 'docs';
   const body = readFileSync(file, 'utf8');
   const pageMeta = {
     link: route,

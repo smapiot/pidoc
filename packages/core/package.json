@@ -16,7 +16,7 @@
     "pilet-docs": "./bin/pilet-cli.js"
   },
   "engines": {
-    "node": ">=10.0"
+    "node": ">=12.0"
   },
   "keywords": [
     "piral",
@@ -36,6 +36,16 @@
       {
         "from": "./src/scaffold/index.tsx",
         "to": "./src/index.tsx",
+        "template": true
+      },
+      {
+        "from": "./src/scaffold/docs.config.json",
+        "to": "./docs.config.json",
+        "template": true
+      },
+      {
+        "from": "./src/scaffold/hello.md",
+        "to": "./docs/hello.md",
         "template": true
       }
     ]

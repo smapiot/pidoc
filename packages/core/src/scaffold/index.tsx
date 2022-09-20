@@ -1,6 +1,10 @@
 import type { PiletApi } from '<%- sourceName %>';
-import createDoclet from '@pidoc/core/doclet';
+import { setupDoclet, teardownDoclet } from '@pidoc/core/doclet';
 
 export function setup(api: PiletApi) {
-  createDoclet(api);
+  setupDoclet(api);
+}
+
+export function teardown(api: PiletApi) {
+  teardownDoclet(api);
 }

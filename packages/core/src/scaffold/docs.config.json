@@ -1,0 +1,20 @@
+{
+  "rootDir": ".",
+  "outputDir": "./dist",
+  "skipEditLabel": false,
+  "sitemap": {
+    "apps": {
+      "title": "Applications",
+      "sections": [
+        {
+          "title": "App",
+          "links": {
+            "generator": "markdown",
+            "segment": "",
+            "dir": "."
+          }
+        }
+      ]
+    }
+  }
+}

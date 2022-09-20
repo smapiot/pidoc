@@ -6,6 +6,6 @@ level: Beginner
 section: Fundamentals
 ---
 
-# Introduction to Doclets
+# Introduction to Doclets :rocket:
 
-A doclet is a documentation fragment that is independently generated and deployed. It fits right into your documentation.
+A doclet is a documentation fragment that is independently generated and deployed. It fits right into your documentation :robot:.

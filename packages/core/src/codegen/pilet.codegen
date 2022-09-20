@@ -14,10 +14,11 @@ module.exports = function () {
 
   return `${populateCode}
 
-export default function (api) {
-  const sitemap = ${content};
-  const categories = Object.keys(sitemap);
+const search = () => import("./search.codegen");
+const sitemap = ${content};
+const categories = Object.keys(sitemap);
 
+export function setupDoclet(api) {
   for (const category of categories) {
     const { sections } = sitemap[category];
 
@@ -26,7 +27,19 @@ export default function (api) {
     }
   }
 
-  api.registerSearchProvider(() => import("./search.codegen"));
-};
+  api.registerSearchProvider(search);
+}
+
+export function teardownDoclet(api) {
+  for (const category of categories) {
+    const { sections } = sitemap[category];
+
+    for (const section of sections) {
+      api.unregisterDocumentation(section, category);
+    }
+  }
+
+  api.unregisterSearchProvider(search);
+}
 `;
 };

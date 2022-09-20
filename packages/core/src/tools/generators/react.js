@@ -35,7 +35,7 @@ exports.find = function (basePath, docsFolder, options) {
 exports.build = function (entry, options) {
   const { name, file, route } = entry;
   const { segment, dir, locale, layout = 'default' } = options;
-  const prefix = segment || dir;
+  const prefix = (segment || dir).replace(/\./g, '') || 'docs';
   const title = getTitle(file);
   const jsx = readFileSync(file, 'utf8');
   const fm = rx.exec(jsx);

@@ -1,8 +1,11 @@
 # `pidoc` Changelog
 
-## 0.15.2 (tbd)
+## 0.16.0 (tbd)
 
 - Fixed handling of file extensions (ignore case)
+- Improved initial scaffolding of new doclets
+- Changed the exported doclet API to be more explicit
+- Added new `teardownDoclet` API for doclets
 
 ## 0.15.1 (September 19, 2022)
 
@@ -40,7 +43,7 @@
 
 ## 0.13.4 (December 13, 2021)
 
-- Added `getPageLayout` for backwards compatiblity
+- Added `getPageLayout` for backwards compatibility
 
 ## 0.13.3 (December 13, 2021)
 
@@ -66,7 +69,7 @@
 - Added support for `Header` and `SectionNav` component
 - Added automatic redirect to first chapter for `/`
 - Added option for static files (`staticDir`)
-- Added support for Markdown tasklists
+- Added support for Markdown task lists
 - Added support for Markdown (arbitrary) file inclusions
 - Added dedicated components package `@pidoc/components`
 - Renamed `piral-docs-tools` to `@pidoc/core`

@@ -125,7 +125,7 @@ exports.makeContent = function makeContent(sitemap) {
 };
 
 exports.populateCode = `
-const { lazy } = require('react');
+import { lazy } from 'react';
 
 function populate(source) {
   const results = [];

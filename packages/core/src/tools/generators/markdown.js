@@ -34,7 +34,7 @@ exports.find = function (basePath, docsFolder, options) {
 exports.build = function (entry, options) {
   const { name, file, route } = entry;
   const { segment, dir, locale, resolveLink, layout = 'default' } = options;
-  const prefix = segment || dir;
+  const prefix = (segment || dir).replace(/\./g, '') || 'docs';
 
   const title = getTitle(file);
   const { mdValue, meta = {} } = render(file, generated, resolveLink);

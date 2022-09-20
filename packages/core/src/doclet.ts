@@ -1,3 +1,9 @@
-import setup from './codegen/pilet.codegen';
+import { setupDoclet, teardownDoclet } from './codegen/pilet.codegen';
 
-export { setup };
+export function setup(api) {
+  setupDoclet(api);
+}
+
+export function teardown(api) {
+  teardownDoclet(api);
+}
