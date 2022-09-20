@@ -17,6 +17,9 @@ const getConfig = extendWebpack({
 
 module.exports = (config) => {
   const newConfig = getConfig(config);
+  newConfig.snapshot = {
+    managedPaths: [],
+  };
   newConfig.externals = [];
   newConfig.resolve.alias = {
     // For backwards compatibility

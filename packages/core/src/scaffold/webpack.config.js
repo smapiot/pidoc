@@ -1,4 +1,6 @@
 module.exports = (config) => {
-  config.cache = false;
+  config.snapshot = {
+    managedPaths: [],
+  };
   return config;
 };
