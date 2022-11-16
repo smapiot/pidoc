@@ -1,6 +1,6 @@
 # `pidoc` Changelog
 
-## 0.16.1 (tbd)
+## 0.16.1 (November 16, 2022)
 
 - Fixed exclude filter
 - Added support for AsciiDoc (#6)
