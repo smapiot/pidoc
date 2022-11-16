@@ -160,8 +160,8 @@ function makeFileFilter(fileNames, include, exclude) {
     return (name) => fileNames.includes(name);
   } else if (include || exclude) {
     const irx = include ? new RegExp(include) : new RegExp('.*');
-    const erx = exclude ? new RegExp(exclude) : new RegExp('.*');
-    return (name) => irx.test(name) || !erx.test(name);
+    const erx = exclude ? new RegExp(exclude) : new RegExp('^$');
+    return (name) => irx.test(name) && !erx.test(name);
   } else {
     return (_) => true;
   }
