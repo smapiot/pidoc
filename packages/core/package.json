@@ -59,6 +59,7 @@
   "homepage": "https://docs.piral.io",
   "license": "MIT",
   "dependencies": {
+    "@asciidoctor/core": "^2.2.6",
     "@pidoc/components": "0.16.0",
     "chokidar": "^3.5.3",
     "keyword-extractor": "0.0.20",

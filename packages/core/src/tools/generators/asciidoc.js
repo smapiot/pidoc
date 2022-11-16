@@ -1,7 +1,7 @@
 const { resolve } = require('path');
 const { generated } = require('../constants');
 const { skipEditLabel } = require('../meta-core');
-const { render } = require('../markdown');
+const { render } = require('../asciidoc');
 const { generatePage } = require('../pages');
 const { getDocsFrom, getName, docRef, getTitle, getEditPlatform, makeFileFilter } = require('../utils');
 
@@ -10,7 +10,7 @@ function getRoute(basePath, name) {
 }
 
 exports.find = function (basePath, docsFolder, options) {
-  const { segment, dir, fileNames, exclude, include, sorting = 'asc', locale = 'en', extension = /\.md$/ } = options;
+  const { segment, dir, fileNames, exclude, include, sorting = 'asc', locale = 'en', extension = /\.adoc$/ } = options;
   const folder = resolve(docsFolder, dir);
   const files = getDocsFrom(folder, locale, extension, sorting);
   const filter = makeFileFilter(fileNames, include, exclude);

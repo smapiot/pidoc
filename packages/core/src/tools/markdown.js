@@ -158,4 +158,6 @@ function render(file, baseDir = __dirname, resolveLink = defaultLinkResolver) {
 module.exports = {
   render,
   parseMeta,
+  getMdValue,
+  defaultLinkResolver,
 };

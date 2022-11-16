@@ -1,0 +1,21 @@
+---
+title: Hello, AsciiDoc!
+description: Example document showing the use of AsciiDoc.
+audience: Everyone
+level: Beginner
+section: Examples
+---
+= Hello, AsciiDoc!
+
+This is an interactive editor.
+Use it to try https://asciidoc.org[AsciiDoc].
+
+== Section Title
+
+* A list item
+* Another list item
+
+[,ruby]
+----
+puts 'Hello, World!'
+----

@@ -11,9 +11,9 @@ function getRoute(basePath, name) {
 }
 
 exports.find = function (basePath, docsFolder, options) {
-  const { segment, dir, fileNames, exclude, include, sorting = 'asc', locale = 'en' } = options;
+  const { segment, dir, fileNames, exclude, include, sorting = 'asc', locale = 'en', extension = /\.(html|htm)$/ } = options;
   const folder = resolve(docsFolder, dir);
-  const files = getDocsFrom(folder, locale, /\.(html|htm)$/, sorting);
+  const files = getDocsFrom(folder, locale, extension, sorting);
   const filter = makeFileFilter(fileNames, include, exclude);
   const path = segment ? `${basePath}/${segment}` : basePath;
   return files

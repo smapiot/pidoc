@@ -72,3 +72,4 @@ function hljsDefineGraphQl(e) {
 
 hljs.registerLanguage('graphql', hljsDefineGraphQl);
 hljs.registerLanguage('svelte', hljsDefineSvelte);
+hljs.registerAliases('plain', { languageName: 'plaintext' });

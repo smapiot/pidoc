@@ -35,6 +35,16 @@
           "dir": "customizing"
         }
       ]
+    },
+    "examples": {
+      "title": "AsciiDoc",
+      "sections": [
+        {
+          "generator": "asciidoc",
+          "segment": "",
+          "dir": "examples"
+        }
+      ]
     }
   }
 }
