@@ -1,5 +1,9 @@
 # `pidoc` Changelog
 
+## 0.16.2 (tbd)
+
+- Updated to Piral 0.15
+
 ## 0.16.1 (November 16, 2022)
 
 - Fixed exclude filter
