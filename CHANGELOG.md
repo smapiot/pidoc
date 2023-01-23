@@ -2,6 +2,8 @@
 
 ## 0.16.2 (tbd)
 
+- Fixed SPA mode on example page
+- Fixed issue with `__generated__` folder in npm package
 - Updated to Piral 0.15
 
 ## 0.16.1 (November 16, 2022)
