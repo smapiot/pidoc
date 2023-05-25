@@ -1,6 +1,6 @@
 # `pidoc` Changelog
 
-## 0.16.3 (tbd)
+## 0.16.3 (May 25, 2023)
 
 - Updated dependencies
 
