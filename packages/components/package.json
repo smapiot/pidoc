@@ -33,15 +33,15 @@
     "react-router-dom": "*"
   },
   "devDependencies": {
-    "@types/react": "^17.0.5",
-    "@types/react-dom": "^17.0.5",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "@types/react-router-dom": "^5.1.7",
     "@types/yargs": "^15.0.4",
-    "piral-cli": "0.15.5",
-    "piral-cli-webpack5": "0.15.5",
-    "piral-core": "0.15.5",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "piral-cli": "0.15.12",
+    "piral-cli-webpack5": "0.15.12",
+    "piral-core": "0.15.12",
+    "react": "^18",
+    "react-dom": "^18",
     "react-router-dom": "^5.2.0"
   }
 }

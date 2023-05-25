@@ -16,7 +16,17 @@
     "pilet-docs": "./bin/pilet-cli.js"
   },
   "engines": {
-    "node": ">=12.0"
+    "node": ">=14.0"
+  },
+  "importmap": {
+    "imports": {
+      "@pidoc/components": "@pidoc/components",
+      "piral-docs-tools/components": "@pidoc/components"
+    },
+    "inherit": [
+      "piral-base",
+      "piral-core"
+    ]
   },
   "keywords": [
     "piral",
@@ -27,34 +37,6 @@
     "modular",
     "smapiot"
   ],
-  "pilets": {
-    "externals": [
-      "@pidoc/components",
-      "piral-docs-tools/components"
-    ],
-    "files": [
-      {
-        "from": "./src/scaffold/index.tsx",
-        "to": "./src/index.tsx",
-        "template": true
-      },
-      {
-        "from": "./src/scaffold/docs.config.json",
-        "to": "./docs.config.json",
-        "template": true
-      },
-      {
-        "from": "./src/scaffold/hello.md",
-        "to": "./docs/hello.md",
-        "template": true
-      },
-      {
-        "from": "./src/scaffold/webpack.config.js",
-        "to": "./webpack.config.js",
-        "template": true
-      }
-    ]
-  },
   "author": "smapiot",
   "homepage": "https://docs.piral.io",
   "license": "MIT",
@@ -94,16 +76,16 @@
     "react-router-dom": "*"
   },
   "devDependencies": {
-    "@types/react": "^17.0.5",
-    "@types/react-dom": "^17.0.5",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "@types/react-router-dom": "^5.1.7",
     "@types/yargs": "^15.0.4",
     "flexsearch": "^0.6.32",
-    "piral-cli": "0.15.5",
-    "piral-cli-webpack5": "0.15.5",
-    "piral-core": "0.15.5",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "piral-cli": "0.15.12",
+    "piral-cli-webpack5": "0.15.12",
+    "piral-core": "0.15.12",
+    "react": "^18",
+    "react-dom": "^18",
     "react-router-dom": "^5.2.0"
   }
 }

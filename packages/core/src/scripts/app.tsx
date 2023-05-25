@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { createInstance, Piral } from 'piral-core';
 import { LoadingIndicator, SectionMenu, setPageLayouts } from '@pidoc/components';
 import { createDocletPlugin } from './plugin';
@@ -57,4 +57,5 @@ instance.root.registerExtension('breadcrumbs', () => {
 
 setup(instance.root);
 
-render(<Piral instance={instance} />, document.querySelector('#app'));
+const root = createRoot(document.querySelector('#app'));
+root.render(<Piral instance={instance} />);

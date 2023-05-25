@@ -1,5 +1,9 @@
 # `pidoc` Changelog
 
+## 0.16.3 (tbd)
+
+- Updated dependencies
+
 ## 0.16.2 (January 23, 2023)
 
 - Fixed SPA mode on example page
