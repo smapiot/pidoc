@@ -37,10 +37,17 @@
       ]
     },
     "examples": {
-      "title": "AsciiDoc",
+      "title": "Examples",
       "sections": [
         {
+          "title": "AsciiDoc",
           "generator": "asciidoc",
+          "segment": "",
+          "dir": "examples"
+        },
+        {
+          "title": "reStructuredText",
+          "generator": "rst",
           "segment": "",
           "dir": "examples"
         }

@@ -4,6 +4,7 @@
 
 - Updated dependencies
 - Fixed issue with markdown links using hash properties (#12)
+- Added support for reStructuredText (#7)
 
 ## 0.16.3 (May 25, 2023)
 

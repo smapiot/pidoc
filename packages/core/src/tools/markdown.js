@@ -83,8 +83,7 @@ function defaultLinkResolver(link) {
   return link;
 }
 
-function render(file, baseDir = __dirname, resolveLink = defaultLinkResolver) {
-  const content = readFileSync(file, 'utf8');
+function renderContent(content, file, baseDir, resolveLink) {
   const result = {
     meta: {},
     content: '',
@@ -128,10 +127,17 @@ function render(file, baseDir = __dirname, resolveLink = defaultLinkResolver) {
   result.content = md.render(content);
   result.mdValue = ['`', getMdValue(result), '`'].join('');
   return result;
+
+}
+
+function render(file, baseDir = __dirname, resolveLink = defaultLinkResolver) {
+  const content = readFileSync(file, 'utf8');
+  return renderContent(content, file, baseDir, resolveLink);
 }
 
 module.exports = {
   render,
+  renderContent,
   parseMeta,
   getMdValue,
   defaultLinkResolver,
