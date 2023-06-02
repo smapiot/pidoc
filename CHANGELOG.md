@@ -1,5 +1,10 @@
 # `pidoc` Changelog
 
+## 0.17.0 (tbd)
+
+- Updated dependencies
+- Fixed issue with markdown links using hash properties (#12)
+
 ## 0.16.3 (May 25, 2023)
 
 - Updated dependencies

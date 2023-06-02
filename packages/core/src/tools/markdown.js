@@ -19,16 +19,8 @@ const markdownItSub = require('markdown-it-sub');
 const markdownItSup = require('markdown-it-sup');
 const markdownItVideo = require('markdown-it-video');
 const { readFileSync } = require('fs');
-const { extname, basename, dirname } = require('path');
-const { createHash } = require('crypto');
-const { docRef, imgRef, makeRelativePath } = require('./utils');
-const { rootPath } = require('./meta-core');
-
-function computeHash(content) {
-  return createHash('sha1')
-    .update(content || '')
-    .digest('hex');
-}
+const { dirname } = require('path');
+const { normalizeLink } = require('./links');
 
 function getMdValue(result) {
   let content = result.content
@@ -102,24 +94,7 @@ function render(file, baseDir = __dirname, resolveLink = defaultLinkResolver) {
   const md = new MarkdownIt({
     html: true,
     replaceLink(link) {
-      if (link.startsWith('http://') || link.startsWith('https://')) {
-        return resolveLink(link);
-      } else if (/\.md$/i.test(link)) {
-        return resolveLink(docRef(link, file));
-      } else if (/\.(png|jpg|jpeg|gif|svg)$/i.test(link)) {
-        const ext = extname(link);
-        const name = basename(link, ext);
-        const target = imgRef(link, file);
-        const content = readFileSync(target);
-        const hash = computeHash(content);
-        const id = `${name}_${hash}${ext}`;
-        result.images[id] = makeRelativePath(baseDir, target);
-        return id;
-      } else if (/LICENSE$/i.test(link)) {
-        return docRef(link, rootPath);
-      }
-
-      return link;
+      return normalizeLink(link, file, baseDir, resolveLink, result.images);
     },
   });
 

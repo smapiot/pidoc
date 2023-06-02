@@ -44,6 +44,8 @@ This configuration ends up with a single top-level section (called "chapter") na
 
 More about generators can be found in the [generators section](../generators/01-overview.md).
 
+For more knowledge about the supported Markdown dialect look at [the basic features](./03-markdown.md#basic-features).
+
 ## Configuration Typings
 
 The configuration is also fully typed. You'll find it exported from the types of `@pidoc/core` (name `PiralDocsFullConfig`).
