@@ -30,9 +30,9 @@
   "license": "MIT",
   "dependencies": {
     "@pidoc/core": "0.16.3",
-    "piral-cli": "0.15.12",
-    "piral-cli-webpack5": "0.15.12",
-    "piral-core": "0.15.12",
+    "piral-cli": "0.15.13",
+    "piral-cli-webpack5": "0.15.13",
+    "piral-core": "0.15.13",
     "react": "^18",
     "react-dom": "^18",
     "react-router-dom": "^5.2.0"
