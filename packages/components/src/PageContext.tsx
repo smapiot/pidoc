@@ -11,7 +11,11 @@ export function usePage() {
   return React.useContext(PageContext);
 }
 
-export const Page: React.FC = ({ children }) => {
+export interface PageProps {
+  children?: React.ReactNode;
+}
+
+export const Page: React.FC<PageProps> = ({ children }) => {
   const [current, setCurrent] = React.useState(undefined);
   const value = React.useMemo(() => ({ current, setCurrent }), [current]);
   return <PageContext.Provider value={value}>{children}</PageContext.Provider>;

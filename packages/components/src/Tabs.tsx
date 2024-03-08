@@ -12,6 +12,7 @@ function findKey(keys: Array<string>, tab: string) {
 
 export interface TabsProps extends RouteComponentProps<{ tab: string }> {
   titles: Array<string>;
+  children?: React.ReactNode;
 }
 
 export const Tabs = withRouter<TabsProps, React.FC<TabsProps>>(({ titles, children, match }) => {

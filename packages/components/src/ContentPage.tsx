@@ -4,7 +4,11 @@ import { ExtensionSlot } from 'piral-core';
 import { Page } from './PageContext';
 import { TocMenu } from './TocMenu';
 
-export const ContentPage: React.FC = ({ children }) => {
+export interface ContentPageProps {
+  children?: React.ReactNode;
+}
+
+export const ContentPage: React.FC<ContentPageProps> = ({ children }) => {
   const { pathname } = useLocation();
 
   return (

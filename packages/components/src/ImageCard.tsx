@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 export interface ImageCardProps {
   image: string;
   title: string;
-  description: React.ReactChild;
-  details?: React.ReactChild;
+  description: React.ReactNode;
+  details?: React.ReactNode;
   link: string;
 }
 

@@ -33,7 +33,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({ languages })
             onClick={() => (lang.current ? toggleLanguage() : setLanguage(lang.select))}
           />
         ))}
-        <span className="seperator">|</span>
+        <span className="separator">|</span>
       </div>
     );
   }

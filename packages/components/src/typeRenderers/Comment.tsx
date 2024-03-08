@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { TiComment } from './types';
+import { getCommentText } from './utils';
+import { TiCommentNew, TiCommentOld } from './types';
 
 export interface CommentProps {
-  comment: TiComment;
+  comment: TiCommentOld | TiCommentNew;
 }
 
 export const Comment: React.FC<CommentProps> = ({ comment }) => {
-  const text = comment && comment.shortText;
-
+  const text = getCommentText(comment);
+  
   if (!text) {
     return null;
   }

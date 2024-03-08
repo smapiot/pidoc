@@ -22,6 +22,10 @@ export const EnumerationRenderer: React.FC<EnumerationRendererProps> = ({ node }
                   <code>
                     {child.name} = {child.defaultValue}
                   </code>
+                ) : child.type?.type === 'literal' ? (
+                  <code>
+                    {child.name} = "{child.type.value}"
+                  </code>
                 ) : (
                   <code>{child.name}</code>
                 )}

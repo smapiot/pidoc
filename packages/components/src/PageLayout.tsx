@@ -9,6 +9,7 @@ function usePageLayout(layoutName: string) {
 export interface PageLayoutProps {
   name: string;
   meta: any;
+  children?: React.ReactNode;
 }
 
 export const PageLayout: React.FC<PageLayoutProps> = ({ name, meta, children }) => {

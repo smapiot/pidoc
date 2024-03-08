@@ -21,6 +21,8 @@ function render(node: TiNode) {
     case TiKind.Interface:
       return <InterfaceRenderer node={node} render={render} />;
     case TiKind.Function:
+    case TiKind.Constructor:
+    case TiKind.Signature:
       return node.signatures && node.signatures[0].comment && <FunctionRenderer node={node} render={render} />;
     case TiKind.ObjectLiteral:
       return <ObjectLiteralRenderer node={node} render={render} />;
@@ -33,8 +35,6 @@ function render(node: TiNode) {
     case TiKind.Enumeration:
       return <EnumerationRenderer node={node} render={render} />;
     case TiKind.Placeholder1:
-    case TiKind.Placeholder2:
-    case TiKind.Placeholder3:
     case TiKind.Namespace:
     case TiKind.Reference:
       return null;

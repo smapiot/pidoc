@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TiType, TiNode } from './types';
+import { TiType, TiNode, TiCommentOld, TiCommentNew } from './types';
 
 function getSuffix() {
   return `${~~(Math.random() * 10000)}`;
@@ -31,8 +31,8 @@ export function gref(node: TiType) {
   return node && node.id && `#${gid(node)}`;
 }
 
-export function withSep(items: Array<React.ReactChild>, sep: string) {
-  const newItems: Array<React.ReactChild> = [];
+export function withSep(items: Array<React.ReactNode>, sep: string) {
+  const newItems: Array<React.ReactNode> = [];
 
   items.forEach((item, i) => {
     newItems.push(item, <span key={i}>{sep}</span>);
@@ -40,4 +40,15 @@ export function withSep(items: Array<React.ReactChild>, sep: string) {
 
   newItems.pop();
   return newItems;
+}
+
+export function getCommentText(comment: TiCommentOld | TiCommentNew) {
+  if (comment && 'shortText' in comment) {
+    return comment && comment.shortText;
+  } else if (comment && 'summary' in comment) {
+    const [cmt] = comment.summary || [];
+    return cmt?.text;
+  }
+
+  return undefined;
 }
