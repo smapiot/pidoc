@@ -20,7 +20,7 @@ jobs:
       - name: Install Yarn
         run: npm install -g yarn
       - name: Install Dependencies
-        run: npx lerna bootstrap
+        run: yarn install
       - name: Lint Package
         run: npx lerna run lint
       - name: Test Package
@@ -45,7 +45,7 @@ jobs:
       - name: Install Yarn
         run: npm install -g yarn
       - name: Install Dependencies
-        run: npx lerna bootstrap
+        run: yarn install
       - name: Build Package
         run: npx lerna run build
       - name: Publish Package
@@ -72,7 +72,7 @@ jobs:
       - name: Install Yarn
         run: npm install -g yarn
       - name: Install Dependencies
-        run: npx lerna bootstrap
+        run: yarn install
       - name: Build Package
         run: npx lerna run build
       - name: Publish Package
