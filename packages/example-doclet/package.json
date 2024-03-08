@@ -1,7 +1,7 @@
 {
   "name": "@pidoc/example-doclet",
   "private": true,
-  "version": "0.16.1",
+  "version": "0.17.0",
   "description": "Example documentation page",
   "scripts": {
     "start": "pidoc debug",
@@ -15,7 +15,7 @@
     "name": "@pidoc/core"
   },
   "devDependencies": {
-    "@pidoc/example-app": "0.16.1",
-    "pidoc": "0.16.1"
+    "@pidoc/example-app": "0.17.0",
+    "pidoc": "0.17.0"
   }
 }

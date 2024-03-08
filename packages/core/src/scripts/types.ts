@@ -4,9 +4,8 @@ import { PiletApi, PiralPlugin } from 'piral-core';
 export { PiletApi, PiralPlugin };
 
 declare module 'piral-core/lib/types/custom' {
-  type PiletCustomApi = PiletDocletApi;
-
-  type PiralCustomState = PiralDocletState;
+  interface PiletCustomApi extends PiletDocletApi {}
+  interface PiralCustomState extends PiralDocletState {}
 }
 
 export interface PiralDocsBreadcrumbsComponentProps {}

@@ -1,6 +1,16 @@
 # `pidoc` Changelog
 
-## 0.16.2 (tbd)
+## 0.17.0 (June 2, 2023)
+
+- Updated dependencies
+- Fixed issue with markdown links using hash properties (#12)
+- Added support for reStructuredText (#7)
+
+## 0.16.3 (May 25, 2023)
+
+- Updated dependencies
+
+## 0.16.2 (January 23, 2023)
 
 - Fixed SPA mode on example page
 - Fixed issue with `__generated__` folder in npm package

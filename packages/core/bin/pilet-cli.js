@@ -12,12 +12,13 @@ const target = `${outputPath}/index.js`;
 const defaultApp = package.piral ? package.piral.name : undefined;
 const debugDocumentation = bundler.callDebugPiralFromMonoRepo;
 
-bundler.callDebugPiralFromMonoRepo = (args) => {
+bundler.callDebugPiralFromMonoRepo = async (args) => {
   const { makeExternals } = require('piral-cli/utils');
   const data = require('../package.json');
+  const externals = Object.keys(data.importmap.imports);
   args.entryFiles = getEntryFile(baseDir);
-  args.externals = makeExternals(baseDir, { ...data.dependencies, ...data.devDependencies }, data.pilets.externals);
-  return debugDocumentation(args);
+  args.externals = await makeExternals(baseDir, { ...data.dependencies, ...data.devDependencies }, externals);
+  return await debugDocumentation(args);
 };
 
 yargs

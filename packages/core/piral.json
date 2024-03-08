@@ -1,0 +1,26 @@
+{
+  "pilets": {
+    "files": [
+      {
+        "from": "./src/scaffold/index.tsx",
+        "to": "./src/index.tsx",
+        "template": true
+      },
+      {
+        "from": "./src/scaffold/docs.config.json",
+        "to": "./docs.config.json",
+        "template": true
+      },
+      {
+        "from": "./src/scaffold/hello.md",
+        "to": "./docs/hello.md",
+        "template": true
+      },
+      {
+        "from": "./src/scaffold/webpack.config.js",
+        "to": "./webpack.config.js",
+        "template": true
+      }
+    ]
+  }
+}
