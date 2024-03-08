@@ -1,6 +1,6 @@
 # `pidoc` Changelog
 
-## 0.18.0 (tbd)
+## 0.18.0 (March 8, 2024)
 
 - Updated dependencies
 - Removed support for Node.js 14 (min version is now 16)
