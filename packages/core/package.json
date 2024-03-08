@@ -16,7 +16,7 @@
     "pilet-docs": "./bin/pilet-cli.js"
   },
   "engines": {
-    "node": ">=14.0"
+    "node": ">=16.0"
   },
   "importmap": {
     "imports": {
@@ -38,7 +38,14 @@
     "smapiot"
   ],
   "author": "smapiot",
-  "homepage": "https://docs.piral.io",
+  "homepage": "https://pidoc.js.org",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smapiot/pidoc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/smapiot/pidoc/issues"
+  },
   "license": "MIT",
   "dependencies": {
     "@asciidoctor/core": "^2.2.6",
@@ -78,14 +85,14 @@
   "devDependencies": {
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "@types/react-router-dom": "^5.1.7",
+    "@types/react-router-dom": "^5",
     "@types/yargs": "^15.0.4",
     "flexsearch": "^0.6.32",
-    "piral-cli": "0.15.13",
-    "piral-cli-webpack5": "0.15.13",
-    "piral-core": "0.15.13",
+    "piral-cli": "1.5.0",
+    "piral-cli-webpack5": "1.5.0",
+    "piral-core": "1.5.0",
     "react": "^18",
     "react-dom": "^18",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5"
   }
 }

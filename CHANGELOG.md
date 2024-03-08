@@ -1,5 +1,11 @@
 # `pidoc` Changelog
 
+## 0.18.0 (tbd)
+
+- Updated dependencies
+- Removed support for Node.js 14 (min version is now 16)
+- Added support for most recent version of `typedoc`
+
 ## 0.17.0 (June 2, 2023)
 
 - Updated dependencies

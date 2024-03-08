@@ -14,7 +14,7 @@
   "main": "./src/index.js",
   "typings": "./src/types.ts",
   "engines": {
-    "node": ">=14.0"
+    "node": ">=16.0"
   },
   "keywords": [
     "piral",
@@ -26,15 +26,22 @@
     "smapiot"
   ],
   "author": "smapiot",
-  "homepage": "https://docs.piral.io",
+  "homepage": "https://pidoc.js.org",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smapiot/pidoc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/smapiot/pidoc/issues"
+  },
   "license": "MIT",
   "dependencies": {
     "@pidoc/core": "0.17.0",
-    "piral-cli": "0.15.13",
-    "piral-cli-webpack5": "0.15.13",
-    "piral-core": "0.15.13",
+    "piral-cli": "1.5.0",
+    "piral-cli-webpack5": "1.5.0",
+    "piral-core": "1.5.0",
     "react": "^18",
     "react-dom": "^18",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5"
   }
 }

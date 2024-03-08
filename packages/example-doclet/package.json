@@ -10,6 +10,13 @@
   },
   "author": "smapiot",
   "homepage": "https://docs.piral.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smapiot/pidoc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/smapiot/pidoc/issues"
+  },
   "license": "MIT",
   "piral": {
     "name": "@pidoc/core"

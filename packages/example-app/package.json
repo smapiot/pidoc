@@ -8,8 +8,15 @@
     "sdk": "pidoc sdk",
     "build": "pidoc build --no-versioned"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smapiot/pidoc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/smapiot/pidoc/issues"
+  },
   "author": "smapiot",
-  "homepage": "https://docs.piral.io",
+  "homepage": "https://pidoc.js.org",
   "license": "MIT",
   "dependencies": {
     "pidoc": "0.17.0"
