@@ -1,5 +1,5 @@
 process.on('uncaughtException', (err) => {
-  console.error('Critical runtime error:', err.message);
+  console.error('Critical runtime error:', err.stack);
   process.exit(1);
 });
 

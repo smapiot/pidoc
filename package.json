@@ -22,10 +22,10 @@
     "ci:version": "node tools/changelog-version.js"
   },
   "devDependencies": {
-    "@types/node": "^18",
-    "gh-pages": "^5.0.0",
-    "lerna": "^6.6.2",
-    "prettier": "^2.8.8",
+    "@types/node": "^16",
+    "gh-pages": "^6.1.1",
+    "lerna": "^8.1.2",
+    "prettier": "^3.2.5",
     "tslint": "^5.12.1",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.3.0",

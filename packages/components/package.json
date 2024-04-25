@@ -29,7 +29,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "flexsearch": "^0.6.32",
+    "flexsearch": "^0.7.43",
     "stickyfilljs": "^2.1.0"
   },
   "peerDependencies": {
@@ -44,9 +44,9 @@
     "@types/react-dom": "^18",
     "@types/react-router-dom": "^5",
     "@types/yargs": "^15.0.4",
-    "piral-cli": "1.5.0",
-    "piral-cli-webpack5": "1.5.0",
-    "piral-core": "1.5.0",
+    "piral-cli": "1.5.4",
+    "piral-cli-webpack5": "1.5.4",
+    "piral-core": "1.5.4",
     "react": "^18",
     "react-dom": "^18",
     "react-router-dom": "^5"

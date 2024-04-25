@@ -1,5 +1,9 @@
 # `pidoc` Changelog
 
+## 0.18.1 (tbd)
+
+- Updated dependencies
+
 ## 0.18.0 (March 8, 2024)
 
 - Updated dependencies

@@ -2,7 +2,7 @@ require('./highlight');
 const YAML = require('yaml');
 const MarkdownIt = require('markdown-it');
 const markdownItAbbr = require('markdown-it-abbr');
-const markdownItAnchor = require('markdown-it-anchor');
+const markdownItAnchor = require('markdown-it-anchor').default;
 const markdownItAttrs = require('markdown-it-attrs');
 const markdownItDiv = require('markdown-it-div');
 const markdownItEmoji = require('markdown-it-emoji');
@@ -100,7 +100,7 @@ function renderContent(content, file, baseDir, resolveLink) {
   md.use(markdownItAbbr)
     .use(markdownItAnchor, { level: [1, 2, 3, 4, 5, 6] })
     .use(markdownItAttrs)
-    .use(markdownItEmoji)
+    .use(markdownItEmoji.full)
     .use(markdownItFootnote)
     .use(markdownItInclude, {
       includeRe: /#include(.+)/,
@@ -127,7 +127,6 @@ function renderContent(content, file, baseDir, resolveLink) {
   result.content = md.render(content);
   result.mdValue = ['`', getMdValue(result), '`'].join('');
   return result;
-
 }
 
 function render(file, baseDir = __dirname, resolveLink = defaultLinkResolver) {
