@@ -1,5 +1,10 @@
 # `pidoc` Changelog
 
+## 0.18.2 (tbd)
+
+- Fixed usage of `error.stack`
+- Reverted to use Flexsearch 0.6 release
+
 ## 0.18.1 (April 25, 2024)
 
 - Updated dependencies
