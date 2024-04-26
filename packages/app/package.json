@@ -1,6 +1,6 @@
 {
   "name": "pidoc",
-  "version": "0.18.1",
+  "version": "0.18.2",
   "description": "An advanced documentation generator supporting document aggregation.",
   "scripts": {
     "check": "tsc --noEmit"
@@ -36,7 +36,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@pidoc/core": "0.18.1",
+    "@pidoc/core": "0.18.2",
     "piral-cli": "1.5.4",
     "piral-cli-webpack5": "1.5.4",
     "piral-core": "1.5.4",

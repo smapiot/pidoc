@@ -1,7 +1,7 @@
 {
   "name": "@pidoc/example-app",
   "private": true,
-  "version": "0.18.1",
+  "version": "0.18.2",
   "description": "Example documentation page",
   "scripts": {
     "start": "pidoc debug",
@@ -19,6 +19,6 @@
   "homepage": "https://pidoc.js.org",
   "license": "MIT",
   "dependencies": {
-    "pidoc": "0.18.1"
+    "pidoc": "0.18.2"
   }
 }
