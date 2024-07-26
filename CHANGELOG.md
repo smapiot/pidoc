@@ -1,5 +1,10 @@
 # `pidoc` Changelog
 
+## 0.18.3 (July 26, 2024)
+
+- Updated to latest version of Piral
+- Added `imageClass` prop to `ImageCard`
+
 ## 0.18.2 (April 26, 2024)
 
 - Fixed usage of `error.stack`

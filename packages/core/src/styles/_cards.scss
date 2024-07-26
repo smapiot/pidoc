@@ -76,6 +76,10 @@
       max-height: 100%;
       filter: grayscale(100%);
       transition: all 0.3s ease;
+
+      body.dark &.auto {
+        filter: #{"grayscale(100%) invert() hue-rotate(180deg)"};
+      }
     }
   }
 
@@ -91,6 +95,10 @@
 
     .image > img {
       filter: none;
+
+      body.dark &.auto {
+        filter: #{"invert() hue-rotate(180deg)"};
+      }
     }
   }
 }
