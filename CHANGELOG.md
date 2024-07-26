@@ -1,6 +1,6 @@
 # `pidoc` Changelog
 
-## 0.18.3 (July 26, 2024)
+## 0.18.3 (tbd)
 
 - Updated to latest version of Piral
 - Added `imageClass` prop to `ImageCard`
