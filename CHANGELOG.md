@@ -1,6 +1,6 @@
 # `pidoc` Changelog
 
-## 0.19.0 (tbd)
+## 0.18.4 (tbd)
 
 - Fixed path issue with React generator
 - Updated to latest version of Piral

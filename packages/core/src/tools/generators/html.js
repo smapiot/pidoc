@@ -4,7 +4,7 @@ const { parseMeta } = require('../markdown');
 const { generatePage } = require('../pages');
 const { getDocsFrom, getName, getTitle, makeFileFilter } = require('../utils');
 
-const rx = /^<!--\n(.*?)\n-->/s;
+const rx = /^<!--\n(.*?)\n-->/ms;
 
 function getRoute(basePath, name) {
   return (name && `${basePath}/${name}`) || '';

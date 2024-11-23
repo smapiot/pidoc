@@ -1,7 +1,7 @@
 const { readFileSync } = require('fs');
 const { resolve, relative } = require('path');
-const { parseMeta } = require('../markdown');
 const { generated } = require('../constants');
+const { parseMeta } = require('../markdown');
 const { generatePage } = require('../pages');
 const { getDocsFrom, getName, getTitle, makeFileFilter } = require('../utils');
 
@@ -60,6 +60,6 @@ exports.build = function (entry, options) {
       </PageContent>
     </PageLayout>
   `;
-
-  return generatePage(name, pageMeta, `${prefix}-${name}.${locale}`, head, body, route, pageMeta.title, pageMeta.section, meta);
+  
+  return generatePage(name, pageMeta, `${prefix}-${name}.${locale}`, head, body, route, pageMeta.title, pageMeta.section, undefined, meta);
 };
