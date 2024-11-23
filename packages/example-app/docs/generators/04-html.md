@@ -10,7 +10,17 @@ section: Generators
 
 The Markdown generator transforms single HTML files into documentation pages.
 
-(tbd)
+Importantly, for the meta information you need to use a comment like shown below:
+
+```html
+<!--
+title: Example
+description: ...
+section: Tools
+-->
+<h1>Hello World!
+<p>Text here</p>
+```
 
 Let's say you have a folder structure like this:
 

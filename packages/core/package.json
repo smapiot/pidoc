@@ -16,7 +16,7 @@
     "pilet-docs": "./bin/pilet-cli.js"
   },
   "engines": {
-    "node": ">=16.0"
+    "node": ">=18.17"
   },
   "importmap": {
     "imports": {
@@ -70,9 +70,9 @@
     "markdown-it-sup": "^2.0.0",
     "markdown-it-task-checkbox": "^1.0.6",
     "markdown-it-video": "^0.6.3",
-    "pug": "^3.0.2",
-    "yaml": "^2.4.1",
-    "yargs": "^15.4.1"
+    "pug": "^3",
+    "yaml": "^2",
+    "yargs": "^17"
   },
   "peerDependencies": {
     "@pidoc/components": "*",
@@ -86,11 +86,11 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/react-router-dom": "^5",
-    "@types/yargs": "^15.0.4",
+    "@types/yargs": "^17",
     "flexsearch": "0.6.32",
-    "piral-cli": "1.5.4",
-    "piral-cli-webpack5": "1.5.4",
-    "piral-core": "1.5.4",
+    "piral-cli": "1.7.2",
+    "piral-cli-webpack5": "1.7.2",
+    "piral-core": "1.7.2",
     "react": "^18",
     "react-dom": "^18",
     "react-router-dom": "^5"

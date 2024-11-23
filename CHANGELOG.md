@@ -1,5 +1,11 @@
 # `pidoc` Changelog
 
+## 0.19.0 (tbd)
+
+- Fixed path issue with React generator
+- Updated to latest version of Piral
+- Updated Node.js constraint to v18.17 or higher
+
 ## 0.18.3 (July 26, 2024)
 
 - Updated to latest version of Piral

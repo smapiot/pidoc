@@ -32,6 +32,20 @@ The following plugins are configured:
 
 Most of the (supported / included) Markdown features are describes in the [Markdown section](../basics/03-markdown.md).
 
+Importantly, for the meta information you need to use the frontmatter like shown below:
+
+```md
+---
+title: Example
+description: ...
+section: Samples
+---
+
+# Hello World!
+
+Text here...
+```
+
 The Markdown generator is pretty much the default generator as most content will most likely be written using Markdown. Let's say you have a folder structure like this:
 
 ```plain

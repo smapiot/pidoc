@@ -1,10 +1,11 @@
 const { readFileSync } = require('fs');
 const { resolve, relative } = require('path');
-const { codegen } = require('../constants');
+const { parseMeta } = require('../markdown');
+const { generated } = require('../constants');
 const { generatePage } = require('../pages');
 const { getDocsFrom, getName, getTitle, makeFileFilter } = require('../utils');
 
-const rx = /^\/\*\*\n(.*?)\n\*\*\//s;
+const rx = /^\/\*\*\n(.*?)\n\*\*\//ms;
 
 function getRoute(basePath, name) {
   return (name && `${basePath}/${name}`) || '';
@@ -39,7 +40,7 @@ exports.build = function (entry, options) {
   const title = getTitle(file);
   const jsx = readFileSync(file, 'utf8');
   const fm = rx.exec(jsx);
-  const meta = (fm && parseMeta(fm)) || {};
+  const meta = (fm && parseMeta(fm[1])) || {};
   const pageMeta = {
     title,
     ...meta,
@@ -48,7 +49,7 @@ exports.build = function (entry, options) {
   };
   const head = `
     import { PageContent, PageLayout } from '@pidoc/components';
-    import Page from ${JSON.stringify(relative(codegen, file))};
+    import Page from ${JSON.stringify(relative(generated, file))};
 
     const meta = ${JSON.stringify(meta)};
   `;

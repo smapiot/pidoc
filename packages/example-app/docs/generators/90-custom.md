@@ -10,8 +10,6 @@ section: Generators
 
 A custom generator transforms files according to your rules and logic. This can be used to teach pidoc about a new file type (e.g., transforming ASCIIDoc or similar).
 
-(tbd)
-
 Let's say you have a folder structure like this:
 
 ```plain

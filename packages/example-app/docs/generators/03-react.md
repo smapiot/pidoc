@@ -10,7 +10,25 @@ section: Generators
 
 The Markdown generator transforms single JSX files with a `default` export (called the page content component) into documentation pages.
 
-(tbd)
+Importantly, for the meta information you need to use a comment like shown below:
+
+```jsx
+import * as React from 'react';
+
+/**
+title: Example
+description: ...
+section: Tools
+**/
+
+export default function() {
+  return (
+    <div>
+      Hello World!
+    </div>
+  );
+}
+```
 
 Let's say you have a folder structure like this:
 
