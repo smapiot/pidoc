@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunk_pidoc_core=self.webpackChunk_pidoc_core||[]).push([[855],{8855:(e,t,n)=>{n.r(t),n.d(t,{default:()=>o});var a=n(4041);const o=function(){return a.createElement("section",{className:"layout-container"},a.createElement("h1",null,"Page Not Found"),a.createElement("p",null,"The page you are looking for has not been found here. Maybe start a search?"),a.createElement("p",null,"The search is located on the top right corner. You can just click on the magnifier symbol."))}}}]);
+//# sourceMappingURL=d72d0d.js.map
